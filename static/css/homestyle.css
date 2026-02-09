@@ -1,0 +1,33 @@
+/* ==========================
+   Welcome Section
+========================== */
+.welcome1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.welcome1 h1 {
+    display: inline-block;                 
+    font-size: clamp(40px, 10vw, 100px);   
+    color: #7a7a7a; /* medium gray text */
+
+    overflow: hidden;                       
+    border-right: .15em solid #a0a0a0; /* gray cursor */
+    white-space: nowrap;                    
+    margin: 0 auto;
+    letter-spacing: 0.05em;
+
+    animation: 
+        typing 3.5s steps(23, end),        
+        blink-caret 1s step-end infinite;  
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #888888; } /* cursor blink in medium gray */
+}
