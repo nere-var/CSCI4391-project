@@ -16,6 +16,10 @@ def home_page():
 
 # -------------------- Other Page can go here --------------------
 
+@app.route("/Sample Page")
+def sample_page():
+    return render_template("SamplePage.html")
+
 # -------------------- Run App --------------------
 if __name__ == '__main__':
     app.run(debug=True)

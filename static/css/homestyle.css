@@ -1,4 +1,10 @@
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* ==========================
    Main Body picture
 ========================== */
@@ -6,13 +12,15 @@
 .images {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 30px;
+    gap: 55px;
     flex-wrap: wrap;
+    align-items: flex-start;
     animation:
       bounce 300ms
       alternate infinite
-      cubic-bezier(.2, .65, .6, 1);
+      cubic-bezier(.2, .65, .6, 1),
+      typing 3.5s steps(23, end);
+     
 }
 
 
@@ -30,40 +38,29 @@
     display: inline-block;                 
     font-size: clamp(40px, 10vw, 100px);   
     color: #4e8e00; /* medium gray text */
-
+    font-family: 'Andale Mono', 'Courier New', monospace;
     overflow: hidden;                       
     
+
     white-space: nowrap;                    
-    margin: 0 auto;
+    margin: 5px ;
     letter-spacing: 0.05em;
+    animation: 
+    typing 3.5s steps(23, end),blink-caret 1s step-end infinite;  
 
    
 }
    
 
-
-  
-/*
-@keyframes slide-in {
-    from { 
-        translate: 150vw 0;
-        scale: 200% 1;
-     }
-    to { 
-        translate: 0 0;
-        scale: 100% 1; 
-    }
+   
+/* ==========================
+   Animation for Title +Binny
+========================== */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
 }
-*/
 
-/* ==========================
-   Animation for Title
-========================== */
-
-
-/* ==========================
-   Animation for Binny
-========================== */
 
 @keyframes bounce {
     from {
@@ -74,8 +71,23 @@
     }
   }
   
+  /* ==========================
+   ButtonStyle
+========================== */
+.body .text {
+    font-family: 'Andale Mono', 'Courier New', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -10px;
+    gap: 0px;
+    padding: 10px 20px;
+   color: chocolate;
+}
   
 
 /* Get anIMATion INSPirations from 
 https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API/Using_the_Web_Animations_API
 */
+
+
