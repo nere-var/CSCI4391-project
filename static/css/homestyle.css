@@ -17,7 +17,7 @@
 
 /* ==========================
    Images
-========================== */    
+   ========================== */    
 .images {
     display: flex;
     justify-content: center;
@@ -39,7 +39,7 @@
 
 /* ==========================
    Welcome Section
-========================== */
+   ========================== */
 .welcome1 {
     text-align: center;
     margin-bottom: 20px;
@@ -59,7 +59,7 @@
    
 /* ==========================
    Animation for Title +Binny
-========================== */
+   ========================== */
 @keyframes typing {
     from { width: 0; }
     to { width: 100%; }
@@ -74,9 +74,9 @@
     }
   }
   
-  /* ==========================
+/* ==========================
    Buttons and Links
-========================== */
+   ========================== */
 .body .text {
     font-family: 'Andale Mono', 'Courier New', monospace;
     display: inline-block;
@@ -87,9 +87,9 @@
     font-size: 1.1rem;
 }
   
-  /* ==========================
+/* ==========================
    Forms
-========================== */
+   ========================== */
 form.body {
   width: 100%;
   max-width: 500px;
@@ -121,9 +121,9 @@ button.text {
   font-size: 1.1rem;
 }
 
-  /* ==========================
+/* ==========================
    Inventory Table
-========================== */
+   ========================== */
 .inventory-table {
     width: 100%;
     border-collapse: collapse;
@@ -147,9 +147,9 @@ button.text {
     background-color: #fafafa;
 }
 
-  /* ==========================
+/* ==========================
    Mobile Tweaks
-========================== */
+   ========================== */
 @media (max-width: 480px) {
   .welcome1 h1 {
     font-size: clamp(28px, 12vw, 60px);
