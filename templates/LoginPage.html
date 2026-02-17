@@ -1,16 +1,38 @@
-{% extends 'SamplePageSetup.html' %}
+{% extends 'HomePageSetup.html' %}
 
 {% block head %}
-<title>Binny and Bloom.com</title>
+
+<title>Login</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/homestyle.css') }}">
-{% endblock %}
+{% endblock %}}
 
 {% block body %}
-<div class="SampleText">
-    <!-- ===== Page Content ====== -->
-    <h1>This is just a sample page</h1>
-    <!-- ========================= -->
+
+<div class="welcome1">
+    <h1>Binny and Bloom.com</h1>
+</div> 
+
+<div class="welcome1">
+    <h1>Login</h1>
 </div>
+
+
+
+<form method="POST" class="body">
+    <label>Username</label>
+    <input name="username" required>
+
+    <label>Password</label>
+    <input name="password" type="password" required>
+
+    <button type="submit" class="text">Login</button>
+
+    <div class="Register-Button">
+        <div class ="CreateLab"><label>Dont have an account ? </label></div>
+        <a href="/register" class="text-register">Create an account</a>
+        </div>
+</form>
+
 
 
 <!-- ===========
