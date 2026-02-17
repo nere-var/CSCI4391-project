@@ -1,5 +1,11 @@
 # Project Name: Binny & Bloom
 
+# to install necessary packages afterp pulling repo:
+# python -m venv .venv        # create virtual environment
+# .venv\Scripts\activate      # activate it
+# pip install -r requirements.txt   # installs all packages listed
+
+
 ## Pantry Inventory Control
 - Meal Planning
 - Donation Guide
