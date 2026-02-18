@@ -60,7 +60,7 @@ import sqlite3
 # quantity, best_by, price, status
 # ===========================================
 
-conn = sqlite3.connect("inventory.db")
+conn = sqlite3.connect("src/instance/inventory.db") # <------- Moved ail files into src as per professor
 cursor = conn.cursor()
 
 # ================================

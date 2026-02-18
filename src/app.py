@@ -10,7 +10,7 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 app.secret_key = "super-secret-key"
 
-UPLOAD_FOLDER = "static/profile_pics"
+UPLOAD_FOLDER = "src/static/profile_pics"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
@@ -18,7 +18,7 @@ app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 # Connect to db
 # =============
 def get_db():
-    conn = sqlite3.connect("inventory.db")
+    conn = sqlite3.connect("src/instance/inventory.db")
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -376,3 +376,7 @@ if __name__ == "__main__":
 # ngrok http 5000
 # ===============
 
+# ================
+# for render.com
+# gunicorn app:app
+# ================

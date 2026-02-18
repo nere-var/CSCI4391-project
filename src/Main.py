@@ -298,3 +298,7 @@ if __name__ == "__main__":
 # ngrok http 5000
 # ===============
 
+# ================
+# for render.com
+# gunicorn Main:app
+# ================
