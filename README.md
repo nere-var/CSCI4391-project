@@ -2,7 +2,7 @@ Document Links: [install](#install) / [usage](#usage) / [demo](#demo)
 <img width="1648" height="349" alt="a" src="https://github.com/user-attachments/assets/7f49a123-4529-4f44-947b-519a546626eb" />
 
 # Binny and Bloom
-## A Live well app focused on minimizing waste while maximizing utility.<center> <br />
+## A live well app focused on minimizing waste while maximizing utility.<center> <br />
 Senior Project - Spring 2026.
 
 <br /><br />
