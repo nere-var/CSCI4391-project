@@ -10,7 +10,7 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 app.secret_key = "super-secret-key"
 
-UPLOAD_FOLDER = "src/static/profile_pics"
+UPLOAD_FOLDER = os.path.join(app.root_path, "static", "profile_pics")
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
@@ -379,4 +379,5 @@ if __name__ == "__main__":
 # ================
 # for render.com
 # gunicorn app:app
+
 # ================
