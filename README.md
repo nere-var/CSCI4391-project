@@ -7,13 +7,13 @@ Senior Project - Spring 2026.
 
 <br /><br />
 
-<img width="284" height="409" alt="image" src="https://github.com/user-attachments/assets/e02be220-4db1-45d6-bb5b-35694fc00dcf" />
-<img width="284" height="718" alt="image" src="https://github.com/user-attachments/assets/91f35447-0fff-442b-90cd-7ff3eaf63d8d" />
-<img width="284" height="791" alt="image" src="https://github.com/user-attachments/assets/1280fe05-fe38-475d-bbe8-b33e398bc032" />
-<img width="284" height="858" alt="image" src="https://github.com/user-attachments/assets/58478cbd-dfc3-41e7-a765-706e1e1f5bdb" />
-<img width="284" height="877" alt="image" src="https://github.com/user-attachments/assets/6ba1fb3c-7f1b-4747-8f07-cb957db4322c" />
-<img width="284" height="594" alt="image" src="https://github.com/user-attachments/assets/648491c4-2aa2-47ae-9726-c89c47fa362d" />
-<img width="284" height="908" alt="image" src="https://github.com/user-attachments/assets/1e2754b8-f7f3-4188-861f-23a90206c4d1" />
+<img width="260" height="409" alt="image" src="https://github.com/user-attachments/assets/e02be220-4db1-45d6-bb5b-35694fc00dcf" />
+<img width="260" height="718" alt="image" src="https://github.com/user-attachments/assets/91f35447-0fff-442b-90cd-7ff3eaf63d8d" />
+<img width="260" height="791" alt="image" src="https://github.com/user-attachments/assets/1280fe05-fe38-475d-bbe8-b33e398bc032" />
+<img width="260" height="858" alt="image" src="https://github.com/user-attachments/assets/58478cbd-dfc3-41e7-a765-706e1e1f5bdb" />
+<img width="260" height="877" alt="image" src="https://github.com/user-attachments/assets/6ba1fb3c-7f1b-4747-8f07-cb957db4322c" />
+<img width="260" height="594" alt="image" src="https://github.com/user-attachments/assets/648491c4-2aa2-47ae-9726-c89c47fa362d" />
+<img width="260" height="908" alt="image" src="https://github.com/user-attachments/assets/1e2754b8-f7f3-4188-861f-23a90206c4d1" />
 
 <br /><br />
 
