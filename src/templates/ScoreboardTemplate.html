@@ -1,11 +1,5 @@
 {% extends 'HomePageSetup.html' %}
 
-{% block head %}
-
-<title>Scoreboard</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/homestyle.css') }}">
-{% endblock %}
-
 {% block body %}
 <div class="welcome1">
     <h1>Scoreboard</h1>
@@ -44,39 +38,11 @@
         </tbody>
     </table>
 
-<div class="images">
-
-    <a href="/">
-        <img src="{{ url_for('static', filename='Pictures/BinnyHome.png') }}" alt="homebot" class="binnyhome">
+    <br>
+    <a href="/" class="text">
+        <button class="text">Back to Home</button>
     </a>
 </div>
-</div>
-
-
-
-<!-- ===========
-     Mouse trail
-     =========== -->
-<script>
-document.addEventListener("mousemove", function (e) {
-    const trail = document.createElement("img");
-    trail.src = "{{ url_for('static', filename='Pictures/trail.png') }}";
-    trail.className = "trail";
-    trail.style.left = e.pageX + "px";
-    trail.style.top = e.pageY + "px";
-
-    document.body.appendChild(trail);
-
-    setTimeout(() => {
-        trail.style.opacity = "0";
-    }, 10);
-
-    setTimeout(() => {
-        trail.remove();
-    }, 600);
-});
-</script>
-<!-- ========== -->
 
 
 <div class="Tree-background">
