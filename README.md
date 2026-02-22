@@ -33,7 +33,7 @@ For Mac Users:
 - ```source venv/bin/activate```      # activate it
 - ```pip install -r requirements.txt```   # installs all packages listed
 
-
+- Then Run  ```python3 src/app.py```  #In the Projects root Folder 
 
 <br /><br />
 <a name="usage"></a>Usage:<br />
