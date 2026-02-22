@@ -34,7 +34,7 @@ For Mac Users:
 - ```pip install -r requirements.txt```   # installs all packages listed
 
 Then Run  
--```python3 src/app.py```  #In the Projects root Folder 
+- ```python3 src/app.py```  #In the Projects root Folder 
 
 <br /><br />
 <a name="usage"></a>Usage:<br />
