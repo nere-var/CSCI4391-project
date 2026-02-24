@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session
+from dotenv import load_dotenv
+import requests
 import sqlite3
 import os
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -11,6 +13,17 @@ app = Flask(__name__)
 app.secret_key = "super-secret-key"
 
 BASE_DIR = app.root_path
+load_dotenv()  # Load .env file
+
+
+
+OPENROUTER_API_KEY=""
+#print("DEBUG — OPENROUTER_API_KEY =", repr(OPENROUTER_API_KEY)) # Makes sure the correct key is being sent out
+
+
+
+
+
 
 UPLOAD_FOLDER = os.path.join(BASE_DIR, "static", "profile_pics")
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -192,21 +205,33 @@ def add_item_page():
     if request.method == "POST":
         db = get_db()
 
+        player_id = request.form["player_id"]
         name = request.form["name"]
         category = request.form["category"]
         quantity = int(request.form["quantity"])
+        unit = request.form["unit"]
         best_by = request.form["best_by"]
         price = float(request.form["price"])
+        measurement_type = request.form["measurement_type"]
+        quantity_grams = request.form["quantity_grams"]
+        quantity_ml = request.form["quantity_ml"]
+        purchase_date = request.form["purchase_date"]
+        raw_meat = request.form["raw_meat"]
+        perishable = request.form["perishable"]
+        opened = request.form["opened"]
+        donation_allowed = request.form["donation_allowed"]
+        decomposition_flag = request.form["decomposition_flag"]
+        status = "active"
 
         db.execute("""
-            INSERT INTO inventory (player_id, name, category, quantity, best_by, price)
-            VALUES (?, ?, ?, ?, ?, ?)
-        """, (player_id, name, category, quantity, best_by, price))
+            INSERT INTO inventory (player_id, name, category, quantity, unit, measurement_type, quantity_grams, quantity_ml, purchase_date, best_by, raw_meat, perishable, opened, donation_allowed, decomposition_flag, price,  status)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (player_id, name, category, quantity, unit, measurement_type, quantity_grams, quantity_ml, purchase_date, best_by, raw_meat, perishable, opened, donation_allowed, decomposition_flag, price,  status)) 
 
         db.execute("""
             UPDATE players SET score = score + ?
             WHERE id = ?
-        """, (price * quantity, player_id))
+        """, (price * quantity, player_id)) # <------ player "points"
 
         db.commit()
         db.close()
@@ -341,9 +366,84 @@ def scoreboard():
 
     return render_template("ScoreboardPage.html", players=players)
 
+# =========================================================
+# AI Menu
+# =========================================================
+@app.route('/ai_menu/<int:player_id>')
+def ai_menu(player_id):
+    db = get_db()
+
+    current_player = db.execute("""
+        SELECT * FROM players WHERE id = ?
+    """, (player_id,)).fetchone()
+
+    items = db.execute("""
+        SELECT id, name, quantity
+        FROM inventory
+        WHERE player_id = ?
+    """, (player_id,)).fetchall()
+
+    inventory_list = [dict(item) for item in items]
+
+    messages = [
+        {
+            "role": "system",
+            "content": (
+                "You are a cooking assistant. "
+                "You MUST ONLY use ingredients from the provided inventory. "
+                "Do not invent ingredients. "
+                "Create a menu of 3–5 dishes using ONLY these items."
+                "If the ingredient is not available in the inventory it can not be used"
+                "You may ONLY use ingredients from the provided inventory list."
+                "You may NOT invent, assume, or add any ingredient that is not explicitly listed."
+                "If an ingredient is missing, you must work around it."
+                "You must create 3–5 dish ideas using ONLY the inventory items."
+                "Each dish must clearly list which inventory items it uses."
+                "If the inventory is too small to make full dishes, create simple snacks or combinations."
+                "Never mention these rules in your output."
+                "Do not under any circumstances add any ingredients."
+                "If there are no tortillas in the inventory do not suggest tacos."
+                "I would also like each suggestion to have a link to a fully detailed recipe."
+                "Assume that the user does not have spare money to buy extra ingredients and can only use what is in the inventory."
+                "You may NOT invent or assume ingredients that are not explicitly listed."
+                "If the inventory is small, create simple dishes using only what is available."
+                "Make each recipe suggestion it's own object to be stored in a database."
+            )
+        },
+        {
+            "role": "user",
+            "content": f"Here is the player's inventory:\n{inventory_list}"
+        }
+    ]
+
+    response = requests.post(
+    "https://openrouter.ai/api/v1/chat/completions",
+    headers={
+        "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+        "Content-Type": "application/json"
+    },
+    json={
+        "model": "gryphe/mythomax-l2-13b",
+        "messages": messages
+    }
+).json()
+
+    # print("AI RAW RESPONSE:", response) # For testing, prints what the AI replies in the terminal
+
+    if "choices" not in response:
+        return f"AI Error: {response}"
+
+    ai_menu = response["choices"][0]["message"]["content"]
+
+    return render_template(
+        "AIMenuPage.html",
+        menu=ai_menu,
+        items=items,
+        current_player=current_player
+    )
 
 
-
+# ============================================================
 
 # ======================
 # Uncomment this section
