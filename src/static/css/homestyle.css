@@ -225,132 +225,6 @@ button.text {
 }
 
 
-/* ==========================
-   Mobile Tweaks
-   ========================== */
-@media (max-width: 480px) {
-  .welcome1 h1 {
-    font-size: clamp(28px, 12vw, 60px);
-  }
-
-  .body {
-    padding: 12px;
-  }
-}
-
-/* ---- */
-@media (max-width: 600px) {
-  .body {
-    padding: 12px;
-  }
-
-    .table-container {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .welcome1 h1 {
-    font-size: clamp(28px, 10vw, 40px);
-    line-height: 1.1;
-    white-space: normal;
-  }
-
-  .body .text {
-    display: block;
-    width: 100%;
-    margin: 8px 0;
-    font-size: 1rem;
-    text-align: center;
-  }
-
-    .images {
-    animation: none;
-    gap: 16px;
-  }
-
-  .binnybot,
-  .binnyhome {
-    max-width: 40vw;
-    height: auto;
-  }
-
-  .inventory-table th,
-  .inventory-table td {
-    padding: 6px;
-    font-size: 0.8rem;
-  }
-
-  .Tree-background,
-  .grass-container,
-  .binny-Tree {
-    display: none;
-  }
-
-
-
-}
-
-/* ---- */
-
-
-/* ==========================
-   Mobile Inventory Cards
-   ========================== */
-@media (max-width: 600px) {
-
-  /* Hide table headers */
-  .inventory-table thead {
-    display: none;
-  }
-
-  /* Make each row(Item) a card */
-  .inventory-table tr {
-    display: block;
-    background: #81ecb1;
-    margin-bottom: 10px;
-    padding: 12px;
-    border: 1px solid #634f17;
-    border-radius: 8px;
-  }
-
-  /* Make each cell a row */
-  .inventory-table td {
-    display: flex;
-    justify-content: left-justify;
-    padding: 8px 4px;
-    border: none;
-    border-bottom: 1px solid #9e9696;
-    font-size: 1.5rem;
-  }
-
-  /* Remove last border */
-  .inventory-table td:last-child {
-    border-bottom: none;
-  }
-
-  /* Table headers labels */
-  .inventory-table td::before {
-    content: attr(data-label);
-    font-weight: bold;
-    color: #444;
-    margin-right: 10px;
-  }
-
- 
-  .inventory-table td form button {
-    width: 165px;
-    margin-top: 6px;
-  }
-
-/*  .inventory-table {
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    border-radius: 6px;
-    overflow: hidden;
-  }
-*/
-
-}
-
 
 
 
@@ -605,7 +479,7 @@ z-index: 2;
     width: 350px;
     margin: 40px auto;
     padding: 25px;
-    background: #fffdf7;
+    background: ##e89b4f;
     border: 3px solid #e0c39c;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
@@ -643,3 +517,138 @@ z-index: 2;
 }
 
 
+
+
+
+
+
+/* ==========================
+   Mobile Tweaks
+   ========================== */
+@media (max-width: 480px) {
+  .welcome1 h1 {
+    font-size: clamp(28px, 12vw, 60px);
+  }
+
+  .body {
+    padding: 12px;
+  }
+}
+
+/* ---- */
+@media (max-width: 600px) {
+  .body {
+    padding: 12px;
+  }
+
+    .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .welcome1 h1 {
+    font-size: clamp(28px, 10vw, 40px);
+    line-height: 1.1;
+    white-space: normal;
+  }
+
+  .body .text {
+    display: block;
+    width: 100%;
+    margin: 8px 0;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+    .images {
+    animation: none;
+    gap: 16px;
+  }
+
+  .binnybot,
+  .binnyhome {
+    max-width: 40vw;
+    height: auto;
+  }
+
+  .inventory-table th,
+  .inventory-table td {
+    padding: 6px;
+    font-size: 0.8rem;
+  }
+
+  .Tree-background,
+  .grass-container,
+  .binny-Tree {
+    display: none;
+  }
+
+
+
+}
+
+/* ---- */
+
+
+/* ==========================
+   Mobile Inventory Cards
+   ========================== */
+@media (max-width: 600px) {
+
+  /* Hide table headers */
+  .kawaii-table thead {
+    display: none;
+  }
+
+  /* Make each row(Item) a card */
+  .kawaii-table tr {
+    display: block;
+    background: #e89b4f;
+    margin-bottom: 10px;
+    padding: 12px;
+    border: 1px solid #634f17;
+    border-radius: 8px;
+  }
+
+  /* Make each cell a row */
+  .kawaii-table td {
+    display: flex;
+    justify-content: left-justify;
+    padding: 8px 4px;
+    border: none;
+    border-bottom: 1px solid #9e9696;
+    font-size: 1.5rem;
+  }
+  .kawaii-table td:nth-child(even) {
+    background: #e89b4f;
+  }  
+  .kawaii-table td:nth-child(odd) {
+    background: #ecb767;
+  }
+  /* Remove last border */
+  .kawaii-table td:last-child {
+    border-bottom: none;
+  }
+
+  /* Table headers labels */
+  .kawaii-table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #444;
+    margin-right: 10px;
+  }
+
+ 
+  .kawaii-table td form button {
+    width: 100%;
+    margin-top: 6px;
+  }
+
+/*  .inventory-table {
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+*/
+
+}
