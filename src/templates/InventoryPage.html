@@ -146,11 +146,36 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 
+<!-- ========================
+     Chatbot for rn 
+     ======================== -->
+
+<!-- change into chatbox later  -->
+<center class="row">
+    <form method="post" class="col-md-6 col-md-offset-3">
+        <div class="kawaii-login">
+            <h3>Type in Here =p:</h3>
+            <input type="text" class="kawaii-login input" name="message" placeholder="text Here !!">
+            <div class="input-Chatgroup-btn">
+                <button class="kawaii-btn" type="submit">
+                 submit
+                </button>
+            </div>
+        </div>
+    </form>  
+    {% if Response %}
+<div class="kawaii-login inpute">
+    <h3>BinnyBot:</h3>
+    <p>{{ Response }}</p>
+</div>
+{% endif %}
+</center>
 
 
 
 
 {% endblock %}
+
 
 
 
