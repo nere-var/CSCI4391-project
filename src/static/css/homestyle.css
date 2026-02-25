@@ -691,16 +691,33 @@ body {
 
 
 
+
+
 /* ==========================
-   KAWAII AI RESPONSE
+   AI RESPONSE
    ========================== */
 .kawaii-ai-response {
+    background: #ecbe8f;
+    font-size:20px;
     white-space: pre-wrap;
-    background: #e89b4f;
-    padding: 15px;
-    border-radius: 10px;
-    font-size: 1rem;
-    line-height: 1.4;
+    display: block;
+    width: 90vw;          
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 12px;
 }
 
+.kawaii-ai-table {
+    width: 90vw;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 25px;
+    background: #ffffff;
+    border: 3px solid #f3dcbd;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+
+
+}
 
