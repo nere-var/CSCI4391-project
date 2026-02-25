@@ -305,7 +305,7 @@ https://www.youtube.com/watch?v=UinSLYd-kSw
 .grass-container {
 position: absolute;
 width: 100vw;
-height: 40vh;
+height: 10vh;
 background: #c6e48b;
 z-index: 1; 
 }
@@ -688,4 +688,5 @@ z-index: 2;
 body {
   padding-bottom: 60px;
 }
+
 
