@@ -690,3 +690,17 @@ body {
 }
 
 
+
+/* ==========================
+   KAWAII AI RESPONSE
+   ========================== */
+.kawaii-ai-response {
+    white-space: pre-wrap;
+    background: #e89b4f;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+
