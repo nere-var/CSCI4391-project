@@ -77,7 +77,7 @@ class Ai_Chat:
             }
         
         data = {
-            "model": "openrouter/free",  # free models router
+            "model": "arcee-ai/trinity-large-preview:free",  # using trinity large preview free model
             "messages": messages # will declare limits at start of chat loop
             }
         try:
@@ -94,7 +94,7 @@ class Ai_Chat:
 # console chat loop
 
     def chatConsole(self):
-        print("Welcome! this is a test run of using openrouter free. type 'quit' to exit.\n")
+        print("Welcome! The model is Trinity Large Preview (free). Type 'quit' to exit.\n")
         # this is where the chatbot will be constrained
         messages = [
             { "role": "system", 
@@ -107,7 +107,9 @@ class Ai_Chat:
                  "- Respect the available inventory amounts.\n"
                  "- Do not suggest quantities that exceed what is available.\n"
                  "- If quantity data is missing, state assumptions clearly.\n"
-                 "Keep responses concise but practical and clear." )
+                 "Keep responses concise but practical and clear.\n"
+                 "Do not give food safety recommendations at all. Anything involving food safety, respond 'Sorry, I don't have that info.'\n"
+                "Format all responses as clean plain text. Avoid tables, table-like structures, columns, or spreadsheet-style formatting. Use paragraphs or bullet points instead.")
             }]
         
         while True:
