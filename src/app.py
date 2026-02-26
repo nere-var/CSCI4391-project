@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from dotenv import load_dotenv
 import requests
 import sqlite3
+from datetime import datetime, timedelta
 import os
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
@@ -65,6 +66,25 @@ def home_page():
         "HomePage.html",
         current_player=current_player
     )
+
+# =========
+# Dashboard
+# =========
+@app.route("/dashboard")
+def dashboard():
+    # show warning on homepage for foods about to expire in 3 days
+    player = session.get('player_id')
+    expiring_soon = get_expiry_date(player)
+
+    if not player:
+        # if they aren't logged in, send them to the login page
+        return redirect('/login')
+
+    if expiring_soon:
+        item_list = ", ".join(expiring_soon)
+        flash(f"⚠️ Heads up! Your {item_list} will expire in 3 days.", "warning")
+
+    return render_template('dashboard.html')
 
 # =====================
 # User Profile
@@ -401,6 +421,30 @@ def scoreboard():
     db.close()
 
     return render_template("ScoreboardPage.html", players=players)
+
+# ===========================
+# Expiry Alerts for Dashboard
+# ===========================
+
+def get_expiry_date(player_id):
+    conn = get_db()
+    cursor = conn.cursor()
+
+    # calculate the date 4 days before expire
+    target_date = (datetime.now() + timedelta(days=3)).strftime('%Y-%m-%d')
+    query = "SELECT name FROM inventory WHERE player_id = ? AND best_by = ? AND status = 'active'"
+    cursor.execute(query, (player_id, target_date))
+    items = cursor.fetchall()
+    conn.close
+
+    return [item['name'] for item in items]
+
+
+
+# Citations:
+# ----------
+# get_expiry_date & dashboard implemented using a Google Gemini prompt as a guideline: 
+# "I want to make it simple and have it show in text like a notification on the website for the player"
 
 # =========================================================
 # AI Menu
