@@ -54,5 +54,6 @@ CREATE TABLE IF NOT EXISTS inventory (
 )
 """)
 
+
 conn.commit()
 conn.close()
