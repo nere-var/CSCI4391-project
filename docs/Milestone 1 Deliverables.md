@@ -61,7 +61,7 @@ Examples (you can revise, but must be testable):
 ---
 
 # 2. Pantry Schema + Unit Normalization (Engineering Component)
-
+(Jay) (Luis)
 Create or finalize a pantry schema that supports validation.
 
 ## Requirements
@@ -77,7 +77,7 @@ Create:
 ---
 
 # 3. Constraint & Feasibility Validator (Required)
-
+(Emma) (Taja) (Abby)
 This is the “not just an API call” part.
 
 Implement a validator that checks the generated recipe against the pantry state.
@@ -101,7 +101,7 @@ Manual checking does not count.
 ---
 
 # 4. Recipe Generation Approach (Must be more than “generic prompt”)
-
+(everybody)
 You must implement at least one structured approach that makes quantities meaningful.
 
 Choose one (or combine):
@@ -125,7 +125,7 @@ Create:
 ---
 
 # 5. Evaluation Starter Kit (Minimum 20 Test Cases)
-
+(Taja)(Abby)
 Create:
 - /docs/evaluation_test_cases.md
 
@@ -145,7 +145,7 @@ Include 20 scenarios with:
 ---
 
 # 6. Architecture Diagram (1 page)
-
+(Abby)
 Create:
 - /docs/architecture.png
 
@@ -157,7 +157,7 @@ Label deterministic vs LLM components clearly.
 ---
 
 # 7. Required Technical Walkthrough Video (No UI Required)
-
+(everybody)
 Submit a 5–8 minute technical walkthrough video showing:
 
 - Pantry DB format and example records  
@@ -188,6 +188,7 @@ Your repository must include:
 - /src/unit_conversion.py (or equivalent)
 
 Additionally:
+(Luis)
 - Updated README with setup + run instructions
 - requirements.txt
 - .env.example (no keys committed)
