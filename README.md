@@ -7,13 +7,6 @@ Senior Project - Spring 2026.
 
 <br /><br />
 
-<img width="200" height="409" alt="image" src="https://github.com/user-attachments/assets/e02be220-4db1-45d6-bb5b-35694fc00dcf" />
-<img width="200" height="718" alt="image" src="https://github.com/user-attachments/assets/91f35447-0fff-442b-90cd-7ff3eaf63d8d" />
-<img width="200" height="791" alt="image" src="https://github.com/user-attachments/assets/1280fe05-fe38-475d-bbe8-b33e398bc032" />
-<img width="200" height="858" alt="image" src="https://github.com/user-attachments/assets/58478cbd-dfc3-41e7-a765-706e1e1f5bdb" />
-<img width="200" height="877" alt="image" src="https://github.com/user-attachments/assets/6ba1fb3c-7f1b-4747-8f07-cb957db4322c" />
-<img width="200" height="594" alt="image" src="https://github.com/user-attachments/assets/648491c4-2aa2-47ae-9726-c89c47fa362d" />
-<img width="200" height="908" alt="image" src="https://github.com/user-attachments/assets/1e2754b8-f7f3-4188-861f-23a90206c4d1" />
 
 <br /><br />
 
@@ -28,28 +21,50 @@ To install necessary packages after pulling repo:
 - ```pip install -r requirements.txt```   # installs all packages listed
 - <img width="358" height="718" alt="image" src="https://github.com/user-attachments/assets/7d18573e-1c66-4347-865c-8e81bf21cd84" />
 
-For Mac Users:
+For Mac/Linux Users:
 - ```python -m venv venv```        # create virtual environment
 - ```source venv/bin/activate```      # activate it
 - ```pip install -r requirements.txt```   # installs all packages listed
 
 Then Run  
-- ```python3 src/app.py```  #In the Projects root Folder 
+- ```python3 src/app.py```  #In the Projects root Folder
+- This will start an instance of Flask which will provide GUI accessed by navigating to the address provided in a browser window:
+  <img width="953" height="164" alt="image" src="https://github.com/user-attachments/assets/a4c16929-a3cb-4841-bf0b-2ff8910a1e85" />
+ 
 
 <br /><br />
 <a name="usage"></a>Usage:<br />
 
+We have provided a database with a various items with username:password  demo:demo<br>
+<img width="157" height="100" alt="Screenshot 2026-02-27 165230" src="https://github.com/user-attachments/assets/3265c059-7ea6-4848-af09-8919711ae2bf" /><img width="157" height="100" alt="Screenshot 2026-02-27 165411" src="https://github.com/user-attachments/assets/fbce4279-516d-482f-9f95-23bac15343dc" /><img width="157" height="100" alt="Screenshot 2026-02-27 165530" src="https://github.com/user-attachments/assets/e71e0f65-9e7e-4cdb-b49f-e1dba067b101" /><img width="157" height="100" alt="Screenshot 2026-02-27 165500" src="https://github.com/user-attachments/assets/13f25fb5-2719-4a2e-880f-064adb6ec2a0" /><br>
+The inventory page shows all of the items the current user has available in their inventory and just below that is field to interact with the AI:<br>
+<img width="157" height="100" alt="Screenshot 2026-02-27 165611" src="https://github.com/user-attachments/assets/dfcccf90-bc63-4d67-9940-6b452cc2f599" /><img width="157" height="100" alt="Screenshot 2026-02-27 165638" src="https://github.com/user-attachments/assets/d8083efb-3581-406e-a217-6c4f27c19bd0" /><img width="157" height="100" alt="Screenshot 2026-02-27 165707" src="https://github.com/user-attachments/assets/d41f3094-4cae-44db-922a-a65057086a04" />
+<br>
+If Binny finds a recipe that can be made with only item available in the user's inventory:<br>
+<img width="157" height="100" alt="Screenshot 2026-02-27 170105" src="https://github.com/user-attachments/assets/109e1e78-2f98-4231-9cf1-b0aecb2e4b2c" /><br>
+If the ingredients are not available:<br>
+<img width="157" height="100" alt="Screenshot 2026-02-27 165840" src="https://github.com/user-attachments/assets/83fda730-90af-400d-b462-a667191799bd" />
+
+
+
+
+
+
+
+
+
+
+
+
+
 <br /><br /><br />
-Pantry Inventory Control
-- Meal Planning
-- Donation Guide
-- Composting Advise
-- AI integration
 
 
 <br /><br /><br />
 
 <a name="demo"></a>Demo:<br />
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Hfm94aHAbYQ/0.jpg)](https://www.youtube.com)
 
 
 
