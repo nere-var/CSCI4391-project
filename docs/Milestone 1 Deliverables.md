@@ -41,8 +41,8 @@ Update PRD to clearly define the product as:
 ### A. Must-have Value Proposition (Make it non-generic)
 Pick 1–2 of the following and commit to it (define measurable success metrics):
 
-- **Expiry-first planning**: recipes prioritize ingredients expiring within N days  
-- **Waste reduction score**: quantify “how much inventory was consumed”  
+- **Expiry-first planning**: recipes prioritize ingredients expiring within N days  (picked)
+- **Waste reduction score**: quantify “how much inventory was consumed”             (picked)
 - **Feasibility guarantee**: recipes are always possible given inventory + units  
 - **Time/skill constraints**: “15-min recipe”, “beginner-friendly” options
 
@@ -56,7 +56,7 @@ Pick 1–2 of the following and commit to it (define measurable success metrics)
 Examples (you can revise, but must be testable):
 - 100% of outputs pass the feasibility validator
 - 0 invented ingredients in default mode
-- ≥ 70% of test cases use at least one “expiring soon” item (if expiry-first is chosen)
+- ≥ 70% of test cases use at least one “expiring soon” item (if expiry-first is chosen) (picked)
 
 ---
 
@@ -71,8 +71,8 @@ Create or finalize a pantry schema that supports validation.
 - Expiration date stored as ISO date
 
 Create:
-- /docs/pantry_schema.md (fields, examples, units policy)
-- /src/unit_conversion.py (or equivalent)
+- /docs/pantry_schema.md (fields, examples, units policy) 
+- /src/unit_conversion.py (or equivalent) 
 
 ---
 
@@ -106,7 +106,7 @@ You must implement at least one structured approach that makes quantities meanin
 
 Choose one (or combine):
 
-### Option A: Two-stage plan (recommended)
+### Option A: Two-stage plan (recommended) (picked)
 1) Deterministic planner selects a feasible ingredient subset + target dish type  
 2) LLM writes the recipe using only the selected subset + exact amounts  
 
