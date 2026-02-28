@@ -23,6 +23,8 @@
                 <tr>
                     <th>Name</th>
                     <th>Username</th>
+                    <th>Food Allergies</th>
+                    <th>Dietary Needs</th>
                     <th>Picture</th>
                     <th>Score</th>
                 </tr>
@@ -31,6 +33,8 @@
                 <tr>
                     <td>{{ player.name }}</td>
                     <td>{{ player.username }}</td>
+                    <td>{{ player.food_allergies }}</td>
+                    <td>{{ player.dietary_needs }}</td>
                     <td>
                         {% if player.profile_picture %}
                         <img src="{{ url_for('static', filename='profile_pics/' ~ player.profile_picture) }}" alt="Profile Picture" width="60">
@@ -61,6 +65,7 @@
         </a>
     </div>
 </div>
+
 
 
 
