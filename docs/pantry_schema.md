@@ -17,7 +17,7 @@ The system will track:<br>
 | password_hash | TEXT | Yes | hashed password |
 | profile_picture | TEXT | No| path to uploaded profile image |
 | score| INTEGER | Yes | user |
-<br><br>
+
 # Inventory Table
 | Name | Type    | Description | Example |
 |------|---------|-------------|---------|
@@ -129,5 +129,6 @@ Stored as:
     - **Unit:** count
     - **Milliliters (mL)** = 3785.41
     - **Grams** = NULL<br>
+
 
 
