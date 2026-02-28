@@ -136,6 +136,9 @@ def userprofile():
     if request.method == "POST":
         file = request.files.get("profile_picture")
 
+        food_allergies = request.form.get("food_allergies")
+        dietary_needs = request.form.get("dietary_needs")
+        
         if file and file.filename != "":
             filename = secure_filename(file.filename)
             filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
@@ -146,8 +149,12 @@ def userprofile():
                 "UPDATE players SET profile_picture = ? WHERE id = ?",
                 (filename, player_id)
             )
-            db.commit()
 
+             db.execute(
+                "UPDATE players SET food_allergies = ?, dietary_needs = ? WHERE id = ?",
+                (food_allergies, dietary_needs, player_id)
+             )
+        db.commit()
         db.close()
         return redirect(url_for("userprofile"))
 
@@ -614,4 +621,5 @@ if __name__ == "__main__":
 # for render.com
 # gunicorn app:app
 # ================
+
 
