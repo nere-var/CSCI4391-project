@@ -14,12 +14,79 @@ Senior Project - Spring 2026.
 
 <a name="install"></a>Installation:<br />
 
+```
+SeniorProject/
+|  |
+|  ├- /docs/
+|  |    ├- Binny And Bloom.pdf
+|  |    ├- Milestone 1 Deliverables.md
+|  |    ├- PRD.md
+|  |    ├- SpikePlan.md
+|  |    ├- architecture.png
+|  |    ├- evaluation_test_cases.md
+|  |    ├- generation_strategy.md
+|  |    ├- pantry_schema.md
+|  |    └- validator_rules.md
+|  └- /src/
+|     |  |
+|     |  ├- /instance/
+|     |  |      ├- 01-build-db-new.py
+|     |  |      ├- 02-insert-db-new.py
+|     |  |      ├- 03-test-db-new.py
+|     |  |      └- inventory.db
+|     |  └- /static/
+|     |      ├- /css/
+|     |      |   ├- homestyle.css
+|     |      |   └- mainstyle.css
+|     |      ├- /js/
+|     |      |   └- MainPageJS.js
+|     |      ├- /Pictures/
+|     |      |   ├- Binny-original.png
+|     |      |   ├- Binny.png
+|     |      |   ├- chef.png
+|     |      |   ├- favicon.png
+|     |      |   └- trail.png
+|     |      └- /profile_pics/
+|     |          └- demo.png
+|     ├- /templates/
+|     |    ├- 0-AIPageSetup.html
+|     |    ├- 0-AddItemPageSetup.html
+|     |    ├- 0-HomePageSetup.html
+|     |    ├- 0-InventoryPageSetup.html
+|     |    ├- 0-MainPageSetup.html
+|     |    ├- 0-SamplePageSetup.html
+|     |    ├- AddItemPage.html
+|     |    ├- HomePage.html
+|     |    ├- InventoryPage.html
+|     |    ├- LoginPage.html
+|     |    ├- RegisterPage.html
+|     |    ├- SamplePage.html
+|     |    ├- ScoreboardPage.html
+|     |    ├- UserProfile.html
+|     |    └- dashboard.html
+|     ├- .env
+|     ├- app.py
+|     ├- database.py
+|     ├- generator.py
+|     ├- models.py
+|     ├- openrouterllm.py
+|     ├- requirements.txt
+|     ├- unit_conversion.py
+|     └- validatory.py
+├- .gitignore
+├- README.md
+└- requirements.txt
+ ```
+
+
+
+
+
 <br /><br />
 To install necessary packages after pulling repo:
 - ```python -m venv .venv```        # create virtual environment
 - ```.venv\Scripts\activate```      # activate it
 - ```pip install -r requirements.txt```   # installs all packages listed
-- <img width="358" height="718" alt="image" src="https://github.com/user-attachments/assets/7d18573e-1c66-4347-865c-8e81bf21cd84" />
 
 For Mac/Linux Users:
 - ```python -m venv venv```        # create virtual environment
