@@ -60,9 +60,8 @@ The listed units below are supported in normalize_quantity():
 | oz   | grams       | grams = quantity * 28.3495|
 | mg   | grams       | grams = quantity / 1000   |
 
-
-    if measurement_type == "weight":
-     grams is populated, ml is NULL
+if measurement_type == "weight":
+- grams is populated, ml is NULL
 
 ## volume units
 | Unit        | Converts to | Conversion Formula        |
@@ -103,9 +102,9 @@ User enter:
 <br>
 <br>
 Stored as:
-    - **Quantity** = 2<br>
+    - **Quantity** = 2
     - **Unit:** lb
-    - **Grams** = 907.184 <br>
+    - **Grams** = 907.184 
     - **Milliliters (mL)** = NULL
 
 ## User Example 2
@@ -114,7 +113,7 @@ User enter:
 <br>
 <br>
 Stored as:
-    - **Quantity** = 1<br>
+    - **Quantity** = 
     - **Unit:** gallon
     - **Milliliters (mL)** = 3785.41
     - **Grams** = NULL<br>
@@ -125,10 +124,11 @@ User enter:
 <br>
 <br>
 Stored as:
-    - **Quantity** = 6 <br>
+    - **Quantity** = 6 
     - **Unit:** count
     - **Milliliters (mL)** = 3785.41
-    - **Grams** = NULL<br>
+    - **Grams** = NULL
+
 
 
 
