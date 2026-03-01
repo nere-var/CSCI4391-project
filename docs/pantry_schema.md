@@ -99,35 +99,33 @@ YYYY-MM-DD<br><br>
 ## User Example 1
 User enter: 
 - **Item:** 2lb chicken breast 
-<br>
-<br>
-Stored as:
-    - **Quantity** = 2
-    - **Unit:** lb
-    - **Grams** = 907.184 
-    - **Milliliters (mL)** = NULL
+
+Stored as:<br>
+    - **Quantity** = 2 <br>
+    - **Unit:** lb <br>
+    - **Grams** = 907.184 <br>
+    - **Milliliters (mL)** = NULL <br>
 
 ## User Example 2
 User enter: 
 - **Item:** 1 gallon Milk
-<br>
-<br>
-Stored as:
-    - **Quantity** = 
-    - **Unit:** gallon
-    - **Milliliters (mL)** = 3785.41
+
+Stored as: <br>
+    - **Quantity** = 1 <br>
+    - **Unit:** gallon <br>
+    - **Milliliters (mL)** = 3785.41 <br>
     - **Grams** = NULL<br>
 
 ## User Example 2
 User enter: 
 - **Item:** 6 eggs
-<br>
-<br>
-Stored as:
-    - **Quantity** = 6 
+
+Stored as:<br>
+    - **Quantity** = 6 <br>
     - **Unit:** count
-    - **Milliliters (mL)** = 3785.41
-    - **Grams** = NULL
+    - **Milliliters (mL)** = 3785.41 <br>
+    - **Grams** = NULL <br>
+
 
 
 
