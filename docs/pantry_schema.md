@@ -44,7 +44,7 @@ The system will track:<br>
 # Measurement types
 System supports 3 measurement types:
 count , stored directly no normalization
-- weightnormalized to grams
+- weight, normalized to grams
 - volume, normalized to milliliters
 <br><br>
 # Unit policy 
@@ -125,6 +125,7 @@ Stored as:<br>
     - **Unit:** count
     - **Milliliters (mL)** = 3785.41 <br>
     - **Grams** = NULL <br>
+
 
 
 
