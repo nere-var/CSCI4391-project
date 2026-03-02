@@ -12,7 +12,7 @@ Senior Project - Spring 2026.
 
 
 
-<a name="install"></a>Installation:<br />
+## <a name="install"></a>Installation:<br />
 
 ```
 SeniorProject/
@@ -98,7 +98,8 @@ Then:
 - append the .env file with your key
 
 <br><br><br>
-Next:[Terminal Version](#terminal) [GUI Version](#gui)<br><br>
+## <a name="usage"></a>Usage:<br />
+[Terminal Version](#terminal) [GUI Version](#gui)<br><br>
 
  
 <a name="terminal"></a>Terminal version:<br>
@@ -112,10 +113,8 @@ Next:[Terminal Version](#terminal) [GUI Version](#gui)<br><br>
 - ```python3 src/app.py```  # In the Projects root Folder<br>
 - This will start an instance of Flask which will provide GUI accessed by navigating to the address provided in a browser window:<br>
   <img width="953" height="164" alt="image" src="https://github.com/user-attachments/assets/a4c16929-a3cb-4841-bf0b-2ff8910a1e85" />
- 
 
-<br /><br />
-<a name="usage"></a>Usage:<br />
+<br />
 
 We have provided a database with a various items with username:password  demo:demo<br>
 <img width="157" height="100" alt="Screenshot 2026-02-27 165230" src="https://github.com/user-attachments/assets/3265c059-7ea6-4848-af09-8919711ae2bf" /><img width="157" height="100" alt="Screenshot 2026-02-27 165411" src="https://github.com/user-attachments/assets/fbce4279-516d-482f-9f95-23bac15343dc" /><img width="157" height="100" alt="Screenshot 2026-02-27 165530" src="https://github.com/user-attachments/assets/e71e0f65-9e7e-4cdb-b49f-e1dba067b101" /><img width="157" height="100" alt="Screenshot 2026-02-27 165500" src="https://github.com/user-attachments/assets/13f25fb5-2719-4a2e-880f-064adb6ec2a0" /><br>
@@ -144,7 +143,7 @@ If the ingredients are not available:<br>
 
 <br /><br /><br />
 
-<a name="demo"></a>Demo:<br />
+## <a name="demo"></a>Demo:<br />
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Hfm94aHAbYQ/0.jpg)](https://www.youtube.com)
 
