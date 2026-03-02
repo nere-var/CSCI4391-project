@@ -83,9 +83,10 @@ SeniorProject/
 
 
 <br /><br />
-To install necessary packages after pulling repo:
+Must have Python installed:
+
+For Windows Users:
 - ```python -m venv .venv```        # create virtual environment
-- ```.venv\Scripts\activate```      # activate it
 - ```pip install -r requirements.txt```   # installs all packages listed
 
 For Mac/Linux Users:
