@@ -7,9 +7,18 @@
 ### 1  Problem + Target Users
 Write 2–4 sentences covering:
 #### What problem exists today?
+<br>
+About 40% of all food produced globally by weight is wasted between farm and fork. That 40% could feed every food-insecure person three full meals a day, everyday for a year with leftovers. If the current trends persist, this waste will double by 2050 (World Resources Institute, 2019).
+
 #### Who experiences it (target users)?
+<br>
+ The target users are anyone interested in learning how to properly dispose of or recycle food waste because the goal of this product is to help improve society by reducing waste one at a time.
+ 
 #### Why it matters (social good impact / urgency)?
-About 40% of all food produced globally by weight is wasted between farm and fork. That 40% could feed every food-insecure person three full meals a day, everyday for a year with leftovers. If the current trends persist, this waste will double by 2050 (World Resources Institute, 2019). The target users are anyone interested in learning how to properly dispose of or recycle food waste because the goal of this product is to help improve society by reducing waste one at a time.
+<br>
+ This product is a pantry-aware recipe assistant that generates feasible recipes that use only available ingredients
+(amount-aware) that prioritizes near-expiration items to reduce waste.
+
 ### 2  Goal / Success Metrics 
 1–3 measurable outcomes, such as: accuracy / quality improvement, time saved per user task, reduction in errors / friction, user satisfaction (survey score), adoption/usage in a small pilot
 - Reduction in Waste Score over time
@@ -58,12 +67,20 @@ When our product is completed, it must:
 - AI provides safe recommendations
 ### 6  Assumptions + Constraints
 List assumptions and constraints such as:
-- Data access (what data you do/don’t have)
-- For user data we would have email address, password (hashed), score and name. For food inventory data we will have food name, category, quantity and expiration dates.For system logic we would have the expiring soon status, days remaining until expiration, donation eligibility (based on expiration date/item category/food bank policies). AI generated suggestions of recipes, waste reduction tips and composting instructions. External API data would be food bank names, location data and donation policies. 
-- We will NOT have whether the food has actually spoiled, if stored properly, if it has mold or contamination. We will NOT have medical history, allergies, calorie tracking and health conditions.
-- Time constraints (what can be done by Milestone 2)
-- Basic GUI & Database
-- Ethics/privacy limits (safety boundaries, consent)
-- We will assume that users will provide accurate food data, consent to their data being collected, and understand how their data is being used. The users will have to be a certain legal age to consent to this. Some constraints include allowing users to delete their data if they wish, obtaining consent before collecting data, and collecting only the data we need. We must also ensure the passwords are encrypted.
-- Platform constraints (APIs, cost limits, deployment limits)
-- Some platform constraints that we may have include push/email notifications, privacy & data constraints such as data deletion, secure storage, consent/age restrictions, updates for near-expiry items, AI model costs, and legal liability (food safety).
+- **Data access (what data you do/don’t have)**
+  <br><br>
+  For user data we would have username, password (hashed), score and name. For food inventory data we will have food name, category, quantity, grams/mL of products, purchase date and expiration dates.For system logic we would have the expiring soon status, days remaining until expiration, donation(based on expiration date/item category/food bank policies), decompose and perishable eligibility. AI generated suggestions of recipes, waste reduction tips and composting instructions. We will also have food allergies IF user inputs that data otherwise, it is not accessed or known.
+  <br>
+We will NOT have whether the food has actually spoiled, if stored properly, if it has mold or contamination. We will NOT have calorie tracking.
+<br> <br>
+- **Time constraints (what can be done by Milestone 2)**
+  <br>
+  Basic GUI & Database
+  <br>
+- **Ethics/privacy limits (safety boundaries, consent)**
+  <br><br>
+  We will assume that users will provide accurate food data, consent to their data being collected, and understand how their data is being used. The users will have to be a certain legal age to consent to this. Some constraints include allowing users to delete their data if they wish, obtaining consent before collecting data, and collecting only the data we need. We must also ensure the passwords are encrypted.
+
+- **Platform constraints (APIs, cost limits, deployment limits)**
+<br><br>
+  Some platform constraints that we may have include push/email notifications, privacy & data constraints such as data deletion, secure storage, consent/age restrictions, updates for near-expiry items, AI model costs, and legal liability (food safety).
