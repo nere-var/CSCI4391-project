@@ -93,9 +93,24 @@ For Mac/Linux Users:
 - ```source venv/bin/activate```      # activate it
 - ```pip install -r requirements.txt```   # installs all packages listed
 
-Then Run  
-- ```python3 src/app.py```  #In the Projects root Folder
-- This will start an instance of Flask which will provide GUI accessed by navigating to the address provided in a browser window:
+Then:
+- Go to https://openrouter.ai/ to obtain an API key ```sk-or-v1-#################################################################```
+- append the .env file with your key
+
+<br><br><br>
+Next:[Terminal Version](#terminal) [GUI Version](#gui)<br><br>
+
+ 
+<a name="terminal"></a>Terminal version:<br>
+
+- ```python3 src/openrouterllm.py```<br>
+- 
+
+<br>
+<a name="gui"></a> GUI version:<br>
+
+- ```python3 src/app.py```  # In the Projects root Folder<br>
+- This will start an instance of Flask which will provide GUI accessed by navigating to the address provided in a browser window:<br>
   <img width="953" height="164" alt="image" src="https://github.com/user-attachments/assets/a4c16929-a3cb-4841-bf0b-2ff8910a1e85" />
  
 
