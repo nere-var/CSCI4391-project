@@ -7,6 +7,7 @@ import os
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from unit_conversion import normalize_quantity
+from expiry import get_expiry_date
 
 # ========================
 # Create Flask application
@@ -492,22 +493,7 @@ def scoreboard():
 
     return render_template("ScoreboardPage.html", players=players)
 
-# ===========================
-# Expiry Alerts for Dashboard
-# ===========================
 
-def get_expiry_date(player_id):
-    conn = get_db()
-    cursor = conn.cursor()
-
-    # calculate the date 4 days before expire
-    target_date = (datetime.now() + timedelta(days=3)).strftime('%Y-%m-%d')
-    query = "SELECT name FROM inventory WHERE player_id = ? AND best_by = ? AND status = 'active'"
-    cursor.execute(query, (player_id, target_date))
-    items = cursor.fetchall()
-    conn.close
-
-    return [item['name'] for item in items]
 
 
 
