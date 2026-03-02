@@ -1,6 +1,7 @@
 import requests
 import os
 import sqlite3
+import json
 from dotenv import load_dotenv
 
 from validator import recipe_validator   #importing everything from validator
