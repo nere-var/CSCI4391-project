@@ -12,18 +12,25 @@ About 40% of all food produced globally by weight is wasted between farm and for
 
 #### Who experiences it (target users)?
 <br>
- The target users are anyone interested in learning how to properly dispose of or recycle food waste because the goal of this product is to help improve society by reducing waste one at a time.
+ The target users are anyone who wants to reduce food waste but struggle to track expiration dates and plan meals efficiently.
  
 #### Why it matters (social good impact / urgency)?
 <br>
- This product is a pantry-aware recipe assistant that generates feasible recipes that use only available ingredients
+ Binny & Bloom is a pantry-aware recipe assistant that generates feasible recipes that use only available ingredients
 (amount-aware) that prioritizes near-expiration items to reduce waste.
 
 ### 2  Goal / Success Metrics 
 1–3 measurable outcomes, such as: accuracy / quality improvement, time saved per user task, reduction in errors / friction, user satisfaction (survey score), adoption/usage in a small pilot
-- Reduction in Waste Score over time
+- Reduction in Waste Score over time, User improve waste score by at least 20% after X weeks/months.
 - Relevance of LLM-generated recipes
-- Percentage of expiring items utilized 
+- Percentage of expiring items utilized
+- **Expiry-First Planning**<br>
+- Greater than or equal to 70% of generated recipes include at least one near-expiration time when such items exist.
+- Greater than or equal to 25% in expired unused inventory during testing.
+- **Waste Reduction score**
+  <br>
+  
+  
 ### 3  MVP User Stories
 Include 5–8 user stories. Required format: As a [user], I want [action], so that [benefit].
 - As a user, I want to add food items with expiration dates, so that I can keep track of what I have and when it expires.
@@ -40,9 +47,9 @@ You must include:
 Must-have features (3–6)
 - User Login/Logout. Set encryptions/hashed for user data security/protection  
 - Binny and Bloom must have an add/delete/edit for food inventory 
-- Notifications for expiring food inventory.
+- Notifications for expiring food inventory with roughly a 3-day expiry alerts.
 - Ai generated composting Guidance 
-- Ai generated  meal suggestions to prevent waste 
+- Ai generated  meal suggestions to prevent waste(amount-aware) 
 - Aid generated for sorting items for the donations:​
 - Nice-to-have features (optional)
 - Waste reduction score dashboard
@@ -50,7 +57,7 @@ Must-have features (3–6)
 - a virtual farm.
 Explicit non-goals (what you will not build)
 - Spoiling detection: whether the food has actually spoiled, if stored properly, if it has mold or contamination. 
-- Medical history, allergies, calorie tracking and health conditions.
+- Medical history, calorie tracking and health conditions.
 - No real-time continuous monitoring
 - Not a replacement for human decision making
 
@@ -65,13 +72,22 @@ When our product is completed, it must:
 - Expiry Suggestion Notifications trigger correctly for the right food item
 - Track food waste & food saved
 - AI provides safe recommendations
+- **Default Mode:** No new ingredients <br>
+- Recipes must ONLY use ingredients currently in inventory
+- **Exact Quantities Required:**<br>
+- Every ingredient must have exact amounts (unit conversion)
+- **Quantity Feasibility:** <br>
+- Quantities must not exceed available inventory
+- **Failure Handling:** If constraints cannot be satisfied<br>
+- System will propose smaller portion or refuse generation with explanation.
+  
 ### 6  Assumptions + Constraints
 List assumptions and constraints such as:
 - **Data access (what data you do/don’t have)**
   <br><br>
   For user data we would have username, password (hashed), score and name. For food inventory data we will have food name, category, quantity, grams/mL of products, purchase date and expiration dates.For system logic we would have the expiring soon status, days remaining until expiration, donation(based on expiration date/item category/food bank policies), decompose and perishable eligibility. AI generated suggestions of recipes, waste reduction tips and composting instructions. We will also have food allergies IF user inputs that data otherwise, it is not accessed or known.
   <br>
-We will NOT have whether the food has actually spoiled, if stored properly, if it has mold or contamination. We will NOT have calorie tracking.
+We will NOT have whether the food has actually spoiled, if stored properly, if it has mold or contamination. We will NOT have calorie tracking and medical history.
 <br> <br>
 - **Time constraints (what can be done by Milestone 2)**
   <br>
