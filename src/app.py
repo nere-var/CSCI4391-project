@@ -150,7 +150,7 @@ def userprofile():
                 (filename, player_id)
             )
 
-             db.execute(
+            db.execute(
                 "UPDATE players SET food_allergies = ?, dietary_needs = ? WHERE id = ?",
                 (food_allergies, dietary_needs, player_id)
              )
@@ -621,5 +621,6 @@ if __name__ == "__main__":
 # for render.com
 # gunicorn app:app
 # ================
+
 
 
