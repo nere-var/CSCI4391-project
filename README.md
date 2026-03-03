@@ -100,16 +100,24 @@ Then:
 
 <br><br><br>
 ## <a name="usage"></a>Usage:<br />
-[Terminal Version](#terminal) [GUI Version](#gui)<br><br>
+<center> 
+ 
+[Terminal Version](#terminal) | [GUI Version](#gui) 
+
+</center><br><br>
 
  
-<a name="terminal"></a>Terminal version:<br>
+### <a name="terminal"></a>Terminal version:<br>
 
-- ```python3 src/openrouterllm.py```<br>
-- 
+- ```python3 src/openrouterllm.py```  # In the Projects root Folder<br>
+- This will start an instance in your terminal:<br>
+  <img width="610" height="73" alt="image" src="https://github.com/user-attachments/assets/f6bac756-d715-4018-a7d9-59672876deb2" />
+
+
 
 <br>
-<a name="gui"></a> GUI version:<br>
+
+### <a name="gui"></a> GUI version:<br>
 
 - ```python3 src/app.py```  # In the Projects root Folder<br>
 - This will start an instance of Flask which will provide GUI accessed by navigating to the address provided in a browser window:<br>
