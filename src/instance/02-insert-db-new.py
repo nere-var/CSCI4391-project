@@ -11,8 +11,12 @@ cursor = conn.cursor()
 # Sample players
 # ===============
 sample_players = [
-    ("demo", "demo", "scrypt:32768:8:1$IT3KjqtMgxIUZB1S$0cc425013292eac69df26608de00c8b9f028162d6b56ba08a16ec75e5277a3319b7d1f431f9a103527fb618bf92fc0f58f12dc51186833295cfd9284bdf99cfa", "demo.png", "", "", 0)
+    ("demo",   "demo", "scrypt:32768:8:1$IT3KjqtMgxIUZB1S$0cc425013292eac69df26608de00c8b9f028162d6b56ba08a16ec75e5277a3319b7d1f431f9a103527fb618bf92fc0f58f12dc51186833295cfd9284bdf99cfa",  "demo.png", "", "", 0),
+    ("demo2", "demo2", "scrypt:32768:8:1$UIENB92CqyeJJyLg$1d7a6b3bd5d0bc9673627a380181e8734de2147eadb09aa3a1d16f917dd63ec1076223fd5c9d5afbade302f45683d344218659cdbb4fd10a2e45f9b1f3be2b2e", "demo2.png", "", "", 0),
+    ("empty", "empty", "scrypt:32768:8:1$u2U8MGlJ2UBcGb5A$205e1984fc8f56ed7cbdfdb1fe6de9677f9339a2f553dfd38b376372ce0c97e921fa2521b4101766f1f502ef8ae040e2c50ba5c1bb2f705f852e24c1aaadb604",          "", "", "", 0)
 ]
+
+
 
 cursor.executemany("""
 INSERT OR IGNORE INTO players (name, username, password_hash, profile_picture, food_allergies, dietary_needs, score)
@@ -27,6 +31,10 @@ VALUES (?, ?, ?, ?, ?, ?, ?)
 cursor.execute("SELECT id FROM players WHERE name = ?", ("demo",))
 player_row = cursor.fetchone()
 player_id = player_row[0] if player_row else 1
+
+cursor.execute("SELECT id FROM players WHERE name = ?", ("demo2",))
+player_row = cursor.fetchone()
+player_id = player_row[0] if player_row else 2
 
 sample_items = [
 #   (id,   player_id,                  "name",      "category",   quantity,      unit,      "measurement_type",   quantity_grams,   quantity_ml,     "purchase_date",    "best_by", raw_meat, perishable, opened, donation_allowed, decompostion_flag,     price,      "status")
@@ -58,11 +66,28 @@ sample_items = [
 
 ]
 
+
+sample_items_2 = [
+    (24, 2, 'Bagels', 'Bakery', 1, 'pack', 'count', None, None, '2026-02-10', '2026-02-18', 0, 1, 0, 1, 0, 0, 'active'),
+    (25, 2, 'Cereal', 'Pantry', 300, 'g', 'weight', 300, None, '2026-01-20', '2027-01-20', 0, 1, 0, 1, 0, 0, 'active'),
+    (26, 2, 'Apple Juice', 'Beverage', 32, 'fl_oz', 'volume', None, 32, '2026-02-05', '2026-03-05', 0, 1, 0, 1, 0, 0, 'active'),
+    (27, 2, 'Chicken Thighs', 'Meat', 2, 'lb', 'weight', None, None, '2026-02-14', '2026-02-19', 1, 1, 0, 1, 0, 0, 'active'),
+    (28, 2, 'Lettuce', 'Produce', 150, 'g', 'weight', 150, None, '2026-02-09', '2026-02-15', 0, 1, 0, 1, 0, 0, 'active')
+]
+
+
+
+
+
 cursor.executemany("""
 INSERT INTO inventory (id,player_id, name, category, quantity, unit, measurement_type, quantity_grams, quantity_ml, purchase_date, best_by, raw_meat, perishable, opened, donation_allowed, decomposition_flag, price, status)
 VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
 """, sample_items)
 
+cursor.executemany("""
+INSERT OR IGNORE INTO inventory (id, player_id, name, category, quantity, unit, measurement_type, quantity_grams, quantity_ml, purchase_date, best_by, raw_meat, perishable, opened, donation_allowed, decomposition_flag, price, status)
+VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+""", sample_items_2)
 
 
 conn.commit()
