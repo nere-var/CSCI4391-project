@@ -154,7 +154,7 @@ If the ingredients are not available:<br>
 
 ## <a name="demo"></a>Demo:<br />
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Hfm94aHAbYQ/0.jpg)](https://www.youtube.com)
+[![IMAGE ALT TEXT HERE](https://github.com/user-attachments/assets/a31a1d2b-bf8b-4db7-8b7c-edfa99e2d734)](https://www.youtube.com)
 
 
 
