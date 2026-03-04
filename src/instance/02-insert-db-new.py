@@ -61,18 +61,17 @@ sample_items = [
     (21,            1,              'Spinach',       'Produce',        100,       'g',                'weight',              100,          None,        '2026-02-05', '2026-02-12',        0,          1,      0,                1,                 0,         0,      'active'),
     (22,            1,                 'Milk',         'Dairy',         16,   'fl_oz',                'volume',             None,            16,        '2026-02-10', '2026-02-22',        0,          1,      0,                1,                 0,         0,      'active'),
     (23,            1,       'Chicken Breast',          'Meat',          2,      'lb',                'weight',             None,          None,        '2026-02-15', '2026-02-20',        1,          1,      0,                1,                 0,         0,      'active')
-
-
-
+    
 ]
 
 
 sample_items_2 = [
-    (24, 2, 'Bagels', 'Bakery', 1, 'pack', 'count', None, None, '2026-02-10', '2026-02-18', 0, 1, 0, 1, 0, 0, 'active'),
-    (25, 2, 'Cereal', 'Pantry', 300, 'g', 'weight', 300, None, '2026-01-20', '2027-01-20', 0, 1, 0, 1, 0, 0, 'active'),
-    (26, 2, 'Apple Juice', 'Beverage', 32, 'fl_oz', 'volume', None, 32, '2026-02-05', '2026-03-05', 0, 1, 0, 1, 0, 0, 'active'),
-    (27, 2, 'Chicken Thighs', 'Meat', 2, 'lb', 'weight', None, None, '2026-02-14', '2026-02-19', 1, 1, 0, 1, 0, 0, 'active'),
-    (28, 2, 'Lettuce', 'Produce', 150, 'g', 'weight', 150, None, '2026-02-09', '2026-02-15', 0, 1, 0, 1, 0, 0, 'active')
+    (24,             2,             'Bagels',         'Bakery',          1,      'pack',               'count',             None,          None,        '2026-02-10', '2026-02-18',         0,         1,     0,                 1,                 0,         0,         'active'),
+    (25,             2,             'Cereal',         'Pantry',        300,         'g',              'weight',              300,          None,        '2026-01-20', '2027-01-20',         0,         1,     0,                 1,                 0,         0,         'active'),
+    (26,             2,        'Apple Juice',       'Beverage',         32,     'fl_oz',              'volume',             None,            32,        '2026-02-05', '2026-03-05',         0,         1,     0,                 1,                 0,         0,         'active'),
+    (27,             2,     'Chicken Thighs',           'Meat',          2,        'lb',              'weight',             None,          None,        '2026-02-14', '2026-02-19',         1,         1,     0,                 1,                 0,         0,         'active'),
+    (28,             2,            'Lettuce',        'Produce',        150,         'g',              'weight',              150,          None,        '2026-02-09', '2026-02-15',         0,         1,     0,                 1,                 0,         0,         'active')
+
 ]
 
 
@@ -92,3 +91,4 @@ VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
 
 conn.commit()
 conn.close()
+
