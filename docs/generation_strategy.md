@@ -4,8 +4,10 @@
     LLM writes the recipe using only the selected subset + exact amounts
 
 Create:
-
+    
     /docs/generation_strategy.md (which option you used and why)
+    we decided to use this becuase ......
+
 
 
 
