@@ -499,7 +499,7 @@ def scoreboard():
 
 # Citations:
 # ----------
-# get_expiry_date & dashboard implemented using a Google Gemini prompt as a guideline: 
+# dashboard implemented using a Google Gemini prompt as a guideline: 
 # "I want to make it simple and have it show in text like a notification on the website for the player"
 
 # =========================================================

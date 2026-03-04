@@ -85,6 +85,9 @@ class Ai_Chat:
         # Implemented using a Google Gemini prompt as a guideline:
         # "and do return like: expired, about_to_expire, fresh"
 
+
+        #Inspired From https://coderivers.org/blog/json-save-python/
+        #Still Needs improvment
     def save_result_JSON(self, save_recipe_Json, file="saved_recipe.json"):
         try:
             with open(file, "w") as recipe_file:
