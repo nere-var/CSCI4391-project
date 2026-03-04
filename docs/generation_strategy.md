@@ -1,4 +1,4 @@
-##Choose one:
+#Choose one:
 > Option A: Two-stage plan (recommended) (picked)
 
     Deterministic planner selects a feasible ingredient subset + target dish type
@@ -7,3 +7,4 @@
 Create:
 
     /docs/generation_strategy.md (which option you used and why)
+
