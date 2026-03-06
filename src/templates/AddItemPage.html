@@ -22,7 +22,16 @@
     <input type="hidden" name="player_id" value="{{ current_player.id }}">
 
     <label for="name">Name</label>
-    <input name="name" placeholder="Item Name" required>
+    <!--input name="name" placeholder="Item Name" required-->
+    <!-- added pattern attribute to restrict plural input -->
+    <input 
+        type="text"
+        id = "name"
+        name = "name"
+        required
+        pattern="[A-Za-z\s]+"
+        title="Enter ingredient name in singular form (e.g, 'egg' 'tomato' 'carrot')"
+    >
 
     <label for="category">Category</label>
     <select name="category">
@@ -112,6 +121,19 @@
         <img src="{{ url_for('static', filename='Pictures/BinnyHome.png') }}" alt="homebot" class="binnyhome">
     </a>
 </div>
+<!--- pop up error message for attempted plural input-->
+<script>
+document.querySelector("form").addEventListener("submit", function(e) {
+
+    let name = document.getElementById("name").value.trim().toLowerCase();
+
+    if (name.endsWith("s")) {
+        alert("Plural ingredient names are not allowed. Please use singular (example: egg instead of eggs).");
+        e.preventDefault();
+    }
+
+});
+</script>
 
 
 {% endblock %}

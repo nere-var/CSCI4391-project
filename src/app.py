@@ -313,6 +313,11 @@ def add_item_page():
         db = get_db()
 
         name = request.form["name"].lower().strip()
+        # basic check to further prevent plural input for inventory item names
+        if name.endswith(("s", "es", "ies")):
+            flash("Plural ingredient names are not allowed. Use singular form.")
+            return redirect(url_for("add_item"))
+        
         category = request.form.get("category", "other")
         quantity = int(request.form["quantity"])
         unit = request.form.get("unit", "each")
