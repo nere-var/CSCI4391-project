@@ -20,4 +20,5 @@ Average regeneration attempts (if using regenerate-on-fail)
 
 # Pantry Snapshot: Using Demo db
 
+![Pantry_1](https://imgur.com/a/89QbkMC)
 
