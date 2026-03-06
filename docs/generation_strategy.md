@@ -9,6 +9,7 @@ Create:
     we decided to use this becuase ......
 
 
+
 ============================================================================================
 
 # Option A: Two-stage plan
@@ -35,4 +36,5 @@ Creates a structured JSON plan:
 ```
 
 and then more text down here
+
 
