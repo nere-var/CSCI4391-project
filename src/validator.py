@@ -34,7 +34,7 @@ class recipe_validator:
         inventory = self.get_active_inventory(player_id)
         # checks expired 
         print("\n--- VALIDATOR INVENTORY CHECK ---")
-        expired, about_to_expire, fresh = sort_inventory(player_id)
+        expired, about_to_expire, fresh = sort_inventory(inventory)
         
         # Make everything lowercase for easy matching
         exp_lower = [name.lower() for name in expired]
@@ -63,10 +63,11 @@ class recipe_validator:
             name = item['name'].lower()
             if name not in inv_dict:
                 inv_dict[name] = {'grams': 0.0, 'ml': 0.0, 'count': 0.0}
-                inv_dict[name]['grams'] += float(item.get('quantity_grams') or 0.0)
-                inv_dict[name]['ml'] += float(item.get('quantity_ml') or 0.0)
-                if item.get('measurement_type') == 'count':
-                    inv_dict[name]['count'] += float(item.get('quantity') or 0.0)
+            inv_dict[name]['grams'] += float(item.get('quantity_grams') or 0.0)
+            inv_dict[name]['ml'] += float(item.get('quantity_ml') or 0.0)
+            
+            if item.get('measurement_type') == 'count':
+                inv_dict[name]['count'] += float(item.get('quantity') or 0.0)
         # print(f"Active Pantry Dictionary Built: {inv_dict}") // can be removed, debugging statement will print pantry contents
 
         # parse the LLM's JSON response
