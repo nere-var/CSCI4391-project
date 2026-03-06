@@ -18,15 +18,6 @@ Senior Project - Spring 2026.
 SeniorProject/
 |  |
 |  ├- /docs/
-|  |    ├- Binny And Bloom.pdf
-|  |    ├- Milestone 1 Deliverables.md
-|  |    ├- PRD.md
-|  |    ├- SpikePlan.md
-|  |    ├- architecture.png
-|  |    ├- evaluation_test_cases.md
-|  |    ├- generation_strategy.md
-|  |    ├- pantry_schema.md
-|  |    └- validator_rules.md
 |  └- /src/
 |     |  |
 |     |  ├- /instance/
@@ -67,6 +58,7 @@ SeniorProject/
 |     ├- .env
 |     ├- app.py
 |     ├- database.py
+|     ├- expiry.py
 |     ├- generator.py
 |     ├- models.py
 |     ├- openrouterllm.py
@@ -112,6 +104,9 @@ Then:
 - ```python3 src/openrouterllm.py```  # In the Projects root Folder<br>
 - This will start an instance in your terminal:<br>
   <img width="610" height="73" alt="image" src="https://github.com/user-attachments/assets/f6bac756-d715-4018-a7d9-59672876deb2" />
+- Then just ask for a recipe:<br>
+  <img width="691" height="1269" alt="image" src="https://github.com/user-attachments/assets/f65f5734-c1e1-4153-8288-bd7dd4e8b470" />
+
 
 
 
