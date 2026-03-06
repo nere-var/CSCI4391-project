@@ -31,7 +31,7 @@ Average regeneration attempts (if using regenerate-on-fail)
 | **08** | | | | | |
 | **09** | | | | | |
 | **10** | | | | | |
-| **11** |Pantry with a small amount of inventory| <img src="images/DBT_num11.png" width="100"> | | | |
+| **11** |Pantry with a small amount of inventory| <img src="images/DBT_num11.png" width="100"> |Fail:|Fail: <img src="images/num11_results.png" width="100"> | ❌|
 | **12** | | | | | |
 | **13** | | | | | |
 | **14** | | | | | |
