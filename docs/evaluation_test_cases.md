@@ -29,7 +29,7 @@ Average regeneration attempts (if using regenerate-on-fail)
 | **08** | | | | | |
 | **09** | | | | | |
 | **10** | | | | | |
-| **11** | | | | | |
+| **11** | | |![](images/DB_num11.png) | | |
 | **12** | | | | | |
 | **13** | | | | | |
 | **14** | | | | | |
