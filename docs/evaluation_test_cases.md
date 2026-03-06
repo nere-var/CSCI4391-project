@@ -14,3 +14,10 @@ Feasibility pass rate
 “Invented ingredient” rate (should be 0 in default mode)
 Expiry utilization rate (if you claim expiry-first)
 Average regeneration attempts (if using regenerate-on-fail)
+
+
+# Test Case #1 
+
+# Pantry Snapshot: Using Demo db
+
+
