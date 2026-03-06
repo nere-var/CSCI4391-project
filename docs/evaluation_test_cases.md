@@ -15,8 +15,10 @@ Feasibility pass rate
 Expiry utilization rate (if you claim expiry-first)
 Average regeneration attempts (if using regenerate-on-fail)
 
+> click on Images on Pantry Snapshot for better view
 
 # Test Cases
+
 | ID | Test Case Name | Pantry Snapshot | Expected Result | Actual Result | Status (✅/❌) |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **01** | | | | | |
