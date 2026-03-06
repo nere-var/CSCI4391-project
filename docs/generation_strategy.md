@@ -9,11 +9,9 @@ Create:
     we decided to use this becuase ......
 
 
-
 ============================================================================================
 
-
-Option A: Two-stage plan
+# Option A: Two-stage plan
 ### Deterministic planner selects a feasible ingredient subset + target dish type
 ### LLM writes the recipe using only the selected subset + exact amounts
 <br><br>
@@ -37,3 +35,4 @@ Creates a structured JSON plan:
 ```
 
 and then more text down here
+
