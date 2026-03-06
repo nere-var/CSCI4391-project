@@ -16,8 +16,8 @@ Expiry utilization rate (if you claim expiry-first)
 Average regeneration attempts (if using regenerate-on-fail)
 
 
-# Test Case #1 
+# Test Case
 
-# Pantry Snapshot: Using Demo db
+
 
 
