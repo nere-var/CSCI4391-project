@@ -19,28 +19,28 @@ Average regeneration attempts (if using regenerate-on-fail)
 
 # Test Cases
 
-| ID | Test Case Name | Pantry Snapshot | Expected Result | Actual Result | Status (✅/❌) |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **01** | | | | | |
-| **02** | | | | | |
-| **03** | | | | | |
-| **04** | | | | | |
-| **05** | | | | | |
-| **06** | | | | | |
-| **07** | | | | | |
-| **08** | | | | | |
-| **09** | | | | | |
-| **10** | | | | | |
-| **11** |Pantry with a small amount of inventory| <img src="images/DBT_num11.png" width="100"> |Fail:|Fail: <img src="images/num11_results.png" width="100"> | ❌|
-| **12** | | | | | |
-| **13** | | | | | |
-| **14** | | | | | |
-| **15** | | | | | |
-| **16** | | | | | |
-| **17** | | | | | |
-| **18** | | | | | |
-| **19** | | | | | |
-| **20** | | | | | |
+| ID | Test Case Name | Pantry Snapshot | Expected Result | Actual Result | Status (✅/❌) | Notes |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **01** | | | | | | |
+| **02** | | | | | | |
+| **03** | | | | | | |
+| **04** | | | | | | |
+| **05** | | | | | | |
+| **06** | | | | | | |
+| **07** | | | | | | |
+| **08** | | | | | | |
+| **09** | | | | | | |
+| **10** | | | | | | |
+| **11** |Pantry with a small amount of inventory| <img src="images/DBT_num11.png" width="100"> |Fail:|Fail: <img src="images/num11_results.png" width="100"> | ❌| |
+| **12** | | | | | | |
+| **13** | | | | | | |
+| **14** | | | | | | |
+| **15** | | | | | | |
+| **16** | | | | | | |
+| **17** | | | | | | |
+| **18** | | | | | | |
+| **19** | | | | | | |
+| **20** | | | | | | |
 
 
 
