@@ -37,7 +37,7 @@ Average regeneration attempts (if using regenerate-on-fail)
  | <img src="images/DB_num12.png" width="100"> | Fail: | Fail: <img src="images/number_12_result1" width="100">  <img src="images/number_12_result2" width="100"> | ✅ | Did not generate with expired inventory|
 | **13** |Big DB generation with 5 expired inventory|<img src="images/DB_num13.png" width="100"> |Pass: |Pass:  <img src="images/number_13_result1" width="100">  <img src="images/number_13_result2" width="100"> | | |
 | **14** |Fairly big  DB with no expired inventory 
- |<img src="images/DB_num14.png" width="100"> | Pass |??: <img src="images/number_14_result1" width="100">  <img src="images/number_14_result2" width="100"> | | |
+ |<img src="images/DB_num14.png" width="100"> | Pass |??: <img src="images/number_14_result1" width="100">  <img src="images/number_14_result2" width="100"> | D| D|
 | **15** |DB with 27 expired and one fresh inventory
  |<img src="images/DB_number_15.png" width="100"> |Fail |:  <img src="images/number_15_result1" width="100">  <img src="images/number_15_result2" width="100"> | | |
 | **16** |DB with only meat and trying to get a vegan meal
