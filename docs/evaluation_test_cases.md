@@ -35,4 +35,4 @@
 80%
 
 # “Invented Ingredient” Rate
-0%
+5%
