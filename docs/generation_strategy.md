@@ -12,9 +12,11 @@ Create:
 
 ============================================================================================
 
-# Option A: Two-stage plan
-### Deterministic planner selects a feasible ingredient subset + target dish type
-### LLM writes the recipe using only the selected subset + exact amounts
+
+    
+# Option C: Constraint-guided decoding (lightweight)
+### Use structured JSON output format from LLM
+### Reject outputs failing schema/constraints and regenerate
 <br><br>
 Our project uses a two‑stage generation workflow to ensure that all AI‑generated recipes are:
 Realistic using only the user's actual inventory
@@ -36,5 +38,6 @@ Creates a structured JSON plan:
 ```
 
 and then more text down here
+
 
 
