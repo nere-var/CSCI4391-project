@@ -39,15 +39,15 @@ Average regeneration attempts (if using regenerate-on-fail)
 | **14** |Fairly big  DB with no expired inventory 
  |<img src="images/DB_num14.png" width="100"> | Pass |??: <img src="images/number_14_result1" width="100">  <img src="images/number_14_result2" width="100"> | | |
 | **15** |DB with 27 expired and one fresh inventory
- |<img src="images/DB_number_15.png" width="100"> |Fail |??:  <img src="images/number_15_result1" width="100">  <img src="images/number_15_result2" width="100"> | | |
+ |<img src="images/DB_number_15.png" width="100"> |Fail |:  <img src="images/number_15_result1" width="100">  <img src="images/number_15_result2" width="100"> | | |
 | **16** |DB with only meat and trying to get a vegan meal
- |<img src="images/DB_number_16.png" width="100"> |Fail |??: <img src="images/number_16_result1" width="100">  <img src="images/number_16_result2" width="100"> | | |
+ |<img src="images/DB_number_16.png" width="100"> |Fail |: <img src="images/number_16_result1" width="100">  <img src="images/number_16_result2" width="100"> | | |
 | **17** |DB with only items to make something sweet
- |<img src="images/DB_number_17.png" width="100"> |Pass: |??:  <img src="images/number_17_result1" width="100">  <img src="images/number_17_result2" width="100"> | | |
+ |<img src="images/DB_number_17.png" width="100"> |Pass: |:  <img src="images/number_17_result1" width="100">  <img src="images/number_17_result2" width="100"> | | |
 | **18** |DB with only vegan options 
-|<img src="images/DB_number_18.png" width="100">  | Pass: |??: <img src="images/number_18_result1" width="100">  <img src="images/number_18_result2" width="100">  | | |
-| **19** |DB with incorrect inventory |<img src="images/DB_number_19.png" width="100">  |Fail: |??:<img src="images/number_19_result1" width="100">  | | |
-| **20** |DB suitable for making a variety of Asian cuisine recipes |<img src="images/DB_number20.png" width="100"> |Pass: |??:<img src="images/number_20_result1" width="100">  <img src="images/number_20_result2" width="100"> <img src="images/number_20_result3" width="100">  | | |
+|<img src="images/DB_number_18.png" width="100">  | Pass: |: <img src="images/number_18_result1" width="100">  <img src="images/number_18_result2" width="100">  | | |
+| **19** |DB with incorrect inventory |<img src="images/DB_number_19.png" width="100">  |Fail: |:<img src="images/number_19_result1" width="100">  | | |
+| **20** |DB suitable for making a variety of Asian cuisine recipes |<img src="images/DB_number20.png" width="100"> |Pass: |:<img src="images/number_20_result1" width="100">  <img src="images/number_20_result2" width="100"> <img src="images/number_20_result3" width="100">  | | |
 
 
 
