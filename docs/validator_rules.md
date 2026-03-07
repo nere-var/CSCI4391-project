@@ -1,4 +1,3 @@
-/docs/validator_rules.md (bullet list of rules)
 
 # Validator Rules 
 * JSON must be correctly formatted. If it isn't, give: Please output strictly in the requested JSON format
@@ -7,6 +6,7 @@
 * The LLM must not exceed the current user's ingredient Quantity. If there's not enough, then: Not enough 'x'. Need 'x'ml, but only have 'x'ml available. Please scale down portions/servings.
 * The units must be converted. 
    
+
 
 
 
