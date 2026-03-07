@@ -34,20 +34,20 @@ Average regeneration attempts (if using regenerate-on-fail)
 | **11** |Small DB with a lot of expired inventory 
 | <img src="images/DB_num11.png" width="100"> |Fail:|Fail: <img src="images/num_11_result.png" width="100"> | ✅| Did not generate recipe with items that were not in the inventory   |
 | **12** |Trying to generate recipe with expired inventory
- | <img src="images/DB_num12.png" width="100"> | Fail: | Fail: <img src="images/number_12_result1" width="100">  <img src="images/number_12_result2" width="100"> | ✅ | Did not generate with expired inventory|
-| **13** |Big DB generation with 5 expired inventory|<img src="images/DB_num13.png" width="100"> |Pass: |Pass:  <img src="images/number_13_result1" width="100">  <img src="images/number_13_result2" width="100"> | | |
+ | <img src="images/DB_num12.png" width="100"> | Fail: | Fail: <img src="images/number_12_result1.png" width="100">  <img src="images/number_12_result2.png" width="100"> | ✅ | Did not generate with expired inventory|
+| **13** |Big DB generation with 5 expired inventory|<img src="images/DB_num13.png" width="100"> |Pass: |Pass:  <img src="images/number_13_result1.png" width="100">  <img src="images/number_13_result2.png" width="100"> | | |
 | **14** |Fairly big  DB with no expired inventory 
- |<img src="images/DB_num14.png" width="100"> | Pass |??: <img src="images/number_14_result1" width="100">  <img src="images/number_14_result2" width="100"> | D| D|
+ |<img src="images/DB_num14.png" width="100"> | Pass |??: <img src="images/number_14_result1.png" width="100">  <img src="images/number_14_result2.png" width="100"> | D| D|
 | **15** |DB with 27 expired and one fresh inventory
- |<img src="images/DB_number_15.png" width="100"> |Fail |:  <img src="images/number_15_result1" width="100">  <img src="images/number_15_result2" width="100"> | | |
+ |<img src="images/DB_number_15.png" width="100"> |Fail |:  <img src="images/number_15_result1.png" width="100">  <img src="images/number_15_result2.png" width="100"> | | |
 | **16** |DB with only meat and trying to get a vegan meal
- |<img src="images/DB_number_16.png" width="100"> |Fail |: <img src="images/number_16_result1" width="100">  <img src="images/number_16_result2" width="100"> | | |
+ |<img src="images/DB_number_16.png" width="100"> |Fail |: <img src="images/number_16_result1.png" width="100">  <img src="images/number_16_result2.png" width="100"> | | |
 | **17** |DB with only items to make something sweet
- |<img src="images/DB_number_17.png" width="100"> |Pass: |:  <img src="images/number_17_result1" width="100">  <img src="images/number_17_result2" width="100"> | | |
+ |<img src="images/DB_number_17.png" width="100"> |Pass: |:  <img src="images/number_17_result1.png" width="100">  <img src="images/number_17_result2.png" width="100"> | | |
 | **18** |DB with only vegan options 
-|<img src="images/DB_number_18.png" width="100">  | Pass: |: <img src="images/number_18_result1" width="100">  <img src="images/number_18_result2" width="100">  | | |
-| **19** |DB with incorrect inventory |<img src="images/DB_number_19.png" width="100">  |Fail: |:<img src="images/number_19_result1" width="100">  | | |
-| **20** |DB suitable for making a variety of Asian cuisine recipes |<img src="images/DB_number20.png" width="100"> |Pass: |:<img src="images/number_20_result1" width="100">  <img src="images/number_20_result2" width="100"> <img src="images/number_20_result3" width="100">  | | |
+|<img src="images/DB_number_18.png" width="100">  | Pass: |: <img src="images/number_18_result1.png" width="100">  <img src="images/number_18_result2.png" width="100">  | | |
+| **19** |DB with incorrect inventory |<img src="images/DB_number_19.png" width="100">  |Fail: |:<img src="images/number_19_result1.png" width="100">  | | |
+| **20** |DB suitable for making a variety of Asian cuisine recipes |<img src="images/DB_number20.png" width="100"> |Pass: |:<img src="images/number_20_result1.png" width="100">  <img src="images/number_20_result2.png" width="100"> <img src="images/number_20_result3.png" width="100">  | | |
 
 
 
