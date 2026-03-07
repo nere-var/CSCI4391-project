@@ -42,5 +42,12 @@ Average regeneration attempts (if using regenerate-on-fail)
 | **19** | Incorrect Inventory | <img src="images/DB_number_19.png" width="100"> | Fail |Fail <img src="images/num_19_result1.png" width="100"> |❌ | doesnt generate recipe but it also doesnt handle the db correctly. Should print out something like unfit inventory etc | 
 | **20** | Asian Cuisine-Friendly Pantry | <img src="images/DB_number20.png" width="100"> | Pass |Fail: <img src="images/number_20_result1.png" width="60"> <img src="images/number_20_result2.png" width="60"> <img src="images/number_20_result3.png" width="60"> |❌ | uses tbsp when user has ml,Unit conversion was unsuccessful  | 
 
+# Avg Regeneration Attempts
+1.05 attempts per test case
 
 
+# Feasibility Pass Rate
+80%
+
+# “Invented Ingredient” Rate
+0%
