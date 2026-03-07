@@ -21,14 +21,44 @@ About 40% of all food produced globally by weight is wasted between farm and for
 
 ### 2  Goal / Success Metrics 
 1–3 measurable outcomes, such as: accuracy / quality improvement, time saved per user task, reduction in errors / friction, user satisfaction (survey score), adoption/usage in a small pilot
-- Reduction in Waste Score over time, User improve waste score by at least 20% after X weeks/months.
+- Reduction in Waste Score over time, User improve waste score by at least 20% after 3 weeks.
 - Relevance of LLM-generated recipes
 - Percentage of expiring items utilized
 - **Expiry-First Planning**<br>
 - Greater than or equal to 70% of generated recipes include at least one near-expiration time when such items exist.
 - Greater than or equal to 25% in expired unused inventory during testing.
 - **Waste Reduction score**
-  <br>
+- Waste reduction score =  0.6 * expiration usage + 0.4 * inventory usage (draft)
+- Expiration usage = expiring items used in recipe / total expiring items in inventory
+- Inventory usage = ingredients used in recipes/ total ingredients in inventory
+<br><br>
+**Example Calculations**
+
+Example of how well the recipes uses ingredients close to expiring (expiration usage):
+| Expiring Items | Used |
+|----------------|------|
+| milk           | Yes  |
+| spinach        | Yes  |
+| Yogurt         | No   |
+
+2/3 = 0.67
+
+
+Example of how much of the pantry is actually use (inventory usage):
+<br> 
+| Inventory item | Used |
+|----------------|------|
+| milk           | Yes  |
+| spinach        | Yes  |
+| rice           | Yes  |
+| eggs           | No   | 
+| cheese         | No   | 
+
+3/5= 0.6 inventory usage
+<br>
+Waste Reduction Score: 
+0.6(0.67) + 0.4(0.60) = 0.642 - rounded would be .064 or 64%
+
   
   
 ### 3  MVP User Stories
