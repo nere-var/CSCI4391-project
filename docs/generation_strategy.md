@@ -14,11 +14,11 @@ Create:
 
 
 
-Option C: Constraint-guided decoding (lightweight)
+# Option C: Constraint-guided decoding (lightweight)
 
-Use a structured JSON output format from LLM.
+### Use a structured JSON output format from LLM.
 
-Reject outputs failing schema/constraints and regenerate
+### Reject outputs failing schema/constraints and regenerate
 
 
 Our project uses constraint-guided decoding to ensure that all AI‑generated recipes are:
@@ -51,6 +51,7 @@ Suggests exact quantities for each ingredient
 ```
 <<     JSON STRUCTURE WOULD GO HERE.     >>
 ```
+
 
 
 
