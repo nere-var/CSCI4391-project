@@ -41,7 +41,6 @@ Option C was selected because it is simpler to implement while also preventing.
 * inventing ingredients
 * using expired food
 * requesting unrealistic quantities
-* using an incorrect measurement unit
 
 These are especially important for our app since:
 Recipes must use only items from the user’s inventory
@@ -51,6 +50,7 @@ Suggests exact quantities for each ingredient
 ```
 <<     JSON STRUCTURE WOULD GO HERE.     >>
 ```
+
 
 
 
