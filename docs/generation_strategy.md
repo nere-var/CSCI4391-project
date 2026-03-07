@@ -1,18 +1,3 @@
-# Choose one: Option A: Two-stage plan (recommended) (picked)
-
-    Deterministic planner selects a feasible ingredient subset + target dish type
-    LLM writes the recipe using only the selected subset + exact amounts
-
-Create:
-    
-    /docs/generation_strategy.md (which option you used and why)
-    we decided to use this becuase ......
-
-
-
-============================================================================================
-
-
 
 # Option C: Constraint-guided decoding (lightweight)
 
@@ -50,6 +35,7 @@ Suggests exact quantities for each ingredient
 ```
 <<     JSON STRUCTURE WOULD GO HERE.     >>
 ```
+
 
 
 
