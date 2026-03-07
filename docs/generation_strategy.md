@@ -32,9 +32,6 @@ Recipes must use only items from the user’s inventory
 Filters out expired items
 Suggests exact quantities for each ingredient
 
-```
-<<     JSON STRUCTURE WOULD GO HERE.     >>
-```
 
 
 
