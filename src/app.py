@@ -151,10 +151,10 @@ def userprofile():
                 (filename, player_id)
             )
 
-            db.execute(
-                "UPDATE players SET food_allergies = ?, dietary_needs = ? WHERE id = ?",
-                (food_allergies, dietary_needs, player_id)
-             )
+        db.execute(
+            "UPDATE players SET food_allergies = ?, dietary_needs = ? WHERE id = ?",
+            (food_allergies, dietary_needs, player_id)
+        )
         db.commit()
         db.close()
         return redirect(url_for("userprofile"))
@@ -182,6 +182,8 @@ def register():
         name = request.form["name"]
         username = request.form["username"]
         password = request.form["password"]
+        food_allergies = request.form.get("food_allergies", "")
+        dietary_needs = request.form.get("dietary_needs", "")
         file = request.files["profile_picture"]
 
         password_hash = generate_password_hash(password)
@@ -193,9 +195,9 @@ def register():
 
         db = get_db()
         db.execute("""
-            INSERT INTO players (name, username, password_hash, profile_picture)
-            VALUES (?, ?, ?, ?)
-        """, (name, username, password_hash, filename))
+            INSERT INTO players (name, username, password_hash, profile_picture, food_allergies, dietary_needs)
+            VALUES (?, ?, ?, ?, ?, ?)
+        """, (name, username, password_hash, filename, food_allergies, dietary_needs))
         db.commit()
         db.close()
 
