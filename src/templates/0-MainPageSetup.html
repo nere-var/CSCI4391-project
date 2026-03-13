@@ -49,18 +49,18 @@ document.addEventListener("mousemove", function (e) {
     const trail = document.createElement("img");
     trail.src = "{{ url_for('static', filename='Pictures/trail.png') }}";
     trail.className = "trail";
-    trail.style.left = e.pageX + "px";
-    trail.style.top = e.pageY + "px";
+    trail.style.left = e.clientX + "px";
+    trail.style.top = e.clientY + "px";
 
     document.body.appendChild(trail);
 
     setTimeout(() => {
         trail.style.opacity = "0";
-    }, 10);
+    }, 5);
 
     setTimeout(() => {
         trail.remove();
-    }, 600);
+    }, 100);
 });
 </script>
 <!-- ========== -->
