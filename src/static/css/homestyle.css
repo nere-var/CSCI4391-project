@@ -519,6 +519,17 @@ z-index: 2;
 
 
 
+.kawaii-menu-table {
+    width: 90%;
+    margin: 40px auto;
+    padding: 25px;
+    background: ##e89b4f;
+    border: 3px solid #e0c39c;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+
 
 
 
