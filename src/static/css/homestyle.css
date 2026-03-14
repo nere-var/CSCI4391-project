@@ -38,6 +38,16 @@
 }
 
 
+/* ==========================
+   buttons for the menu
+========================== */
+.kuwaii_menu_row{
+    display: flex;
+    gap: 10px;
+    justify-content:  center;
+
+}
+
 
 
 /* ==========================
