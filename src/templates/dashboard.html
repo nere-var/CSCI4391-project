@@ -22,4 +22,31 @@
       {% endfor %}
     {% endif %}
   {% endwith %}
+
+  <table class="kawaii-table">
+    <thead>
+      <tr>
+        <th><h3>Saved Recipes</h3></th>
+      </tr>
+    </thead>  
+    <tbody>
+      {% for meal in meals %}
+      <tr>
+        <td>
+          <a href="{{ url_for('view_meal', meal_id=meal[0]) }}">
+            {{ meal[1] }} — <small>{{ meal[2] }}</small>
+          </a>
+        </td>
+      </tr>
+    {% else %}
+      <tr>
+        <td>No saved recipes yet.
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+
+
 {% endblock %}
