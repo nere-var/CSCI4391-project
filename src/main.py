@@ -14,19 +14,56 @@ def get_db():
     conn.row_factory = sqlite3.Row
     return conn
 
+
+
+
 # ==================
 # choose user
 # ==================
 def choose_player():
-    db = get_db()
+    db = get_db() 
     players = db.execute("SELECT id, name FROM players").fetchall()
     db.close()
-
+    
     print("\nAvailable Players:")
-    for p in players:
-        print(f"{p['id']}: {p['name']}")
+    for p in players: 
+        print(f"{p['id']}: {p['name']}") 
+  
+    player_id = int(input("\nEnter player ID: "))
 
-    return int(input("\nEnter player ID: "))
+    # Fetch stored password hash
+    stored_hash = get_player_password_hash(player_id)
+   
+    if stored_hash is None:
+        print("Invalid player ID.")   
+        return choose_player()
+      
+    # Ask for password until correct 
+    while True:
+        password = input("Enter password: ").strip() 
+    
+        if check_password_hash(stored_hash, password):
+            print("Login successful!\n") 
+            return player_id
+        else:    
+            print("Incorrect password. Try again.\n")
+
+
+# ======================================                         
+# Validate Login(get hash from database)                         
+# ======================================                           
+def get_player_password_hash(player_id):
+    db = get_db()
+    row = db.execute(
+        "SELECT password_hash FROM players WHERE id = ?",
+        (player_id,)
+    ).fetchone()
+    db.close()
+    return row["password_hash"] if row else None
+
+
+
+
 
 # =====================
 # get inventory
