@@ -22,6 +22,7 @@ By Milestone 2, your team must demonstrate a usable MVP in which a user can:
    - a **validated feasible recipe**, or
    - a **clear refusal / validation failure reason**
 5. see that the system is prioritizing near-expiration inventory when possible
+6. Minimum functioning GUI
 
 This milestone is about **integration, reliability, and demo readiness**.
 
