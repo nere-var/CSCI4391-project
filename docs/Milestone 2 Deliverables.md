@@ -201,7 +201,7 @@ If time is tight, prioritize the validated recipe MVP over extra features such a
 
 ---
 
-# 7. Required Live Demo for Milestone 2
+# 7. Required Live Demo Video for Milestone 2
 
 You must demonstrate:
 
