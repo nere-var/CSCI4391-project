@@ -165,6 +165,11 @@ document.addEventListener("DOMContentLoaded", function () {
     <center><h3>BinnyBot:</h3></center>
 <!--     <p>{{ Response }}</p> -->
      <pre class="kawaii-ai-response">{{ Response }}</pre>
+     <form action="{{ url_for('save_meal') }}" method="POST">
+      <input type="hidden" name="recipe_text" value="{{ Response }}">
+      <button type="submit" class="kawaii-btn">Save Recipe</button>
+     </form>
+
 
 </div>
 {% endif %}
