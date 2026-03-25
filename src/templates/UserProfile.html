@@ -14,6 +14,7 @@
 {% block body %}
 <div class="welcome1">
     <h1>Update Profile</h1>
+    {% include 'Menu.html' %}
     <p class="text">Edit and update your profile.</p>
 </div>
 
@@ -51,19 +52,24 @@
             <tr>
                 <td>
                     <form action="{{ url_for('userprofile') }}" method="POST" enctype="multipart/form-data">
+                        
+                        <!----------------------------- Food Allergies Field ------------------------------->
+                        <label class="text">Food Allergies:</label><br>
+                        <input type="text" name="food_allergies" value="{{ player.food_allergies }}"><br><br>
+                        <!----------------------------- Dietary Needs Field ------------------------------->
+                        <label class="text">Dietary Needs:</label><br>
+                        <input type="text" name="dietary_needs" value="{{ player.dietary_needs }}"><br><br>
+                        <!----------------------------- Upload Photo Field ------------------------------->
                         <label class="text">Upload New Profile Picture:</label><br>
                         <input type="file" name="profile_picture" accept="image/*"><br>
+                        <!----------------------------- Submit Form Button ------------------------------->
                         <button class="text" type="submit">Update Profile</button>
                     </form>
                 </td>
            </tr>
         </table>
     </center>
-    <div class="images">
-        <a href="/">
-            <img src="{{ url_for('static', filename='Pictures/BinnyHome.png') }}" alt="homebot" class="binnyhome">
-        </a>
-    </div>
+
 </div>
 
 
