@@ -114,6 +114,18 @@ def dashboard():
     player = session.get('player_id')
     expiring_soon = get_expiry_date(player)
 
+# =============================================================================================================
+# Get a list of saved recipes for the user
+# =============================================================================================================
+    db = get_db()
+    meals = db.execute(
+        "SELECT id, name, created_at FROM meals WHERE player_id = ? ORDER BY created_at DESC",
+        (player,)
+    ).fetchall()
+    db.close()
+# =============================================================================================================
+# =============================================================================================================
+
     if not player:
         # if they aren't logged in, send them to the login page
         return redirect('/login')
@@ -122,7 +134,7 @@ def dashboard():
         item_list = ", ".join(expiring_soon)
         flash(f"⚠️ Heads up! Your {item_list} will expire in 3 days.", "warning")
 
-    return render_template('dashboard.html')
+    return render_template('dashboard.html', player=player, meals=meals)
 
 # =====================
 # User Profile
@@ -497,6 +509,66 @@ def scoreboard():
     db.close()
 
     return render_template("ScoreboardPage.html", players=players)
+
+
+
+
+# ==================================================================================================
+# Saving Meal Recipe
+# ==================================================================================================
+@app.route("/save_meal", methods=["POST"])
+@login_required
+def save_meal():
+    player_id = session["player_id"]
+    recipe_text = request.form.get("recipe_text", "").strip()
+    
+    # =============================
+    # Parse recipe
+    # =============================
+    lines = recipe_text.split("\n")
+    name = lines[0].strip() if lines else "Untitled Recipe"
+    ingredients = "\n".join(
+        [line.strip() for line in lines if "-" in line or "•" in line]
+    )
+    description = recipe_text
+
+    # ========================================================================
+    # Insert to database
+    # ========================================================================
+    db = get_db()
+
+    try:
+        db.execute("""
+            INSERT INTO meals (player_id, name, ingredients, description)
+            VALUES (?, ?, ?, ?)
+        """, (player_id, name, ingredients, description))
+
+        db.commit()
+    
+    finally:
+        db.close()
+    # ==========================================================================
+    flash("Recipe saved!", "success")
+    return redirect(url_for("dashboard"))
+# ==================================================================================================
+
+# ==========================================================================================
+# View Meal Recipe
+# ==========================================================================================
+@app.route("/meal/<int:meal_id>")
+@login_required
+def view_meal(meal_id):
+    db = get_db()
+    meal = db.execute(
+        "SELECT * FROM meals WHERE id = ? AND player_id = ?",
+        (meal_id, session["player_id"])
+    ).fetchone()
+    db.close()
+
+    if meal is None:
+        return "Meal not found", 404
+
+    return render_template("ViewMeal.html", meal=meal)
 
 
 
