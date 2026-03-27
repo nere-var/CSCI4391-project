@@ -9,5 +9,6 @@ Provide the exact sequence your team will show in class:
 - pantry state used in failure path
 - prompt used in failure path
 - expected validator fail/refusal behavior
+  
 This should read like a checklist for a reliable live demo.
 
