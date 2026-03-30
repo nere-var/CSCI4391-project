@@ -82,11 +82,15 @@ Must have Python installed:
 
 For Windows Users:
 - ```python -m venv .venv```        # create virtual environment
+- ```git clone https://github.com/nere-var/CSCI4391-project```
+- ```cd CSCI4391-project```
 - ```pip install -r requirements.txt```   # installs all packages listed
 
 For Mac/Linux Users:
-- ```python -m venv venv```        # create virtual environment
+- ```python3 -m venv venv```        # create virtual environment
 - ```source venv/bin/activate```      # activate it
+- ```git clone https://github.com/nere-var/CSCI4391-project```
+- ```cd CSCI4391-project```
 - ```pip install -r requirements.txt```   # installs all packages listed
 
 Then:
