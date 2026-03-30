@@ -40,26 +40,29 @@ SeniorProject/
 |     |      └- /profile_pics/
 |     |          └- demo.png
 |     ├- /templates/
-|     |    ├- 0-AIPageSetup.html
 |     |    ├- 0-AddItemPageSetup.html
+|     |    ├- 0-AIPageSetup.html
 |     |    ├- 0-HomePageSetup.html
 |     |    ├- 0-InventoryPageSetup.html
 |     |    ├- 0-MainPageSetup.html
 |     |    ├- 0-SamplePageSetup.html
 |     |    ├- AddItemPage.html
+|     |    ├- dashboard.html
 |     |    ├- HomePage.html
 |     |    ├- InventoryPage.html
 |     |    ├- LoginPage.html
+|     |    ├- Menu.html
 |     |    ├- RegisterPage.html
 |     |    ├- SamplePage.html
 |     |    ├- ScoreboardPage.html
 |     |    ├- UserProfile.html
-|     |    └- dashboard.html
+|     |    └- ViewMeal.html
 |     ├- .env
 |     ├- app.py
 |     ├- database.py
 |     ├- expiry.py
 |     ├- generator.py
+|     ├- main.py
 |     ├- models.py
 |     ├- openrouterllm.py
 |     ├- requirements.txt
