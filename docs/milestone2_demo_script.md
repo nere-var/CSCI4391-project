@@ -12,3 +12,9 @@ Provide the exact sequence your team will show in class:
   
 This should read like a checklist for a reliable live demo.
 
+
+
+
+
+
+NOT DONE - Due 4-5-26
