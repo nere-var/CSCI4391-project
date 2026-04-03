@@ -253,6 +253,7 @@ def logout():
 @login_required
 def inventory_page():
     from openrouterllm import Ai_Chat   #importing everything from openrouterllm
+    from validator import recipe_validator #importing everything from openrouterllm
     player_id = session["player_id"]
 
     db = get_db()
@@ -278,14 +279,16 @@ def inventory_page():
         message = request.form.get("message" ,"hello")  #defualt message 
         
         Chat_box_In = Ai_Chat() #creating an instance
+        Chat_validator = recipe_validator()
         inventory_items = Chat_box_In.get_active_inventory(player_id) #getting context for the AI
         inventory_context = Chat_box_In.build_inventory_context(inventory_items)
+        
         
         #Message for the AI same as openrouterllm
         messages = [
             { "role": "system", 
              "content": (
-                 "You are a helpful, eco-conscious cooking assistant.\n"
+                 "You are a helpful, eco-conscious Food waste reducer\n"
                  "Only use the inventory provided to you.\n"
                  "When suggesting recipes or meals:\n"
                  "- Be specific and precise with ingredient quantities.\n"
@@ -293,15 +296,66 @@ def inventory_page():
                  "- Respect the available inventory amounts.\n"
                  "- Do not suggest quantities that exceed what is available.\n"
                  "- If quantity data is missing, state assumptions clearly.\n"
-                 "Keep responses concise but practical and clear." )
-             },
-            {"role": "system",
-             "content": f"Current Inventory:\n{inventory_context}" # provide current inventory context to the LLM every turn so it can make informed suggestions based on what the player has available
-             },
-            {"role": "user", "content": message}
-            ]
+                 "Keep responses concise but practical and clear.\n"
+                 "Do not give food safety recommendations at all. Anything involving food safety, respond 'Sorry, I don't have that info.'\n"
+                "CRITICAL RULES:\n"
+                 "1.If the user ask for recipe or cooking You MUST output your response STRICTLY as a JSON object. No conversational text outside the JSON.\n"
+                 "2. DO NOT USED EXPIRED FOOD: You are forbidden from using expired food in recipes.\n"
+                 "3. MATCH UNITS EXACTLY: You must use the exact `measurement_type` and `unit` provided in the inventory list.\n"
+                 "   - If an item is listed in 'g' or 'lbs' (weight), you CANNOT use cups, tbsp, or volume measurements. You MUST request it in grams or lbs.\n"
+                 "   - If an item is listed as 'count', you MUST use 'count' (e.g., do not ask for 15 oz of canned beans if it says 1 count).\n"
+                 "   - If an item is listed in 'ml' (volume), use ml, cups, or tbsp.\n"
+                 "4. Use this exact format:\n"
+                 "{\n"
+                 '  "recipe_text": "Your natural conversational text, recipe steps, and tips go here...",\n'
+                 '  "ingredients_used": [\n'
+                 '    {"name": "rice", "quantity": 200, "unit": "g", "measurement_type": "weight"}\n'
+                 "  ]\n"
+                 "}\n"
+                 "5.  If the user is greeting or chatting, respond normally (NOT JSON).\n"
+                 "    - Be friendly and concise.\n"
+                 "    - Do NOT mention inventory.\n\n"
+             )
+            }]
+        # append user message to conversation
+        messages.append({"role": "system",
+                         "content": f"Current Inventory:\n{inventory_context}" # provide current inventory context to the LLM every turn so it can make informed suggestions based on what the player has available
+                         })
+
+        messages.append({"role": "user", "content": message}) 
         #getting the response
-        Response = Chat_box_In.getLLMResponse(messages)
+        MAX_RETRIES = 1 # retries for recipe generation if validation fails, can adjust as needed
+        for attempt in range(MAX_RETRIES + 1):
+            raw_response = Chat_box_In.getLLMResponse(messages) 
+            #Check if user wants recipe
+            user_lower = message.lower()
+            if any(word in user_lower for word in Chat_box_In.Cook_WORDS):
+                # send recipe to validator
+                is_valid, validation_msg = Chat_validator.validate_AI_recipe(raw_response, player_id)
+                
+                if is_valid:
+                    # pass, output recipe to user
+                    Response=f"\nLLM: {validation_msg}\n"
+                    # save context so the llm remembers what it just said
+                    messages.append({"role": "assistant", "content": validation_msg})
+                    break # break out of the retry loop
+                else:
+                    # if fail:
+                    if attempt < MAX_RETRIES:
+                        Response=f"\n[System: Recipe failed validation: {validation_msg}. Asking AI to regenerate and scale down...]\n"
+                        # add the failure to the context and loop again to regenerate
+                        messages.append({"role": "assistant", "content": raw_response})
+                        messages.append({"role": "user", "content": f"Your previous recipe failed validation because: {validation_msg}. Please rewrite the recipe to fix this (e.g., reduce servings or omit the ingredient) and output valid JSON again."})
+                    else:
+                        Response=f"\nLLM: I tried to make a recipe, but we don't have enough ingredients. {validation_msg}\n"
+                        messages.append({"role": "assistant", "content": f"Failed: {validation_msg}"})
+                            
+            else:
+                Response=f"\nLLM: {raw_response}\n"
+                messages.append({"role": "assistant", "content": raw_response})
+                break
+            
+            
     db.close()
     return render_template(
         "InventoryPage.html",
@@ -684,6 +738,10 @@ if __name__ == "__main__":
 # for render.com
 # gunicorn app:app
 # ================
+
+
+
+
 
 
 
