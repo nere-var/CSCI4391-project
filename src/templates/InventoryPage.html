@@ -7,7 +7,9 @@
 {% endblock %}
 -->
 
+
 {% block body %}
+
 <div class="welcome1">
     <h1>Food Inventory</h1>
     {% include 'Menu.html' %}    
@@ -35,36 +37,56 @@
 <!-- change into chatbox later  -->
 
 
-<div class="floating-chatbox">
+
+<!-- Chat Popup -->
+<button class= "open-btn" onclick="openChatWindow()">
+    <i class="fa fa-comment"></i>Chat with Binny! 
+</button >
+
+<div id="chatBox" class="floating-chatbox">
+    <!-- Close button -->
+    <div class = "chat-window-head">
+        <h4>
+            <i class = "head-comment-top">Binny Chat Window</i>
+            <!-- <h3>
+                <img src="{{ url_for('static', filename='Pictures/chef.png') }}" alt="chefbinny" class="binnychef">
+            </h3> -->
+        </h4>
+        <span class= "close-btn" onclick= "closeChatWindow()">✖</span>
+    </div>
+    
+    <div class = "form-container">
+        <!-- ========================================================================================================================================= -->
+        <!-- ================================================== CHAT RESPONSE ======================================================================== -->
+        <!--  <center><h3>BinnyBot:</h3></center> -->
+        <!--     <p>{{ Response }}</p> -->
+        <!-- ================= CHAT RESPONSE ================= -->
+        <div class="msg-container">
+        {% if Response %}
+        <h3>
+            <img src="{{ url_for('static', filename='Pictures/chef.png') }}" alt="chefbinny" class="binnychef">Ask for a recipe
+        </h3>
+        <pre class="ai-response">{{ Response }}</pre>
+        <form action="{{ url_for('save_meal') }}" method="POST">
+            <input type="hidden" class="response-text-AI"  name="recipe_text" value="{{ Response }}">
+            <button type="submit" class="submit-btn">Save Recipe</button>
+        </form>
+        {% else %}
+        <h3>
+            <img src="{{ url_for('static', filename='Pictures/chef.png') }}" alt="chefbinny" class="binnychef">Ask for a recipe
+        </h3>
+        {%endif%}
+    </div>   
+    <!-- ================= USER INPUT ================= -->
     <form method="post">
-        <div class="kawaii-table">
-            <h3>Ask for recipe:</h3>
-            <input type="text" class="kawaii-login input" name="message" placeholder="text Here !!">
-            <div class="input-Chatgroup-btn">
-                <button class="kawaii-btn" type="submit">submit</button>
-            </div>
+        <div class="input-Chatgroup-btn">
+            <input type="text" class="text-goes-here-AI" name="message" placeholder="text Here !!">
+            <button class="submit-btn" type="submit">submit</button>
         </div>
     </form>
 </div>
-
-<!-- ========================================================================================================================================= -->
-
-<!-- ================================================== CHAT RESPONSE ======================================================================== -->
-    {% if Response %}
-<br>
-<div class="kawaii-ai-table">
-    <center><h3><img src="{{ url_for('static', filename='Pictures/chef.png') }}" alt="chefbinny" class="binnychef">BinnyBot:</h3></center>
-    <center><h3>BinnyBot:</h3></center>
-<!--     <p>{{ Response }}</p> -->
-     <pre class="kawaii-ai-response">{{ Response }}</pre>
-     <form action="{{ url_for('save_meal') }}" method="POST">
-      <input type="hidden" name="recipe_text" value="{{ Response }}">
-      <button type="submit" class="kawaii-btn">Save Recipe</button>
-     </form>
-
-
 </div>
-{% endif %}
+
 <!-- ========================================================================================================================================= -->
 
 
@@ -191,7 +213,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+<script src="{{ url_for('static', filename='js/MainPageJS.js') }}"></script>
 
 
 {% endblock %}
+
+
 
