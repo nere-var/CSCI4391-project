@@ -27,6 +27,13 @@ class Ai_Chat:
         self.DB_PATH = 'src/instance/inventory.db'
         self.PLAYER_ID = 1 # for testing
         self.MAX_HISTORY = 10 # max number of messages to keep in conversation history to prevent growth
+        self.Cook_WORDS = ["recipe", "cook", "cooking", "make", "prepare", "fry",
+                           "grill", "roast", "saute", "steam", "boil", "air fry",
+                           "meal", "dish", "food idea", "what can i make", "what should i cook",
+                           "how to make", "how do i cook", "instructions", "steps",
+                           "lunch idea", "dinner idea", "breakfast idea", "snack idea",
+                           "meal prep", "quick meal", "easy recipe", "simple recipe"
+                           ]
     
     # DB setup
     def get_db(self): # function to connect to the database
@@ -141,7 +148,7 @@ class Ai_Chat:
                  "Keep responses concise but practical and clear.\n"
                  "Do not give food safety recommendations at all. Anything involving food safety, respond 'Sorry, I don't have that info.'\n"
                 "CRITICAL RULES:\n"
-                 "1. You MUST output your response STRICTLY as a JSON object. No conversational text outside the JSON.\n"
+                 "1.If the user ask for recipe or cooking You MUST output your response STRICTLY as a JSON object. No conversational text outside the JSON.\n"
                  "2. DO NOT USED EXPIRED FOOD: You are forbidden from using expired food in recipes.\n"
                  "3. MATCH UNITS EXACTLY: You must use the exact `measurement_type` and `unit` provided in the inventory list.\n"
                  "   - If an item is listed in 'g' or 'lbs' (weight), you CANNOT use cups, tbsp, or volume measurements. You MUST request it in grams or lbs.\n"
@@ -154,6 +161,9 @@ class Ai_Chat:
                  '    {"name": "rice", "quantity": 200, "unit": "g", "measurement_type": "weight"}\n'
                  "  ]\n"
                  "}\n"
+                 "5.  If the user is greeting or chatting, respond normally (NOT JSON).\n"
+                 "    - Be friendly and concise.\n"
+                 "    - Do NOT mention inventory.\n\n"
              )
             }]
         call_validator = recipe_validator()
@@ -185,28 +195,36 @@ class Ai_Chat:
             for attempt in range(MAX_RETRIES + 1):
                 raw_response = self.getLLMResponse(messages) 
                 
-                # send recipe to validator
-                is_valid, validation_msg = call_validator.validate_AI_recipe(raw_response, self.PLAYER_ID)
+                #Check if user wants recipe
+                user_lower = user_input.lower()
                 
-                if is_valid:
-                    # pass, output recipe to user
-                    print(f"\nLLM: {validation_msg}\n") 
+                if any(word in user_lower for word in self.Cook_WORDS):
+                    # send recipe to validator
+                    is_valid, validation_msg = call_validator.validate_AI_recipe(raw_response, self.PLAYER_ID)
                     
-                    # save context so the llm remembers what it just said
-                    messages.append({"role": "assistant", "content": validation_msg})
-                    
-                    break # break out of the retry loop
-                    
-                else:
-                    # if fail:
-                    if attempt < MAX_RETRIES:
-                        print(f"\n[System: Recipe failed validation: {validation_msg}. Asking AI to regenerate and scale down...]\n")
-                        # add the failure to the context and loop again to regenerate
-                        messages.append({"role": "assistant", "content": raw_response})
-                        messages.append({"role": "user", "content": f"Your previous recipe failed validation because: {validation_msg}. Please rewrite the recipe to fix this (e.g., reduce servings or omit the ingredient) and output valid JSON again."})
+                    if is_valid:
+                        # pass, output recipe to user
+                        print(f"\nLLM: {validation_msg}\n") 
+                        # save context so the llm remembers what it just said
+                        messages.append({"role": "assistant", "content": validation_msg})
+                        
+                        break # break out of the retry loop
                     else:
-                        print(f"\nLLM: I tried to make a recipe, but we don't have enough ingredients. {validation_msg}\n")
-                        messages.append({"role": "assistant", "content": f"Failed: {validation_msg}"})
+                        # if fail:
+                        if attempt < MAX_RETRIES:
+                            print(f"\n[System: Recipe failed validation: {validation_msg}. Asking AI to regenerate and scale down...]\n")
+                            # add the failure to the context and loop again to regenerate
+                            messages.append({"role": "assistant", "content": raw_response})
+                            messages.append({"role": "user", "content": f"Your previous recipe failed validation because: {validation_msg}. Please rewrite the recipe to fix this (e.g., reduce servings or omit the ingredient) and output valid JSON again."})
+                            
+                        else:
+                            print(f"\nLLM: I tried to make a recipe, but we don't have enough ingredients. {validation_msg}\n")
+                            messages.append({"role": "assistant", "content": f"Failed: {validation_msg}"})
+                            
+                else:
+                    print(f"\nLLM: {raw_response}\n")
+                    messages.append({"role": "assistant", "content": raw_response})
+                    break
             
 if __name__ == "__main__":
     Ai_bot = Ai_Chat()
