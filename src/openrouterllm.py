@@ -164,6 +164,9 @@ class Ai_Chat:
                  "5.  If the user is greeting or chatting, respond normally (NOT JSON).\n"
                  "    - Be friendly and concise.\n"
                  "    - Do NOT mention inventory.\n\n"
+                 "6. PRIORITIZE ingredients marked as [ABOUT TO EXPIRE].
+                 "    - You MUST include at least 2–3 such ingredients when possible.,
+                 "    - Prefer larger usage quantities to reduce waste. to the critical rules"
              )
             }]
         call_validator = recipe_validator()
