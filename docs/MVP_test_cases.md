@@ -24,15 +24,15 @@ how you call the pic <img src="images/DB_num1.png" width="100">  just change the
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | **01** | CLI1 - Asking for recipe with empty inventory | empty | I would like a recipe for a salad | AI will reply that the inventory is empty | LLM: I tried to make a recipe, but we don't have enough ingredients. Ingredient 'tomato' is not in the pantry. | ✅ | ********* | <img width="100" height="990" alt="CLI1" src="https://github.com/user-attachments/assets/580929bf-3fc6-4746-a4e1-db317a3d82f0" />
  |
-| **02** | | | | | | | |
-| **03** | | | | | | | |
-| **04** | | | | | | | |
-| **05** | | | | | | | |
-| **06** | | | | | | | |
-| **07** | | | | | | | |
-| **08** | | | | | | | |
-| **09** | | | | | | | |
-| **10** | | | | | | | |
+| **02** | xxx | xxx | xxx | xxx | xxx | xxx | xxx |
+| **03** | xxx | xxx | xxx | xxx | xxx | xxx | xxx |
+| **04** | xxx | xxx | xxx | xxx | xxx | xxx | xxx |
+| **05** | xxx | xxx | xxx | xxx | xxx | xxx | xxx |
+| **06** | xxx | xxx | xxx | xxx | xxx | xxx | xxx |
+| **07** | xxx | xxx | xxx | xxx | xxx | xxx | xxx |
+| **08** | xxx | xxx | xxx | xxx | xxx | xxx | xxx |
+| **09** | xxx | xxx | xxx | xxx | xxx | xxx | xxx |
+| **10** | xxx | xxx | xxx | xxx | xxx | xxx | xxx |
 
 
 
