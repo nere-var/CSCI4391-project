@@ -131,7 +131,7 @@ class Ai_Chat:
         self.RESTRICTED_WORDS = ["poop"]
         # db path + other variables
         self.DB_PATH = 'src/instance/inventory.db'
-        self.PLAYER_ID = 1 # for testing
+        self.PLAYER_ID = player_id #1 # for testing
         self.MAX_HISTORY = 10 # max number of messages to keep in conversation history to prevent growth
     
     # DB setup
