@@ -76,8 +76,23 @@ def get_inventory(player_id):
         (player_id,)
     ).fetchall()
     db.close()
-    return (items)
+#    return (items)
 
+    items = sorted(items, key=lambda item: item["name"].lower())
+
+    print("\n========================= Inventory =========================")
+
+    # Column headers
+    print(f"{'Name'.ljust(30)} {'Quantity'.ljust(8)} {'Unit'.ljust(10)} {'Best By'}")
+    print("-" * 61)
+
+    for item in items:
+        print(
+            f"{item['name'].ljust(30)} "
+            f"{str(item['quantity']).ljust(8)} "
+            f"{item['unit'].ljust(10)} "
+            f"{item['best_by']}"
+        )
 # =====================
 # get items by date
 # =====================
@@ -94,18 +109,28 @@ def get_inventory_by_date(player_id):
     ).fetchall()
     db.close()
 
-    print("\n=== Foods and Best-By Dates ===")
+    print("\n================= Inventory by Best-By Dates ================")
     if not items:
         print("No active inventory items found.")
         return
+    
+
+    print(f"{'Name'.ljust(30)} {'Quantity'.ljust(8)} {'Unit'.ljust(10)} {'Best By'}")
+    print("-" * 61)
+
 
     for item in items:
         name = item["name"]
-        qty = item["quantity"]
+        quantity = str(item["quantity"])
         unit = item["unit"]
         best_by = item["best_by"] if item["best_by"] else "No date"
 
-        print(f"- {name} ({qty} {unit}) — Best by: {best_by}")
+        print(f"{name.ljust(30)} "
+            f"{quantity.rjust(8)} "
+            f"{unit.ljust(10)} "
+            f"{best_by}"
+        )
+
 
 
 # ================================================================================================================================
@@ -345,10 +370,7 @@ def main():
         choice = input("\nChoose an option: ")
 # =====================================================================================  1. Get User Inventory
         if choice == "1":
-            items = get_inventory(player_id)
-            print("\nInventory:")
-            for item in items:
-                print(f"- {item['name']} ({item['quantity']} {item['unit']})")
+            get_inventory(player_id)
 # =====================================================================================  2. Get/sort inventory by date   
         elif choice == "2":
             get_inventory_by_date(player_id)
