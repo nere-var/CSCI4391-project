@@ -76,13 +76,13 @@ def get_inventory(player_id):
         (player_id,)
     ).fetchall()
     db.close()
-#    return (items)
+#    return (items) # no longer needed with table being printed in function
 
     items = sorted(items, key=lambda item: item["name"].lower())
 
     print("\n========================= Inventory =========================")
 
-    # Column headers
+    # Labels for inventory table columns
     print(f"{'Name'.ljust(30)} {'Quantity'.ljust(8)} {'Unit'.ljust(10)} {'Best By'}")
     print("-" * 61)
 
@@ -114,7 +114,7 @@ def get_inventory_by_date(player_id):
         print("No active inventory items found.")
         return
     
-
+    # Labels for inventory table columns
     print(f"{'Name'.ljust(30)} {'Quantity'.ljust(8)} {'Unit'.ljust(10)} {'Best By'}")
     print("-" * 61)
 
@@ -125,10 +125,9 @@ def get_inventory_by_date(player_id):
         unit = item["unit"]
         best_by = item["best_by"] if item["best_by"] else "No date"
 
-        print(f"{name.ljust(30)} "
-            f"{quantity.rjust(8)} "
-            f"{unit.ljust(10)} "
-            f"{best_by}"
+        # Table printout with db values
+        print(
+            f"{name.ljust(30)} " f"{quantity.rjust(8)} " f"{unit.ljust(10)} " f"{best_by}" 
         )
 
 
