@@ -27,12 +27,13 @@ In 1 to 2 pages, explain:
 
 # What was cut from scope
 
+In the current stage of the application, **virtual farm** was cut from the MVP scope. As this feature was deemed out of scope for this project due to its extensive development requirements, thus allowing the team to prioritize core functionalities in the project timeline.  Additionally, **calorie tracking** was cut from scope to ensure all development efforts align directly with our primary goal of food waste reduction. Furthermore, **spoilage detection** functionality was cut from scope. Due to the lack of integration with physical storage information, the application cannot reliably verify the real-time conditions of inventory items aside from expiration date. Finally, **barcode scanning** is currently cut from scope to focus on key features of application and will consider integrating it later in development.
 
 
 
 # What is now truly MVP-ready
 
-
+At this stage, the application has core features implemented and working cohesively. New users can **create an account**, as well as **log in and log out** without issue, with passwords securely hashed and stored in the database. After logging in, users are presented with a fully functional navigation bar that allows seamless movement throughout the application. The **navigation bar** provides access to the following pages: Home, Inventory, Add item to Inventory, User Profile, Scoreboard, Dashboard and Logout. On the inventory page, users can easily view their stored items through a simple table display. All inventory data is stored in a **database** file named “inventory”, which reliably manages and maintains items data without issues. Additionally, all navigation pages function as expected, as verified through extensive testing during feature integration.Furthermore, the application successfully **integrates AI** within the inventory page through a pop-up chat box, providing convenient access without requiring users to scroll. The AI operates effectively within this interface and can **generate recipes based on user prompts, taking into account the available inventory, item quantities, food allergies and dietary preferences**. The chat box also includes a “Save Recipe” feature, allowing users to effortlessly store generated recipes for later access in their Dashboard. The Dashboard also **displays notifications** for food items that are approaching expiration within three days, helping keep the users informed on their inventory. Finally, the **scoreboard is displayed prominently and correctly ordered ranking from lowest to highest (with lower scores indicating better performance). The scoring system** functions as intended: score increases when items are added based on price and decreases when users choose actions such as use, donate, or compose.
 
 
 # What still needs work after MVP
