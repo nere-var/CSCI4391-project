@@ -76,10 +76,6 @@ class Ai_Chat:
             return f"- {item_name}" # Fallback if not found
 
         # add each category
-        if expired:
-            lines.append("\nEXPIRED (Recommend compost):")
-            for item in expired:
-                lines.append(get_item_math(item))
         if about_to_expire:
             lines.append("\nABOUT TO EXPIRE (Use within 4 days):")
             for item in about_to_expire:
@@ -88,6 +84,10 @@ class Ai_Chat:
             lines.append("\nFRESH (Safe for now):")
             for item in fresh:
                 lines.append(get_item_math(item))
+        if expired:
+            lines.append("\nEXPIRED (Recommend compost):")
+            for item in expired:
+                lines.append(get_item_math(item))  
         
         return "\n".join(lines)
 
