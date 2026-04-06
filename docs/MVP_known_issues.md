@@ -2,14 +2,16 @@
 
 List the remaining issues honestly.
 Required categories:
-- ingredient matching edge cases
-- unit conversion edge cases
-- UI limitations
-- data quality assumptions
-- anything the team would fix next with one more sprint
-
-
-
-
-
-NOT DONE - Due 4-5-26
+## Ingredient matching edge cases:
+- When trying to generate recipes, if there is a lot of expired ingredients it will keep trying to generate recipes using expired ingredients and fail
+- 
+## Unit conversion edge cases:
+- 
+## UI limitations:
+- When generating a recipe, the chat window will close and need to be manually opened again to view recipe or recipe generation failure message
+- The spacing could be improved when viewing inventory
+- 
+## Data quality assumptions:
+- N/A
+## Anything the team would fix next with one more sprint:
+- Sometimes the LLM will generate the same recipes continuously when based on the same inventory
