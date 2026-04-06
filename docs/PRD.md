@@ -84,10 +84,8 @@ Must-have features (3–6)
 - Nice-to-have features (optional)
 - Waste reduction score dashboard
 - Barcode scanning 
-- a virtual farm.
 Explicit non-goals (what you will not build)
-- Spoiling detection: whether the food has actually spoiled, if stored properly, if it has mold or contamination. 
-- Medical history, calorie tracking and health conditions.
+- Medical history, and health conditions.
 - No real-time continuous monitoring
 - Not a replacement for human decision making
 
