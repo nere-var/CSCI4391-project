@@ -1,10 +1,6 @@
 # MVP Retrospective 
 
 In 1 to 2 pages, explain:
-- what changed from Milestone 1 to Milestone 2
-- what was cut from scope
-- what is now truly MVP-ready
-- what still needs work after MVP
 
 
 # What changed from Milestone 1 to Milestone 2
@@ -40,4 +36,4 @@ At this stage, the application has core features implemented and working cohesiv
 
 - The implementation of decomposing and donations still needs to be included. Another necessary thing we still need to add is a function that decreases the amount of the pantry once the user decides to use a recipe or decompose, etc. In the front end, we still need to continue improving our UI. Improvements towards the LLM still need to be done.
 
-NOT DONE - Due 4-5-26
+
