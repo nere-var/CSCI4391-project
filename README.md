@@ -185,8 +185,7 @@ If the ingredients are not available:<br>
 
 
 
-image coming soon this is milestone2
-[![IMAGE ALT TEXT HERE](https://github.com/user-attachments/assets/3f10d1dd-e9e8-4d08-8b47-7031dc430126)](https://www.youtube.com/watch?v=LsMbCGHMmF0)
+[![IMAGE ALT TEXT HERE](https://github.com/user-attachments/assets/abe86b95-9ff9-4d0d-9d72-1df5a50b15dd)](https://www.youtube.com/watch?v=LsMbCGHMmF0)
 
 
 <br /><br /><br /><br />
