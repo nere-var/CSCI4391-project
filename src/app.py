@@ -20,14 +20,6 @@ load_dotenv()  # Load .env file
 
 
 
-OPENROUTER_API_KEY=""
-#print("DEBUG — OPENROUTER_API_KEY =", repr(OPENROUTER_API_KEY)) # Makes sure the correct key is being sent out
-
-
-
-
-
-
 UPLOAD_FOLDER = os.path.join(BASE_DIR, "static", "profile_pics")
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
