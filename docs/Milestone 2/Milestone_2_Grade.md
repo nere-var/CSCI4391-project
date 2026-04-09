@@ -1,12 +1,15 @@
 # Milestone 2 Grade — Venture 4: Krusty Compost Crew (Binny & Bloom)
 
 **Graded:** April 8, 2026
+**Regraded:** April 9, 2026 (demo video uploaded after original grading pass)
 **Deadline:** April 5, 2026 (end of day)
 **Late Commits:** None — all commits are on or before 4/5/2026.
 
 ---
 
-## Overall Grade: 84/100
+## Overall Grade: 90/100
+
+(Original grade: 84/100. Regraded to 90/100 after demo video review. Category sum also corrected — original breakdown summed to 87, not 84.)
 
 ---
 
@@ -15,20 +18,21 @@
 Binny & Bloom delivers a functional pantry-aware recipe assistant with login, inventory management (quantities, units, expiry dates), AI-powered recipe generation via OpenRouter, a recipe validator integrated into the Flask web path, and a scoring/gamification system for use/donate/compost actions. Both CLI and web GUI versions work. The validator checks for expired ingredients, pantry existence with fuzzy matching, and quantity validation. However, unit conversion still has notable failures (6/20 evaluation test cases fail), `.env.example` is missing despite being listed as a "must fix" item, the demo script is weak, and `generator.py` is an empty file.
 
 ### Video Review Notes
-Venture 4 did not submit a Milestone 2 demo video. The code review suggests the system is functional with both CLI and web GUI paths working. Please ensure a demo video is included for the final presentation.
+Demo video (~4:49) was uploaded after the original grading pass and has now been reviewed. **Strengths:** the video walks through three well-chosen scenarios that directly validate the system's core claims: (1) **Empty-pantry refusal** — user logs into an empty account, asks for "a recipe for fries," and the validator (visible running in the right-hand terminal) correctly refuses with "ingredient is not in the pantry." (2) **Expired-ingredient refusal** — demo login with a populated pantry, asks for a recipe using an expired chicken breast, validator correctly refuses with "the ingredient chicken breast is expired and cannot be used." (3) **Fuzzy ingredient matching with expiry awareness** — asks for "chicken stew," and the system correctly skips the expired chicken breast and matches chicken thigh (proving both fuzzy matching and expiry filtering work end-to-end). All three scenarios succeed and the validator is visibly wired into the web path (not just the CLI). **Areas to improve for final demo:** (1) the chat window UX issue is confirmed on camera — the narrator has to close and reopen the chat box to see the response ("you have to click on the little chat with Binny again"). (2) Long validator wait times during generation are uncomfortable on video — consider a loading indicator. (3) The demo does not show unit conversion, which is the known weak area (6/20 eval failures) — either show it working or explicitly acknowledge the limitation. (4) No demonstration of the use/donate/compost gamification system. (5) Narration is unscripted and occasionally tentative — a tighter script will improve the final presentation.
 
 ---
 
 ## Category Breakdown
 
-### 1. End-to-End Demo Path (23/25)
+### 1. End-to-End Demo Path (24/25)
 - Login → view pantry → chat with AI → validated recipe or rejection → save recipe flow works end-to-end. ✓
-- Validator is integrated into Flask web path (not just console) — a key Milestone 2 fix. ✓
+- Validator is integrated into Flask web path (not just console) — a key Milestone 2 fix. **Video confirms this runs live during every request.** ✓
 - Inventory shows quantities, units, measurement types, and expiry dates. ✓
-- Expiry prioritization built into the system prompt and context. ✓
+- Expiry prioritization built into the system prompt and context. **Video proves expired items are actively excluded from generated recipes.** ✓
 - Both CLI (`main.py`) and GUI (`app.py`) versions work. ✓
-- **Issue:** 6/20 evaluation test cases fail, mostly due to unit conversion mismatches (tbsp vs ml, etc.).
-- **Issue:** Chat window closes after recipe generation (acknowledged in known issues).
+- **Two refusal cases demonstrated in video** (empty pantry, expired ingredient) — this satisfies the Milestone 2 refusal requirement.
+- **Issue:** 6/20 evaluation test cases fail, mostly due to unit conversion mismatches (tbsp vs ml, etc.) — not shown in video.
+- **Issue:** Chat window UX bug (user must close and reopen the chat to see response) is confirmed on camera.
 
 ### 2. Code Quality & Architecture (17/20)
 - Clean Flask app with session management, hashed passwords, and `@login_required` decorator.
@@ -41,14 +45,14 @@ Venture 4 did not submit a Milestone 2 demo video. The code review suggests the 
 - **Issue:** `sort_inventory()` in `expiry.py` queries ALL inventory items, not filtered by player_id.
 - **Issue:** Hardcoded empty `OPENROUTER_API_KEY=""` at top of `app.py` (dead code, actual loading in `Ai_Chat`).
 
-### 3. Documentation & Deliverables (20/25)
+### 3. Documentation & Deliverables (22/25)
 - `milestone2_demo_script.md` present but thin — 3 scenarios with confusing/contradictory expected vs failure columns. Needs significant improvement.
 - `MVP_test_cases.md` present with 10 test cases, all marked passing — contradicts the 6/20 failures in evaluation. Seems optimistic.
 - `MVP_known_issues.md` present — lists ingredient matching, UI, and data quality issues. ✓
 - `MVP_retrospective.md` present — covers what changed, cut from scope, needs work. ✓
 - PRD.md updated. ✓
 - README.md with installation, CLI/GUI usage, file tree, screenshots. ✓
-- Demo video links present. ✓
+- Demo video uploaded and reviewed (~4:49, three working scenarios). ✓
 - `evaluation_test_cases.md` with 20 test cases and metrics (80% feasibility pass, 5% invented ingredient rate). ✓
 - **MISSING:** `.env.example` — explicitly listed as a "must fix before Milestone 2" item and still not present.
 - Missing metrics: expiry utilization rate and validator rejection rate not reported.
