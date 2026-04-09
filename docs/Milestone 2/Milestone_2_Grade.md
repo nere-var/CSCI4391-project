@@ -84,11 +84,11 @@ Venture 4 did not submit a Milestone 2 demo video. The code review suggests the 
 ---
 
 ## Key Recommendations for Sprint 2
-1. Create `.env.example` immediately — this was a "must fix" item that's still missing.
+✅1. Create `.env.example` immediately — this was a "must fix" item that's still missing.
 2. Fix unit conversion failures (the 6/20 failing test cases).
 3. Improve demo script with clear, non-contradictory scenarios.
 4. Fix `sort_inventory()` to filter by player_id.
-5. Consolidate generation logic — either populate `generator.py` or remove it.
-6. Remove hardcoded empty API key from `app.py`.
+✅5. Consolidate generation logic — either populate `generator.py` or remove it.
+✅6. Remove hardcoded empty API key from `app.py`.
 7. Report missing metrics (expiry utilization rate, validator rejection rate).
 8. Emma, Taja, and Jay need to take on more coding tasks.
