@@ -71,7 +71,7 @@ class recipe_validator:
         inventory = self.get_active_inventory(player_id)
         # checks expired 
         print("\n--- VALIDATOR INVENTORY CHECK ---")
-        expired, about_to_expire, fresh = sort_inventory(inventory)
+        expired, about_to_expire, fresh = sort_inventory(player_id)# <------ passing player_id instead of inventory
         
         # Make everything lowercase for easy matching
         exp_lower = [name.lower() for name in expired]
