@@ -87,9 +87,11 @@
 </div>
 </div>
 
+<!--
 # ========================================================================
 # Restores chat window status on page load
 # ========================================================================
+-->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     const chatState = localStorage.getItem("chatOpen");
@@ -99,17 +101,22 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 </script>
+<!--
 # ========================================================================
-
+-->
+<!--
 # ================================================
 # If there is a response open window
 # ================================================
+-->
 {% if Response and Response|trim != "" %}
 <script>
     localStorage.setItem("chatOpen", "true");
 </script>
 {% endif %}
+<!-- 
 # =================================================
+-->
 <!-- ========================================================================================================================================= -->
 
 
