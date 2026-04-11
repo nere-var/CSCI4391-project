@@ -107,9 +107,35 @@ def dashboard():
     expiring_soon = get_expiry_date(player)
 
 # =============================================================================================================
-# Get a list of saved recipes for the user
+# Get a list of saved recipes for the user + get score and pfp for dashboard
 # =============================================================================================================
     db = get_db()
+
+    # new - fetch full player record so pfp and score can be shown on dashboard
+    current_player = db.execute(
+        "SELECT * FROM players WHERE id = ?", (player,)
+    ).fetchone()
+
+    # new - fetch inventory to calculate waste reduction flags
+    inventory_items = db.execute(
+        "SELECT * FROM inventory WHERE player_id = ? AND status = 'active'", 
+        (player,)
+    ).fetchall()
+
+    # new - calculate stats for dashboard
+    stats = {
+        "donation_eligible": 0,
+        "expired_perishables": 0,
+        "total_active": len(inventory_items)
+    }
+
+    # calculate flags for each item and stats for dashboard display
+    for item in inventory_items:
+        # dict(item) ensures calculate_flags can read the keys correctly
+        _, _, donation_allowed, decomposition = calculate_flags(dict(item))
+        stats["donation_eligible"] += donation_allowed
+        stats["expired_perishables"] += decomposition
+
     meals = db.execute(
         "SELECT id, name, created_at FROM meals WHERE player_id = ? ORDER BY created_at DESC",
         (player,)
@@ -126,7 +152,7 @@ def dashboard():
         item_list = ", ".join(expiring_soon)
         flash(f"⚠️ Heads up! Your {item_list} will expire in 3 days.", "warning")
 
-    return render_template('dashboard.html', player=player, meals=meals)
+    return render_template('dashboard.html', player=current_player, meals=meals, stats=stats)
 
 # =====================
 # User Profile
