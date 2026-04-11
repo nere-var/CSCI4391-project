@@ -55,6 +55,9 @@ def convert_recipe_unit(amount, unit):
     
     if unit in ["oz"]:
         return amount * 28.3495, "grams" # added oz to grams
+    
+    if unit in ["mg"]:
+        return amount / 1000, "grams" # added mg to grams 
 
     # volume conversions
     if unit in ["ml"]:
