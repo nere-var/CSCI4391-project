@@ -65,5 +65,8 @@ def convert_recipe_unit(amount, unit):
     
     if unit in ["l", "liter"]:
         return amount * 1000, "ml" # liter to ml
+    
+    if unit in ["cup"]:
+        return amount * 240, "ml" # cup to ml 
 
     return amount, "count"
