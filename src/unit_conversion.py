@@ -75,5 +75,7 @@ def convert_recipe_unit(amount, unit):
     if unit in ["tsp"]:
         return amount * 5, "ml" # tsp to ml
     
+    if unit in ["gallon"]:
+        return amount * 3785.41, "ml" # gallon to ml 
 
     return amount, "count"
