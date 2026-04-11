@@ -71,5 +71,9 @@ def convert_recipe_unit(amount, unit):
     
     if unit in ["tbsp"]:
         return amount * 15, "ml" # tbsp to ml
+    
+    if unit in ["tsp"]:
+        return amount * 5, "ml" # tsp to ml
+    
 
     return amount, "count"
