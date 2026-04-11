@@ -56,10 +56,14 @@ def convert_recipe_unit(amount, unit):
     if unit in ["oz"]:
         return amount * 28.3495, "grams" # added oz to grams
 
+    # volume conversions
     if unit in ["ml"]:
         return amount, "ml"
 
     if unit in ["fl_oz"]:
         return amount * 29.5735, "ml"
+    
+    if unit in ["l", "liter"]:
+        return amount * 1000, "ml" # liter to ml
 
     return amount, "count"
