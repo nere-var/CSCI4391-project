@@ -169,11 +169,17 @@ def userprofile():
 
         food_allergies = request.form.get("food_allergies")
         dietary_needs = request.form.get("dietary_needs")
-        
+
+        # Always update dietary fields
+        db.execute(
+            "UPDATE players SET food_allergies = ?, dietary_needs = ? WHERE id = ?",
+            (food_allergies, dietary_needs, player_id)
+        )
+
+        # Only update picture if uploaded
         if file and file.filename != "":
             filename = secure_filename(file.filename)
             filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
-
             file.save(filepath)
 
             db.execute(
@@ -181,10 +187,6 @@ def userprofile():
                 (filename, player_id)
             )
 
-            db.execute(
-                "UPDATE players SET food_allergies = ?, dietary_needs = ? WHERE id = ?",
-                (food_allergies, dietary_needs, player_id)
-             )
         db.commit()
         db.close()
         return redirect(url_for("userprofile"))
@@ -211,6 +213,8 @@ def register():
     if request.method == "POST":
         name = request.form["name"]
         username = request.form["username"]
+        food_allergies = request.form.get("food_allergies")
+        dietary_needs = request.form.get("dietary_needs")
         password = request.form["password"]
         file = request.files["profile_picture"]
 
@@ -223,9 +227,9 @@ def register():
 
         db = get_db()
         db.execute("""
-            INSERT INTO players (name, username, password_hash, profile_picture)
-            VALUES (?, ?, ?, ?)
-        """, (name, username, password_hash, filename))
+            INSERT INTO players (name, username, password_hash, profile_picture, food_allergies, dietary_needs)
+            VALUES (?, ?, ?, ?, ?, ?)
+        """, (name, username, password_hash, filename, food_allergies, dietary_needs))
         db.commit()
         db.close()
 
