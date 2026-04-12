@@ -205,7 +205,7 @@ sample_items_4 = [
 
 
 sample_items_5 = [
-    (132,           5,              'Tortilla',       'Bakery',          1,    'count',                 'count',            None,          None,      '2026-02-09',   '2026-02-16',       0,        1,      0,             1,                  0,              0,      active'),
+    (132,           5,              'Tortilla',       'Bakery',          1,    'count',                 'count',            None,          None,      '2026-02-09',   '2026-02-16',       0,        1,      0,             1,                  0,              0,      'active'),
     (133,           5,                  'Bread',             'Bakery',   1,   'loaf',  'count', None, None, '2026-02-10', '2026-02-14', 0, 1, 0, 1, 0, 0, 'active'),
     (134,           5,                  'Sugar',             'Pantry', 500,   'g',     'weight', 500, None, '2026-01-12', '2028-01-12', 0, 1, 0, 1, 0, 0, 'active'),
     (135,           5,                  'Salt',              'Pantry', 250,   'g',     'weight', 250, None, '2026-01-10', '2028-01-10', 0, 1, 0, 1, 0, 0, 'active'),
