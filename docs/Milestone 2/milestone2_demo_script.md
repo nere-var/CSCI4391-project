@@ -68,6 +68,7 @@ Starting state:
      **Expected Behavior**
      - Recipe is displayed and ingredients align with pantry
     
+---
 
 ### Scenario: Failure Path 
 
