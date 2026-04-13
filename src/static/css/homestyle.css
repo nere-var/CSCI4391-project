@@ -460,6 +460,19 @@ z-index: 2;
     font-size: 16px;
 }
 
+.kawaii-lil-action-btn{
+    width: 50px;
+    padding: 1px;
+    background-color: #e89b4f;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 11px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+
 .kawaii-btn {
     width: 100%;
     padding: 12px;
@@ -485,6 +498,16 @@ z-index: 2;
 
 
 /* --- Recipe‑card style login box --- */
+.kawaii-table-wider {
+    width: 600px;
+    margin: 40px auto;
+    padding: 25px;
+    background: ##e89b4f;
+    border: 3px solid #e0c39c;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
 .kawaii-table {
     width: 350px;
     margin: 40px auto;
