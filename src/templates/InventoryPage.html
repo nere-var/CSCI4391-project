@@ -155,13 +155,15 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <button type="submit" class="kawaii-lil-action-btn">Use</button>
                             </form>
 
+                            <form action="{{ url_for('compost_item', item_id=item.id, player_id=current_player.id) }}" method="POST" style="display:inline;">
+                                <button type="submit" class="kawaii-lil-action-btn">Compost</button>
+                            </form><br>
+
                             <form action="{{ url_for('donate_item', item_id=item.id, player_id=current_player.id) }}" method="POST" style="display:inline;">
                                 <button type="submit" class="kawaii-lil-action-btn">Donate</button>
                             </form>
 
-                            <form action="{{ url_for('compost_item', item_id=item.id, player_id=current_player.id) }}" method="POST" style="display:inline;">
-                                <button type="submit" class="kawaii-lil-action-btn">Compost</button>
-                            </form>
+                            
                         {% endif %}
 
                         <!-- ==================== 
