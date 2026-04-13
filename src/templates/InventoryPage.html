@@ -78,7 +78,7 @@
         {%endif%}
     </div>   
     <!-- ================= USER INPUT ================= -->
-    <form method="post">
+    <form method="post" onsubmit="showLoading()">
         <div class="input-Chatgroup-btn">
             <input type="text" class="text-goes-here-AI" name="message" placeholder="text Here !!">
             <button class="submit-btn" type="submit">submit</button>
@@ -218,6 +218,14 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+<!-- ==========================================
+     Loading symbol for when it takes long time
+     =========================================== -->
+
+     <div id = "loading-box">
+        <img id= "loading-image" src="{{ url_for('static', filename='Pictures/Binny.png')}}" alt= "Loading Recipe ...">
+        <h3 class="loading-text">Loading Recipe...</h3>
+    </div>
 
 
 
