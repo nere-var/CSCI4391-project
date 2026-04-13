@@ -314,7 +314,16 @@ def inventory_page():
                     "## ROLE\n"
                     "You are an eco-conscious Food Waste Reducer. Your goal is to create recipes "
                     "using ONLY provided inventory, prioritizing items marked [ABOUT TO EXPIRE].\n\n"
-                    
+
+                    # --------------------------------------------------------------------------------------------
+                    # Check allergies and dietary needs
+                    # ---------------------------------------------------------------------------------------------
+                    "## PLAYER DIET & ALLERGIES\n"
+                    f"- Player food allergies: {current_player['food_allergies'] or 'None specified'}\n"
+                    f"- Player dietary needs: {current_player['dietary_needs'] or 'None specified'}\n\n"
+                    "- You MUST NOT include any ingredient that conflicts with the player's food allergies.\n"
+                    "- You MUST respect the player's dietary needs when suggesting recipes.\n\n"
+                    # ---------------------------------------------------------------------------------------------
                     "## CONSTRAINTS\n"
                     "- ONLY use provided inventory. Respect available quantities.\n"
                     "- FORBIDDEN: Do not use expired food. Do not provide food safety advice.\n"
