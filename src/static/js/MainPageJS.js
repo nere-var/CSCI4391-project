@@ -8,6 +8,10 @@ function closeChatWindow() {
     localStorage.setItem("chatOpen", "false"); /* Stores status of chatwindow */
 }
 
+/* Source - https://stackoverflow.com/a/12767900
+Posted by D.A.J. DEV, modified by community. See post 'Timeline' for change history
+ Retrieved 2026-04-13, License - CC BY-SA 4.0
+ */
 /* This is for the loading of the recipe*/
 function showLoading(){
     document.getElementById("loading-box").style.display = "flex"
