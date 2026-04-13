@@ -150,7 +150,7 @@ def dashboard():
 
     if expiring_soon:
         item_list = ", ".join(expiring_soon)
-        flash(f"⚠️ Heads up! Your {item_list} will expire in 3 days.", "warning")
+        flash(f"Heads up! Your {item_list} will expire in 4 days.", "warning")
 
     return render_template('dashboard.html', player=current_player, meals=meals, stats=stats)
 
