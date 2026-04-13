@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <div class="body">
     <div class="table-container">
         <!-- =================== Table Setup =================== -->
-        <table class="kawaii-table" id="inventoryTable">
+        <table class="kawaii-table-wider" id="inventoryTable">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -152,15 +152,15 @@ document.addEventListener("DOMContentLoaded", function () {
                              =================== -->
                         {% if item.status == 'active' %}
                             <form action="{{ url_for('use_item', item_id=item.id, player_id=current_player.id) }}" method="POST" style="display:inline;">
-                                <button type="submit" class="kawaii-lil-btn">Use</button>
+                                <button type="submit" class="kawaii-lil-action-btn">Use</button>
                             </form>
 
                             <form action="{{ url_for('donate_item', item_id=item.id, player_id=current_player.id) }}" method="POST" style="display:inline;">
-                                <button type="submit" class="kawaii-lil-btn">Donate</button>
+                                <button type="submit" class="kawaii-lil-action-btn">Donate</button>
                             </form>
 
                             <form action="{{ url_for('compost_item', item_id=item.id, player_id=current_player.id) }}" method="POST" style="display:inline;">
-                                <button type="submit" class="kawaii-lil-btn">Compost</button>
+                                <button type="submit" class="kawaii-lil-action-btn">Compost</button>
                             </form>
                         {% endif %}
 
