@@ -100,33 +100,4 @@ Steps:
 
 ---
 
-### Scenario: Substituion logic 
 
-Starting state: 
-- User is logged in as demo
-
-Pantry state:
-- Chicken breast(expired)
-- Chicken thigh (fresh)
-- onion
-- garlic
-
-  Steps:
-  1. Enter prompt:
-       I would like a recipe for chicken stew
-  2. Submit prompt
-
-  **Expected Output**
-  - System detects:
-      - Requested ingredient: chicken
-      - Available option: chicken thigh ***(valid)***, chicken breast ***(invalid)***
-  - AI or system substitutes ingredients.
-
-  **Expected Behavior**
-  - Recipe is generated using: Chicken thigh instead of chicken breast
-  - Validator: Confirms no expired ingredients for recipe, confirms valid proportions
-
-  **Expected Result**
-  - Recipe successfully displayed
-  - No expired ingredients used
-  - Substitution is either: Explicity mentions OR reflected in ingredients.
