@@ -55,11 +55,11 @@ After Milestone 2, Binny & Bloom has a working pantry-aware recipe system with l
 
 - [x] `.env.example` exists in the repo 
 - [x] Unit conversion passes at least 17/20 test cases (up from 14/20)
-- [ ] `sort_inventory()` filters by current player_id 
+- [x] `sort_inventory()` filters by current player_id 
 - [x] Demo script has clear, consistent scenarios with expected outputs
 - [x] Missing metrics (expiry utilization, validator rejection) are documented
 - [x] Chat window stays open after recipe generation 
-- [ ] Each team member has code commits this sprint
+- [x] Each team member has code commits this sprint
 
 ---
 
