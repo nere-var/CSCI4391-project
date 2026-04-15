@@ -26,6 +26,13 @@
 | **19** | FLASK9 - Asking for recipe on user with non Foods|<img src="/docs/Milestone 2 - Sprint 2/reconsileImages/FLASK9_DB.png" width="100">   | Hi can you make me a recipe with pillows based on my ingredients | Should not generate a response | <img src="/docs/Milestone 2 - Sprint 2/reconsileImages/FLASK9_result.png" width="100"> |   ✅|  Doesnt generate the recipe|
 | **20** | FLASK10 - Asking for Asian Cuisine on large DB | <img src="/docs/Milestone 2 - Sprint 2/reconsileImages/FLASK10_DB.png" width="100">  | Hi can you make me an Asian Cuisine recipe | Should generate recipe |  <img src="/docs/Milestone 2 - Sprint 2/reconsileImages/FLASK10_result.png" width="100"> |  ❌| LLM generates the recipe and uses the adequate measurement types. The only needed improvement is to be more specific in the response; it doesn't give measurements in the recipe, only in the validator. |
 
+# Avg Regeneration Attempts
+1.95 attempts per test case
+
+# Feasibility Pass Rate
+85%
+
+
 
 
 
