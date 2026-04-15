@@ -190,9 +190,5 @@ If the ingredients are not available:<br>
 <br /><br /><br /><br />
 
 The Krusty Compost Crew<br />
-<a href="https://github.com/picklefarm1234" title="Abigail R"><img width="50" height="50" alt="profile image" src="https://avatars.githubusercontent.com/u/230457100?v=4" /></a>
-<a href="https://github.com/AlexandriaTH" title="Taja H"><img width="50" height="50" alt="profile image" src="https://avatars.githubusercontent.com/u/118304167?v=4" /></a>
-<a href="https://github.com/OrangeXR" title="Luis M"><img width="50" height="50" alt="profile image" src="https://avatars.githubusercontent.com/u/77978673?s=64&v=4" /></a>
-<a href="https://github.com/jayv2025" title="Jay V"><img width="50" height="50" alt="profile image" src="https://avatars.githubusercontent.com/u/179060597?v=4" /></a>
-<a href="https://github.com/nere-var" title="Emma "><img width="50" height="50" alt="profile image" src="https://avatars.githubusercontent.com/u/58350011?v=4" /></a>
+<a href="https://github.com/picklefarm1234" title="Abigail R"><img width="50" height="50" alt="profile image" src="https://avatars.githubusercontent.com/u/230457100?v=4" /></a><a href="https://github.com/AlexandriaTH" title="Taja H"><img width="50" height="50" alt="profile image" src="https://avatars.githubusercontent.com/u/118304167?v=4" /></a><a href="https://github.com/OrangeXR" title="Luis M"><img width="50" height="50" alt="profile image" src="https://avatars.githubusercontent.com/u/77978673?s=64&v=4" /></a><a href="https://github.com/jayv2025" title="Jay V"><img width="50" height="50" alt="profile image" src="https://avatars.githubusercontent.com/u/179060597?v=4" /></a><a href="https://github.com/nere-var" title="Emma "><img width="50" height="50" alt="profile image" src="https://avatars.githubusercontent.com/u/58350011?v=4" /></a>
 
