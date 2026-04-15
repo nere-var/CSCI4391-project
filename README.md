@@ -179,11 +179,9 @@ If the ingredients are not available:<br>
 
 <br /><br /><br />
 
-## <a name="demo"></a>Demo:<br />
+## <a name="demo"></a>Demos:<br />
 
-<a ref="https://www.youtube.com/watch?v=rEP0uPVVnNU"><img src="https://github.com/user-attachments/assets/3f10d1dd-e9e8-4d08-8b47-7031dc430126" width="300" height="200"></a>
-
-<a ref="https://www.youtube.com/watch?v=LsMbCGHMmF0"><img src="https://github.com/user-attachments/assets/abe86b95-9ff9-4d0d-9d72-1df5a50b15dd" width="300" height="200"></a>
+<a ref="https://www.youtube.com/watch?v=rEP0uPVVnNU"><img src="https://github.com/user-attachments/assets/3f10d1dd-e9e8-4d08-8b47-7031dc430126" width="300" height="200"></a> <a ref="https://www.youtube.com/watch?v=LsMbCGHMmF0"><img src="https://github.com/user-attachments/assets/abe86b95-9ff9-4d0d-9d72-1df5a50b15dd" width="300" height="200"></a>
 
 
 
