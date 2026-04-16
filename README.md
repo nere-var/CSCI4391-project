@@ -80,17 +80,17 @@ SeniorProject/
 <br /><br />
 
 For Windows Users:
-- ``` apt install python3.13-venv ```
-- ``` apt install git ```
-- ```python3 -m venv venv```        # create virtual environment
+- ``` apt install python3.13-venv ```      # install the virtual environment module for Python 3.13
+- ``` apt install git ```                  # install Git
+- ```python3 -m venv venv```               # create virtual environment
 - ```git clone https://github.com/nere-var/CSCI4391-project```
 - ```cd CSCI4391-project```
-- ```pip install -r requirements.txt```   # installs all packages listed
+- ```pip install -r requirements.txt```    # installs all packages listed
 
 For Mac/Linux Users:
-- ``` apt install python3.13-venv ```
-- ``` apt install git ```
-- ```python3 -m venv venv```        # create virtual environment
+- ``` apt install python3.13-venv ``` # install the virtual environment module for Python 3.13
+- ``` apt install git ```             # install Git
+- ```python3 -m venv venv```          # create virtual environment
 - ```source venv/bin/activate```      # activate it
 - ```git clone https://github.com/nere-var/CSCI4391-project```
 - ```cd CSCI4391-project```
