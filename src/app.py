@@ -429,21 +429,6 @@ def inventory_page():
                             "ingredients": used_ingredients,
                             "steps": parsed.get("recipe_text", "")
                         }
-                        # appy recipe to inventory
-                        for ing in used_ingredients:
-                            item = db.execute(
-                                "SELECT * FROM inventory WHERE name = ? AND player_id = ?",
-                                (ing["name"], player_id)
-                            ).fetchone()
-                            if not item:
-                                continue 
-
-                            amount, unit_type = convert_recipe_unit(
-                                ing["quantity"], 
-                                ing["unit"]
-                            )
-                            consume_inventory_item(db, item, amount, ing["unit"])
-                        db.commit()     
                     except json.JSONDecodeError:
                         Response = {"type": "chat", "text": validation_msg}
                     break
