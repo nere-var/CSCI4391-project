@@ -18,13 +18,14 @@ def normalizeIngredient(name):
     return name
 
 def ingredients_match(req_name, inv_name):
-    req_words = req_name.split() 
-    inv_words = inv_name.split()
+    
 
     # exact match
     if req_name == inv_name:
         return True
 
+    req_words= set(req_name.split())
+    inv_words = set(inv_name.split())
     # generic protein matching
     proteins = ["chicken", "beef", "pork", "fish", "turkey"]
 
@@ -32,9 +33,12 @@ def ingredients_match(req_name, inv_name):
         if protein in req_words and protein in inv_words:
             return True
 
+    if req_words.issubset(inv_words):
+        return True 
+   
     # fallback partial match
-    if req_name in inv_name or inv_name in req_name:
-        return True
+    #if req_name in inv_name or inv_name in req_name:
+     #   return True
 
     return False
 

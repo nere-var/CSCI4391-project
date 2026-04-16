@@ -6,8 +6,9 @@ from datetime import datetime, timedelta
 import os
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
-from unit_conversion import normalize_quantity
+from unit_conversion import normalize_quantity, convert_recipe_unit
 from expiry import get_expiry_date
+import json
 
 # ========================
 # Create Flask application
@@ -295,17 +296,17 @@ def inventory_page():
 # =====================
 # Ai integration 
 # =====================
-    Response = None    #So errors dont occur 
-    
-    if request.method == 'POST': #Checking if anything is inputed 
-        message = request.form.get("message" ,"hello")  #defualt message 
-        
-        Chat_box_In = Ai_Chat() #creating an instance
+    Response = None     #So errors dont occur
+
+    if request.method == 'POST': #Checking if any is inputed
+        message = request.form.get("message", "hello")  #default message 
+        user_lower = message.lower()
+
+        Chat_box_In = Ai_Chat()  #creating an instance 
         Chat_validator = recipe_validator()
-        inventory_items = Chat_box_In.get_active_inventory(player_id) #getting context for the AI
+        inventory_items = Chat_box_In.get_active_inventory(player_id)  #getting context for the AI
         inventory_context = Chat_box_In.build_inventory_context(inventory_items)
-        
-        
+
         #Message for the AI same as openrouterllm
         messages = [
             {
@@ -314,7 +315,6 @@ def inventory_page():
                     "## ROLE\n"
                     "You are an eco-conscious Food Waste Reducer. Your goal is to create recipes "
                     "using ONLY provided inventory, prioritizing items marked [ABOUT TO EXPIRE].\n\n"
-
                     # --------------------------------------------------------------------------------------------
                     # Check allergies and dietary needs
                     # ---------------------------------------------------------------------------------------------
@@ -328,68 +328,188 @@ def inventory_page():
                     "- ONLY use provided inventory. Respect available quantities.\n"
                     "- FORBIDDEN: Do not use expired food. Do not provide food safety advice.\n"
                     "- If asked about food safety, respond: 'Sorry, I don't have that info.'\n"
-                    "- PRIORITIZE: Use 2-3 [ABOUT TO EXPIRE] items in every recipe to reduce waste.\n\n"
-                    
+                    "- PRIORITIZE: Use 2-3 [ABOUT TO EXPIRE] items in every recipe to reduce waste.\n"
+                    "- Quantities MUST be realistic for cooking.\n"
+                    "- Typical cooking amounts: Salt: pinch–5g | Oil: 15–45ml | Spices: under 5g.\n\n"
+                    "- NEVER invent ingredients not explicitly listed in the inventory. If an item is not in the inventory, do not use it.\n"
+
                     "## MEASUREMENT LOGIC\n"
                     "You must match units EXACTLY as provided in the inventory list:\n"
                     "1. WEIGHT (g, lbs): Do NOT convert to volume. Use the exact weight unit.\n"
                     "2. COUNT: Use 'count' only (e.g., '1 count' of onion, not '100g').\n"
                     "3. VOLUME (ml): You may use ml, cups, or tbsp.\n\n"
                     
-                    "## OUTPUT FORMAT\n"
-                    "1. CHAT: If the user is just greeting or chatting, respond with friendly, concise text.\n"
-                    "2. RECIPE: If the user asks for a recipe or cooking advice, you MUST output "
-                    "STRICTLY a JSON object. No conversational filler before or after the JSON.\n\n"
-                    
-                    "### JSON SCHEMA\n"
+                     "## OUTPUT FORMAT — FOUR MODES\n\n"
+ 
+                    "### MODE 1: CHAT\n"
+                    "For greetings or general questions: respond with friendly, concise plain text.\n\n"
+ 
+                    "### MODE 2: RECIPE\n"
+                    "If the user asks for a recipe or cooking advice, return ONLY valid JSON. "
+                    "No text before or after. No markdown.\n"
                     "{\n"
-                    '  "recipe_text": "Detailed cooking instructions and tips.",\n'
+                    '  "response_type": "recipe",\n'
+                    '  "recipe_title": "string",\n'
+                    '  "recipe_text": "string (step-by-step instructions)",\n'
                     '  "ingredients_used": [\n'
                     '    {"name": "string", "quantity": number, "unit": "string", "measurement_type": "string"}\n'
                     '  ]\n'
-                    "}"
+                    "}\n\n"
+ 
+                    "### MODE 3: DECOMPOSITION\n"
+                    "If the user asks about composting, disposing, or decomposing food, "
+                    "return ONLY valid JSON listing items flagged as compostable or expired. "
+                    "No text before or after. No markdown.\n"
+                    "{\n"
+                    '  "response_type": "decomposition",\n'
+                    '  "suggestions": [\n'
+                    '    {\n'
+                    '      "name": "string",\n'
+                    '      "method": "string (e.g. home compost, green bin, bokashi, worm bin)",\n'
+                    '      "notes": "string — a specific tip for THIS item. Examples: '
+                    '       avocado pit: remove hard pit before composting | '
+                    '       citrus: use sparingly in worm bins, high acidity | '
+                    '       raw meat: bokashi only, never open compost | '
+                    '       cooked food: green bin only | '
+                    '       eggplant: chop skin into small pieces, flesh breaks down fast | '
+                    '       banana peel: great nitrogen source, compost whole | '
+                    '       bread: attracts pests, use bokashi or bury deep. '
+                    '       Give a UNIQUE note per item — never repeat the same note."\n'
+                    '    }\n'
+                    '  ]\n'
+                    "}\n\n"
+ 
+                    "### MODE 4: DONATION\n"
+                    "If the user asks about donating food, return ONLY valid JSON listing items "
+                    "marked donation_allowed=1 that are NOT expired and NOT raw_meat. "
+                    "No text before or after. No markdown.\n"
+                    "{\n"
+                    '  "response_type": "donation",\n'
+                    '  "suggestions": [\n'
+                    '    {\n'
+                    '      "name": "string — item name exactly as in inventory",\n'
+                    '      "quantity": number,\n'
+                    '      "unit": "string — use the unit from inventory",\n'
+                    '      "donation_tip": "string — REQUIRED, specific tip e.g. bring to food bank sealed, check best-by before drop-off, community fridge accepted"\n'
+                    '    }\n'
+                    '  ]\n'
+                    "}\n"
                 )
             }
         ]
+
         # append user message to conversation
         messages.append({"role": "system",
-                         "content": f"Current Inventory:\n{inventory_context}" # provide current inventory context to the LLM every turn so it can make informed suggestions based on what the player has available
+                          "content": f"Current Inventory:\n{inventory_context}" # provide current inventory context to the LLM every turn so it can make informed suggestions based on what the player has available
                          })
+        
+        messages.append({"role": "user", "content": message})
 
-        messages.append({"role": "user", "content": message}) 
-        #getting the response
-        MAX_RETRIES = 1 # retries for recipe generation if validation fails, can adjust as needed
-        for attempt in range(MAX_RETRIES + 1):
-            raw_response = Chat_box_In.getLLMResponse(messages) 
-            #Check if user wants recipe
-            user_lower = message.lower()
-            if any(word in user_lower for word in Chat_box_In.Cook_WORDS):
+        MAX_RETRIES = 1 # retries for recipe generation if validation fails, can adjust as needed 
+        #===============
+        # Recipe section
+        #===============
+        if any(word in user_lower for word in Chat_box_In.Cook_WORDS):
+            for attempt in range(MAX_RETRIES + 1):
+                raw_response = Chat_box_In.getLLMResponse(messages)
+                # for rate limit exceeded 
+                if raw_response is None:
+                    Response = {"type": "error", "text": "The model is busy. Please try again in a moment."}
+                    break
                 # send recipe to validator
                 is_valid, validation_msg = Chat_validator.validate_AI_recipe(raw_response, player_id)
-                
                 if is_valid:
-                    # pass, output recipe to user
-                    Response=f"\nLLM: {validation_msg}\n"
-                    # save context so the llm remembers what it just said
-                    messages.append({"role": "assistant", "content": validation_msg})
-                    break # break out of the retry loop
+                    try:
+                        parsed = json.loads(raw_response)
+                        session["last_recipe"] = parsed
+                        used_ingredients = parsed.get("ingredients_used", []) 
+                        Response = {
+                            "type": "recipe",
+                            "title": parsed.get("recipe_title", "Recipe"),
+                            "ingredients": used_ingredients,
+                            "steps": parsed.get("recipe_text", "")
+                        }
+                        # appy recipe to inventory
+                        for ing in used_ingredients:
+                            item = db.execute(
+                                "SELECT * FROM inventory WHERE name = ? AND player_id = ?",
+                                (ing["name"], player_id)
+                            ).fetchone()
+                            if not item:
+                                continue 
+
+                            amount, unit_type = convert_recipe_unit(
+                                ing["quantity"], 
+                                ing["unit"]
+                            )
+                            consume_inventory_item(db, item, amount, ing["unit"])
+                        db.commit()     
+                    except json.JSONDecodeError:
+                        Response = {"type": "chat", "text": validation_msg}
+                    break
                 else:
-                    # if fail:
+                    #if failed
                     if attempt < MAX_RETRIES:
-                        Response=f"\n[System: Recipe failed validation: {validation_msg}. Asking AI to regenerate and scale down...]\n"
-                        # add the failure to the context and loop again to regenerate
+                        # add the failure to the context and loop again for regenerate
                         messages.append({"role": "assistant", "content": raw_response})
-                        messages.append({"role": "user", "content": f"Your previous recipe failed validation because: {validation_msg}. Please rewrite the recipe to fix this (e.g., reduce servings or omit the ingredient) and output valid JSON again."})
+                        messages.append({"role": "user", "content": f"Your previous recipe failed validation because: {validation_msg}. Please rewrite the recipe to fix this and output valid JSON again."})
                     else:
-                        Response=f"\nLLM: I tried to make a recipe, but we don't have enough ingredients. {validation_msg}\n"
-                        messages.append({"role": "assistant", "content": f"Failed: {validation_msg}"})
-                            
+                        Response = {"type": "error", "text": f"I tried to make a recipe but couldn't get the quantities right. {validation_msg}"}
+        # ================
+        # donation section
+        # ================
+        elif any(word in user_lower for word in Chat_box_In.Donate_WORDS):
+            for attempt in range(MAX_RETRIES + 1):
+                raw_response = Chat_box_In.getLLMResponse(messages)
+                if raw_response is None:
+                    Response = {"type": "error", "text": "The model is busy. Please try again in a moment."}
+                    break
+                try:
+                    parsed = json.loads(raw_response)
+                    if "suggestions" not in parsed:
+                        raise ValueError("Missing suggestions key")
+                    suggestions = parsed.get("suggestions", [])
+                    Response = {"type": "donation", "suggestions": suggestions}      
+                    break
+                except (json.JSONDecodeError, ValueError):
+                    if attempt < MAX_RETRIES:
+                        messages.append({"role": "assistant", "content": raw_response})
+                        messages.append({"role": "user", "content": "Return ONLY valid JSON with a 'suggestions' list for donation. No explanation. Follow the schema exactly."})
+                    else:
+                        Response = {"type": "chat", "text": raw_response}
+
+        # =====================
+        # decomposition section
+        # =====================
+        elif any(word in user_lower for word in Chat_box_In.Decomp_WORDS):
+            for attempt in range(MAX_RETRIES + 1):
+                raw_response = Chat_box_In.getLLMResponse(messages)
+                if raw_response is None:
+                    Response = {"type": "error", "text": "The model is busy. Please try again in a moment."}
+                    break
+                try:
+                    parsed = json.loads(raw_response)
+                    if "suggestions" not in parsed:
+                        raise ValueError("Missing suggestions key")
+                    
+                    Response = {"type": "decomposition", "suggestions": parsed.get("suggestions", [])}
+                    break
+                except (json.JSONDecodeError, ValueError):
+                    if attempt < MAX_RETRIES:
+                        messages.append({"role": "assistant", "content": raw_response})
+                        messages.append({"role": "user", "content": "Return ONLY valid JSON with a 'suggestions' list for decomposition. No explanation. Follow the schema exactly."})
+                    else:
+                        Response = {"type": "chat", "text": raw_response}
+
+        # ============
+        # general chat
+        # ============
+        else:
+            raw_response = Chat_box_In.getLLMResponse(messages)
+            if raw_response is None:
+                Response = {"type": "error", "text": "The model is busy. Please try again in a moment."}
             else:
-                Response=f"\nLLM: {raw_response}\n"
-                messages.append({"role": "assistant", "content": raw_response})
-                break
-            
-            
+                Response = {"type": "chat", "text": raw_response}  
     db.close()
     return render_template(
         "InventoryPage.html",
@@ -397,7 +517,49 @@ def inventory_page():
         current_player=current_player,
         Response=Response
     )
+    
+#apply recipe amount used (when "Cook this recipe is clicked")
+@app.route("/apply_recipe", methods=["POST"])
+@login_required
+def apply_recipe():
+    player_id = session["player_id"]
+    db = get_db()
 
+    recipe = session.get("last_recipe")
+
+    if not recipe:
+        return redirect(url_for("inventory_page"))
+
+    for ing in recipe.get("ingredients_used", []):
+        item = db.execute(
+            "SELECT * FROM inventory WHERE name = ? AND player_id = ?",
+            (ing["name"], player_id)
+        ).fetchone()
+
+        if not item:
+            continue
+
+        amount, _ = convert_recipe_unit(ing["quantity"], ing["unit"])
+
+        consume_inventory_item(db, item, amount, ing["unit"])
+
+        base_qty = item["quantity_grams"] or item["quantity_ml"] or item["quantity"]
+
+        if base_qty:
+            usage_ratio = amount / base_qty 
+            score_change= item["price"] * usage_ratio
+
+            db.execute(
+                "UPDATE players SET score = score - ? WHERE id = ?",
+                (score_change, player_id)
+            )
+
+    db.commit()
+    db.close()
+
+    flash("Recipe cooked successfully!", "success")
+
+    return redirect(url_for("inventory_page"))
 
 # =====================
 # Add Item Page
@@ -478,6 +640,67 @@ def add_item_page():
 
     return render_template("AddItemPage.html", current_player=current_player)
 
+
+
+# =====================================
+# update inventory if user uses recipe
+# ======================================
+def consume_inventory_item(db, item, amount, unit):
+
+    grams = item["quantity_grams"]
+    ml = item["quantity_ml"]
+
+    unit = unit.lower()
+
+    # ====================
+    # weight consumption
+    # ====================
+    if unit in ["g", "gram", "grams", "kg", "lb", "oz", "mg"]:
+        if grams is None:
+            return False
+
+        new_value = grams - amount
+
+        if new_value <= 0:
+            db.execute("DELETE FROM inventory WHERE id = ?", (item["id"],))
+        else:
+            db.execute(
+                "UPDATE inventory SET quantity_grams = ? WHERE id = ?",
+                (new_value, item["id"])
+            )
+
+    # ====================
+    # volume consumption
+    # ====================
+    elif unit in ["ml", "l", "liter", "cup", "tbsp", "tsp", "fl_oz", "gallon"]:
+        if ml is None:
+            return False
+
+        new_value = ml - amount
+
+        if new_value <= 0:
+            db.execute("DELETE FROM inventory WHERE id = ?", (item["id"],))
+        else:
+            db.execute(
+                "UPDATE inventory SET quantity_ml = ? WHERE id = ?",
+                (new_value, item["id"])
+            )
+
+    # ====================
+    # count items 
+    # ====================
+    else:
+        new_value = item["quantity"] - amount
+
+        if new_value <= 0:
+            db.execute("DELETE FROM inventory WHERE id = ?", (item["id"],))
+        else:
+            db.execute(
+                "UPDATE inventory SET quantity = ? WHERE id = ?",
+                (new_value, item["id"])
+            )
+
+    return True
 # =====================
 # Use Item
 # =====================
@@ -491,7 +714,7 @@ def use_item(item_id):
         "SELECT quantity, price FROM inventory WHERE id = ?",
         (item_id,)
     ).fetchone()
-
+    
     if item:
         new_qty = item["quantity"] - 1
 
@@ -529,9 +752,10 @@ def donate_item(item_id):
 
     if item:
         db.execute(
-            "UPDATE players SET score = score - ? WHERE id = ?",
+            "UPDATE players SET score = score + ? WHERE id = ?",
             (item["price"] * 0.5, player_id)
         )
+        flash("+.5 points for donating food!", "success")
 
         db.execute("UPDATE inventory SET status = 'donated' WHERE id = ?", (item_id,))
         db.commit()
@@ -555,9 +779,10 @@ def compost_item(item_id):
 
     if item:
         db.execute(
-            "UPDATE players SET score = score - ? WHERE id = ?",
+            "UPDATE players SET score = score + ? WHERE id = ?",
             (item["price"] * 0.25, player_id)
         )
+        flash(f"+.25 points for composting!", "success")
 
         db.execute("UPDATE inventory SET status = 'composted' WHERE id = ?", (item_id,))
         db.commit()
@@ -571,7 +796,20 @@ def compost_item(item_id):
 @app.route("/delete/<int:item_id>", methods=["POST"])
 @login_required
 def delete_item(item_id):
+    player_id = session["player_id"]
     db = get_db()
+
+    item= db.execute(
+        "SELECT price FROM inventory WHERE id = ?", (item_id,)
+    ).fetchone()
+
+    if item:
+        penalty = item["price"] * 1.0 
+
+        db.execute("UPDATE players SET score = score - ? WHERE id = ?", (penalty, player_id)
+        )
+
+        flash(f"-{penalty:.2f} points for wasting food!", "error")
     db.execute("DELETE FROM inventory WHERE id = ?", (item_id,))
     db.commit()
     db.close()
@@ -587,11 +825,11 @@ def delete_item(item_id):
 def scoreboard():
     db = get_db()
 
-    # Order by score ascending (ascending = lowest → highest)
+    # Order by score descending (highest → lowest)
     players = db.execute("""
         SELECT id, name, score, profile_picture
         FROM players
-        ORDER BY score ASC
+        ORDER BY score DESC
     """).fetchall()
 
     db.close()
