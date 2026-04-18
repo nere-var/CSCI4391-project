@@ -783,17 +783,22 @@ def delete_item(item_id):
     player_id = session["player_id"]
     db = get_db()
 
-    item= db.execute(
-        "SELECT price FROM inventory WHERE id = ?", (item_id,)
+    item = db.execute(
+        "SELECT price, status FROM inventory WHERE id = ?",
+        (item_id,)
     ).fetchone()
 
     if item:
-        penalty = item["price"] * 1.0 
+        status = item["status"] if "status" in item.keys() else "active"
 
-        db.execute("UPDATE players SET score = score - ? WHERE id = ?", (penalty, player_id)
-        )
-
-        flash(f"+ {penalty:.2f} points for wasting food!", "error")
+        #penalize ONLY if not already handled properly
+        if status not in ["composted", "donated"]:
+            penalty = item["price"] * 1.0
+            db.execute(
+                "UPDATE players SET score = score + ? WHERE id = ?",
+                (penalty, player_id)
+            )
+            flash(f"+{penalty:.2f} points for wasting food!", "error")
     db.execute("DELETE FROM inventory WHERE id = ?", (item_id,))
     db.commit()
     db.close()
