@@ -67,8 +67,7 @@ def calculate_flags(item):
     # donation rules
     donation_allowed = 0 if opened == 1 or raw_meat == 1 or decomposition_flag == 1 else 1
 
-    return raw_meat, perishable, donation_allowed, decomposition_flag
-
+    return raw_meat, perishable, donation_allowed, decomposition_flag, non_perishable
 # ======================
 # Login Required Wrapper
 # ======================
@@ -814,7 +813,7 @@ def scoreboard():
     players = db.execute("""
         SELECT id, name, score, profile_picture
         FROM players
-        ORDER BY score DESC
+        ORDER BY score ASC
     """).fetchall()
 
     db.close()
