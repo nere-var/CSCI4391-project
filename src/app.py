@@ -737,10 +737,10 @@ def donate_item(item_id):
 
     if item:
         db.execute(
-            "UPDATE players SET score = score + ? WHERE id = ?",
+            "UPDATE players SET score = score - ? WHERE id = ?",
             (item["price"] * 0.5, player_id)
         )
-        flash("+.5 points for donating food!", "success")
+        flash("- .5 points for donating food!", "success")
 
         db.execute("UPDATE inventory SET status = 'donated' WHERE id = ?", (item_id,))
         db.commit()
@@ -764,10 +764,10 @@ def compost_item(item_id):
 
     if item:
         db.execute(
-            "UPDATE players SET score = score + ? WHERE id = ?",
+            "UPDATE players SET score = score - ? WHERE id = ?",
             (item["price"] * 0.25, player_id)
         )
-        flash(f"+.25 points for composting!", "success")
+        flash(f"- .25 points for composting!", "success")
 
         db.execute("UPDATE inventory SET status = 'composted' WHERE id = ?", (item_id,))
         db.commit()
@@ -794,7 +794,7 @@ def delete_item(item_id):
         db.execute("UPDATE players SET score = score - ? WHERE id = ?", (penalty, player_id)
         )
 
-        flash(f"-{penalty:.2f} points for wasting food!", "error")
+        flash(f"+ {penalty:.2f} points for wasting food!", "error")
     db.execute("DELETE FROM inventory WHERE id = ?", (item_id,))
     db.commit()
     db.close()
