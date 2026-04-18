@@ -784,7 +784,7 @@ def delete_item(item_id):
     db = get_db()
 
     item = db.execute(
-        "SELECT price, status FROM inventory WHERE id = ?",
+        "SELECT price, status, name FROM inventory WHERE id = ?",
         (item_id,)
     ).fetchone()
 
@@ -799,6 +799,10 @@ def delete_item(item_id):
                 (penalty, player_id)
             )
             flash(f"+{penalty:.2f} points for wasting food!", "error")
+        else: 
+            #feedback for composted/donated delete action
+            flash(f"{item['name']} successfully removed from inventory.", "success")
+            
     db.execute("DELETE FROM inventory WHERE id = ?", (item_id,))
     db.commit()
     db.close()
