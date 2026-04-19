@@ -809,6 +809,26 @@ def delete_item(item_id):
 
     return redirect(url_for("inventory_page"))
 
+# ==============
+# delete recipe
+# ==============
+@app.route("/delete_meal/<int:meal_id>", methods=["POST"])
+@login_required
+def delete_meal(meal_id):
+    db = get_db()
+
+    meal = db.execute(
+        "SELECT name FROM meals WHERE id = ?",
+        (meal_id,)
+    ).fetchone()
+
+    if meal:
+        db.execute("DELETE FROM meals WHERE id = ?", (meal_id,))
+        db.commit()
+        flash(f"{meal['name']} deleted successfully.", "success")
+
+    db.close()
+    return redirect(url_for("dashboard"))  
 
 # =====================
 # Score Board  (we should rethink the scoring)
