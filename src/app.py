@@ -419,7 +419,15 @@ def inventory_page():
                 is_valid, validation_msg = Chat_validator.validate_AI_recipe(raw_response, player_id)
                 if is_valid:
                     try:
-                        parsed = json.loads(raw_response)
+                        raw_response = raw_response.strip()
+                        #parsed = json.loads(raw_response)
+                        #extract JSON safely
+                        start = raw_response.find("{")
+                        end = raw_response.rfind("}") + 1
+                        json_str = raw_response[start:end]
+
+                        parsed= json.loads(json_str)
+
                         session["last_recipe"] = parsed
                         used_ingredients = parsed.get("ingredients_used", []) 
                         Response = {
@@ -428,9 +436,10 @@ def inventory_page():
                             "ingredients": used_ingredients,
                             "steps": parsed.get("recipe_text", "")
                         }
+                            
                     except json.JSONDecodeError:
-                        Response = {"type": "chat", "text": validation_msg}
-                    break
+                        Response = {"type": "chat", "text": raw_response}
+                        break
                 else:
                     #if failed
                     if attempt < MAX_RETRIES:
@@ -859,23 +868,21 @@ def scoreboard():
 @login_required
 def save_meal():
     player_id = session["player_id"]
-    recipe_text = request.form.get("recipe_text", "").strip()
+    recipe= session.get("last_recipe")
+
+    if not recipe: 
+        flash("No recipe to save.", "error")
+        return redirect(url_for("inventory_page"))
     
-    # =============================
-    # Parse recipe
-    # =============================
-    lines = recipe_text.split("\n")
-    name = lines[0].strip() if lines else "Untitled Recipe"
-    ingredients = "\n".join(
-        [line.strip() for line in lines if "-" in line or "•" in line]
-    )
-    description = recipe_text
+    name = recipe.get("recipe_title", "Untitled Recipe")
+    ingredients = "\n".join([
+        f"{ing['name']} - {ing['quantity']} {ing['unit']}"
+        for ing in recipe.get("ingredients_used", [])
+    ])
 
-    # ========================================================================
-    # Insert to database
-    # ========================================================================
-    db = get_db()
+    description = recipe.get("recipe_text", "")
 
+    db= get_db()
     try:
         db.execute("""
             INSERT INTO meals (player_id, name, ingredients, description)
@@ -883,10 +890,8 @@ def save_meal():
         """, (player_id, name, ingredients, description))
 
         db.commit()
-    
-    finally:
+    finally: 
         db.close()
-    # ==========================================================================
     flash("Recipe saved!", "success")
     return redirect(url_for("dashboard"))
 # ==================================================================================================
