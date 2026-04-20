@@ -155,18 +155,27 @@ class recipe_validator:
             req_unit = req.get('unit', 'each')
             req_type = req.get('measurement_type', 'count')
 
-            if req_name in exp_lower:
-                return False, f"Ingredient '{req_name}' is expired and cannot be used."
             
            # print(f"\n Checking ingredient: {req_name} (Needs {req_qty} {req_unit}, Type: {req_type})") // can be removed for debugging
             # exists in pantry, fuzzy match
             matched_inv = None
+            matched_name = None
             for inv_name in inv_dict.keys():
                 if ingredients_match(req_name, inv_name):
                     matched_inv = inv_dict[inv_name]
+                    matched_name = inv_name
                     print(f"      * Found match in pantry: '{inv_name}'")
+                    print(f"      * matched_name='{matched_name}', in exp_lower: {matched_name in exp_lower}, exp_lower sample: {exp_lower[:3]}")
                     break
 
+            if not matched_inv:
+                print(f"FAILED: '{req_name}' not found in pantry.")
+                return False, f"Ingredient '{req_name}' is not in the pantry."
+
+            # check expiry against the matched pantry name, not req_name
+            if matched_name in exp_lower:
+                return False, f"Ingredient '{req_name}' is expired and cannot be used."
+                
             if not matched_inv:
                 print(f"FAILED: '{req_name}' not found in pantry.")
                 return False, f"Ingredient '{req_name}' is not in the pantry."
