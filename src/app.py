@@ -409,7 +409,7 @@ def inventory_page():
         # Recipe section
         #===============
         if any(word in user_lower for word in Chat_box_In.Cook_WORDS):
-            for attempt in range(MAX_RETRIES + 1):
+            for attempt in range(MAX_RETRIES):
                 raw_response = Chat_box_In.getLLMResponse(messages)
                 # for rate limit exceeded 
                 if raw_response is None:
@@ -441,18 +441,12 @@ def inventory_page():
                         Response = {"type": "chat", "text": raw_response}
                         break
                 else:
-                    #if failed
-                    if attempt < MAX_RETRIES:
-                        # add the failure to the context and loop again for regenerate
-                        messages.append({"role": "assistant", "content": raw_response})
-                        messages.append({"role": "user", "content": f"Your previous recipe failed validation because: {validation_msg}. Please rewrite the recipe to fix this and output valid JSON again."})
-                    else:
-                        Response = {"type": "error", "text": f"I tried to make a recipe but couldn't get the quantities right. {validation_msg}"}
+                    Response = {"type": "error", "text": f"I tried to make a recipe but couldn't get the quantities right. {validation_msg}"}
         # ================
         # donation section
         # ================
         elif any(word in user_lower for word in Chat_box_In.Donate_WORDS):
-            for attempt in range(MAX_RETRIES + 1):
+            for attempt in range(MAX_RETRIES):
                 raw_response = Chat_box_In.getLLMResponse(messages)
                 if raw_response is None:
                     Response = {"type": "error", "text": "The model is busy. Please try again in a moment."}
@@ -475,7 +469,7 @@ def inventory_page():
         # decomposition section
         # =====================
         elif any(word in user_lower for word in Chat_box_In.Decomp_WORDS):
-            for attempt in range(MAX_RETRIES + 1):
+            for attempt in range(MAX_RETRIES):
                 raw_response = Chat_box_In.getLLMResponse(messages)
                 if raw_response is None:
                     Response = {"type": "error", "text": "The model is busy. Please try again in a moment."}
