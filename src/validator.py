@@ -165,7 +165,6 @@ class recipe_validator:
                     matched_inv = inv_dict[inv_name]
                     matched_name = inv_name
                     print(f"      * Found match in pantry: '{inv_name}'")
-                    print(f"      * matched_name='{matched_name}', in exp_lower: {matched_name in exp_lower}, exp_lower sample: {exp_lower[:3]}")
                     break
 
             if not matched_inv:
