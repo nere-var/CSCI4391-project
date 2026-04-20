@@ -441,7 +441,8 @@ def inventory_page():
                         Response = {"type": "chat", "text": raw_response}
                         break
                 else:
-                    Response = {"type": "error", "text": f"I tried to make a recipe but couldn't get the quantities right. {validation_msg}"}
+                    Response = {"type": "error", "text": f"I tried to make a recipe with your current inventory. {validation_msg}"}
+        # ================
         # ================
         # donation section
         # ================
