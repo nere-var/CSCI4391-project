@@ -97,7 +97,12 @@ For Mac/Linux Users:
 - ```pip install -r requirements.txt```   # installs all packages listed
 
 Then:
-- Go to https://openrouter.ai/ to obtain an API key ```sk-or-v1-########################```
+# Create your environment file
+- cp .env.example .env   # macOS/Linux
+- copy .env.example .env # Windows
+
+# Then edit .env and paste your OpenRouter API key
+- Go to https://openrouter.ai/ to obtain an API key
 - append the .env file with your key
 
 <br><br><br>
