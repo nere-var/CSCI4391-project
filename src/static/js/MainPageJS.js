@@ -16,3 +16,11 @@ Posted by D.A.J. DEV, modified by community. See post 'Timeline' for change hist
 function showLoading(){
     document.getElementById("loading-box").style.display = "flex"
 }
+
+//to get rid of the loader
+// https://www.w3schools.com/jsref/prop_style_display.asp
+//https://www.javascripttutorial.net/javascript-dom/javascript-domcontentloaded/
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("Loaded Yay!");
+    document.getElementById("loading-box").style.display = "none";
+});
