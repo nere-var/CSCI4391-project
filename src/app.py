@@ -736,7 +736,7 @@ def use_item(item_id):
     db = get_db()
 
     item = db.execute(
-        "SELECT quantity, price FROM inventory WHERE id = ?",
+        "SELECT name, quantity, price FROM inventory WHERE id = ?",
         (item_id,)
     ).fetchone()
     
