@@ -292,7 +292,7 @@ document.addEventListener("DOMContentLoaded", function () {
                              ==================== -->
                         {% if item.status == 'composted' %}
                             <form action="{{ url_for('delete_item', item_id=item.id, player_id=current_player.id) }}" method="POST" style="display:inline;">
-                                <button type="submit">Delete</button>
+                                <button type="submit" class="kawaii-lil-action-btn">Delete</button>
                             </form>
                         {% endif %}
 
@@ -301,7 +301,7 @@ document.addEventListener("DOMContentLoaded", function () {
                              =================== -->
                         {% if item.status == 'donated' %}
                             <form action="{{ url_for('delete_item', item_id=item.id, player_id=current_player.id) }}" method="POST" style="display:inline;">
-                                <button type="submit">Delete</button>
+                                <button type="submit" class="kawaii-lil-action-btn">Delete</button>
                             </form>
                         {% endif %}
                         <!-- =================================================================================================================================== -->
