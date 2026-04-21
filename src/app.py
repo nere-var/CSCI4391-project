@@ -553,7 +553,7 @@ def apply_recipe():
             total_score_change += score_change
 
             db.execute(
-                "UPDATE players SET score = score - ? WHERE id = ?",
+                "UPDATE players SET score = ROUND(score - ?, 2) WHERE id = ?", # round to 2 decimals
                 (score_change, player_id)
             )
 
@@ -729,7 +729,7 @@ def use_item(item_id):
             )
 
         db.execute(
-            "UPDATE players SET score = score - ? WHERE id = ?",
+            "UPDATE players SET score = ROUND(score - ?, 2) WHERE id = ?",
             (item["price"], player_id)
         )
 
@@ -813,7 +813,7 @@ def delete_item(item_id):
         if status not in ["composted", "donated"]:
             penalty = item["price"] * 1.0
             db.execute(
-                "UPDATE players SET score = score + ? WHERE id = ?",
+                "UPDATE players SET score = ROUND(score + ?, 2) WHERE id = ?", # round to 2 decimals
                 (penalty, player_id)
             )
             flash(f"+{penalty:.2f} points for wasting food!", "error")
