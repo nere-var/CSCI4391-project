@@ -24,3 +24,19 @@ Before demo starts:
 Browser is open on the login screen 
 
 ---
+## Scenario 1: Login Failure (1 minute)
+
+| steps | actions                                 | what to say                       |
+|-------|-----------------------------------------|-----------------------------------|
+| 1     | Leave **Username** and **Password** fields blank| |
+| 2|  Click **Login** | | |
+
+**Expected Output:**
+- Login rejected, "Fill out field" message visible on the form
+- User remains on login screen
+
+**Requirements Verified:**
+- System must *NOT* log the user in
+- System must *NOT* load inventory or expose AI features.
+
+---
