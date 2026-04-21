@@ -1,0 +1,1 @@
+Re-execute the original 20 evaluation test cases (from Milestone 2) with the new conversion factors in src/unit_conversion.py. Publish a before/after table in docs/Sprint 3/evaluation_rerun.md. Target: 17+/20 passing.
