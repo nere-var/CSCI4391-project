@@ -26,10 +26,12 @@ Browser is open on the login screen
 ---
 ## Scenario 1: Login Failure (1 minute)
 
+
 | steps | actions                                 | what to say                       |
 |-------|-----------------------------------------|-----------------------------------|
 | 1     | Leave **Username** and **Password** fields blank| |
-| 2|  Click **Login** | | |
+| 2|  Click **Login** | |
+| 3 | Observer "Fill out field" UI message |   |
 
 **Expected Output:**
 - Login rejected, "Fill out field" message visible on the form
