@@ -57,7 +57,7 @@ Sprint 2 closed the critical Milestone 2 gaps: `.env.example`, `sort_inventory(p
 - [ ] Loading indicator appears when the user submits a chat prompt and disappears when the response renders.
 - [ ] At least one full team demo rehearsal completed with notes.
 - [ ] Single-ingredient edge case either passes or is explicitly flagged as a known limitation in the script.
-- [ ] `normalize_quantity` and `convert_recipe_unit` share a single source of truth.
+- [x] `normalize_quantity` and `convert_recipe_unit` share a single source of truth.
 - [ ] Final demo script has per-step timings and speaker notes.
 - [ ] Every team member has commits this sprint.
 
