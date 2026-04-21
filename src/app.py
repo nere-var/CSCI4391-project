@@ -33,6 +33,13 @@ def get_db():
     conn.row_factory = sqlite3.Row
     return conn
 
+# sustanability tier helper
+def get_sustainability_tier(efficiency):
+    if efficiency >= 90: return "Eco-Legend 🏆"
+    if efficiency >= 75: return "Eco-Warrior 🛡️"
+    if efficiency >= 50: return "Apprentice 🌱"
+    return "Novice 🐣"
+
 # =======================
 # define flag calculation
 # =======================
@@ -122,6 +129,11 @@ def dashboard():
         (player_id,)
     ).fetchall()
 
+    # calculation logic for efficiency
+    acquired = current_player['total_value_acquired'] or 0
+    saved = current_player['total_value_saved'] or 0
+    efficiency = (saved / acquired * 100) if acquired > 0 else 0
+
     # new - calculate stats for dashboard
     metrics = db.execute("""
         SELECT 
@@ -165,7 +177,8 @@ def dashboard():
         item_list = ", ".join(expiring_soon)
         flash(f"Heads up! Your {item_list} will expire in 4 days.", "warning")
 
-    return render_template('dashboard.html', player=current_player, meals=meals, stats=stats)
+    return render_template('dashboard.html', player=current_player, meals=meals, stats=stats, efficiency=round(efficiency, 1),
+                            tier=get_sustainability_tier(efficiency))
 
 # =====================
 # User Profile
@@ -532,6 +545,8 @@ def apply_recipe():
         return redirect(url_for("inventory_page"))
 
     total_score_change = 0
+    saved_value = 0
+
     for ing in recipe.get("ingredients_used", []):
         item = db.execute(
             "SELECT * FROM inventory WHERE name = ? AND player_id = ?",
@@ -551,10 +566,11 @@ def apply_recipe():
             usage_ratio = amount / base_qty 
             score_change= item["price"] * usage_ratio
             total_score_change += score_change
+            saved_value += score_change
 
             db.execute(
-                "UPDATE players SET score = ROUND(score - ?, 2) WHERE id = ?", # round to 2 decimals
-                (score_change, player_id)
+                "UPDATE players SET score = ROUND(score - ?, 2), total_value_saved = total_value_saved + ? WHERE id = ?", # round to 2 decimals
+                (total_score_change, saved_value, player_id)
             )
 
     db.commit()
@@ -624,10 +640,13 @@ def add_item_page():
             price, status
         ))
 
+        total_price = price * quantity # calculate total price based on quantity added
         db.execute("""
-            UPDATE players SET score = ROUND(score + ?, 2)
+            UPDATE players 
+            SET score = ROUND(score + ?, 2), 
+                total_value_acquired = total_value_acquired + ? 
             WHERE id = ?
-        """, (price * quantity, player_id))
+        """, (total_price, total_price, player_id)) # update score and total value acquired for player when adding items, round score to 2 decimals
 
         db.commit()
         db.close()
@@ -729,8 +748,8 @@ def use_item(item_id):
             )
 
         db.execute(
-            "UPDATE players SET score = ROUND(score - ?, 2) WHERE id = ?",
-            (item["price"], player_id)
+            "UPDATE players SET score = ROUND(score - ?, 2), total_value_saved = total_value_saved + ? WHERE id = ?",
+            (item["price"], item["price"], player_id)
         )
 
         db.commit()
@@ -753,12 +772,10 @@ def donate_item(item_id):
     ).fetchone()
 
     if item:
-        db.execute(
-            "UPDATE players SET score = score - ? WHERE id = ?",
-            (item["price"] * 0.5, player_id)
-        )
+        # <--- UPDATED FOR EFFICIENCY MODEL: Add to saved
+        db.execute("UPDATE players SET score = score - ?, total_value_saved = total_value_saved + ? WHERE id = ?", 
+                   (item["price"] * 0.5, item["price"], player_id))
         flash("- .5 points for donating food!", "success")
-
         db.execute("UPDATE inventory SET status = 'donated' WHERE id = ?", (item_id,))
         db.commit()
 
@@ -779,17 +796,14 @@ def compost_item(item_id):
         (item_id,)
     ).fetchone()
 
-    if item:
-        db.execute(
-            "UPDATE players SET score = score - ? WHERE id = ?",
-            (item["price"] * 0.25, player_id)
-        )
+    if item: # add to saved
+        db.execute("UPDATE players SET score = score - ?, total_value_saved = total_value_saved + ? WHERE id = ?",
+            (item["price"] * 0.25, item["price"], player_id))
         flash(f"- .25 points for composting!", "success")
-
         db.execute("UPDATE inventory SET status = 'composted' WHERE id = ?", (item_id,))
         db.commit()
-
     db.close()
+
     return redirect(url_for("inventory_page"))
 
 # =====================
