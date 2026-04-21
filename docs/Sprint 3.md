@@ -54,12 +54,12 @@ Sprint 2 closed the critical Milestone 2 gaps: `.env.example`, `sort_inventory(p
 
 - [ ] `docs/Sprint 3/evaluation_rerun.md` shows 17+/20 feasibility pass on the original evaluation set.
 - [x] Waste reduction dashboard visible on user dashboard with formula breakdown.
-- [ ] Loading indicator appears when the user submits a chat prompt and disappears when the response renders.
+- [x] Loading indicator appears when the user submits a chat prompt and disappears when the response renders.
 - [ ] At least one full team demo rehearsal completed with notes.
 - [ ] Single-ingredient edge case either passes or is explicitly flagged as a known limitation in the script.
 - [x] `normalize_quantity` and `convert_recipe_unit` share a single source of truth.
 - [ ] Final demo script has per-step timings and speaker notes.
-- [ ] Every team member has commits this sprint.
+- [x] Every team member has commits this sprint.
 
 ---
 
