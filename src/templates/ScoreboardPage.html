@@ -10,12 +10,11 @@
 {% endblock %}
 
 
-
 {% block body %}
 <div class="welcome1">
     <h1>Scoreboard</h1>
     {% include 'Menu.html' %}    
-    <p class="text">Players ranked from lowest score to highest.</p>
+    <p class="text">Players ranked by Efficiency (Highest to Lowest).</p>
 </div>
 
 <div class="body">
@@ -25,7 +24,7 @@
                 <th>Rank</th>
                 <th>Player</th>
                 <th>Profile</th>
-                <th>Score</th>
+                <th>Efficiency</th>
             </tr>
         </thead>
         <tbody>
@@ -44,14 +43,10 @@
                     {% endif %}
                 </td>
 
-                <td>${{ "%.2f"|format(player.score) }}</td>
+                <td>{{ "%.1f"|format(player.efficiency or 0) }}%</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-
 </div>
-
-
-
 {% endblock %}

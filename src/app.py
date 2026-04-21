@@ -870,11 +870,12 @@ def delete_meal(meal_id):
 def scoreboard():
     db = get_db()
 
-    # Order by score descending (highest → lowest)
+    # Order by score ascending to show top performers at the top of the scoreboard
     players = db.execute("""
-        SELECT id, name, score, profile_picture
+        SELECT id, name, profile_picture,
+               (total_value_saved / NULLIF(total_value_acquired, 0)) * 100 AS efficiency
         FROM players
-        ORDER BY score ASC
+        ORDER BY efficiency DESC
     """).fetchall()
 
     db.close()
