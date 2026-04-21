@@ -20,7 +20,7 @@
     <!-- =================================== current player stats ================================== -->
     <center>
         <p class="text">Player: <strong>{{ current_player.name }}</strong></p>
-        <p class="text">Score: <strong>{{ current_player.score  }}</strong></p>
+        <p class="text">Score: <strong>{{ "%.2f"|format(current_player.score) }}</strong></p> 
     </center>    
     <!-- =========================================================================================== -->
     {% with messages = get_flashed_messages(with_categories=true) %}
