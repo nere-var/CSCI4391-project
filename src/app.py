@@ -103,8 +103,8 @@ def home_page():
 @app.route("/dashboard")
 def dashboard():
     # show warning on homepage for foods about to expire in 3 days
-    player = session.get('player_id')
-    expiring_soon = get_expiry_date(player)
+    player_id = session.get('player_id')
+    expiring_soon = get_expiry_date(player_id)
 
 # =============================================================================================================
 # Get a list of saved recipes for the user + get score and pfp for dashboard
@@ -113,40 +113,53 @@ def dashboard():
 
     # new - fetch full player record so pfp and score can be shown on dashboard
     current_player = db.execute(
-        "SELECT * FROM players WHERE id = ?", (player,)
+        "SELECT * FROM players WHERE id = ?", (player_id,)
     ).fetchone()
 
     # new - fetch inventory to calculate waste reduction flags
     inventory_items = db.execute(
         "SELECT * FROM inventory WHERE player_id = ? AND status = 'active'", 
-        (player,)
+        (player_id,)
     ).fetchall()
 
     # new - calculate stats for dashboard
+    metrics = db.execute("""
+        SELECT 
+            SUM(CASE WHEN status = 'active' THEN price ELSE 0 END) as active_value,
+            SUM(CASE WHEN status = 'donated' THEN price * 0.5 ELSE 0 END) as donated_impact,
+            SUM(CASE WHEN status = 'composted' THEN price * 0.25 ELSE 0 END) as composted_impact
+        FROM inventory 
+        WHERE player_id = ?
+    """, (player_id,)).fetchone()
+
+    # initialize stats 
     stats = {
         "donation_eligible": 0,
         "expired_perishables": 0,
-        "total_active": len(inventory_items)
+        "total_active": len(inventory_items),
+        "active_value": metrics["active_value"] or 0,
+        "donated_impact": metrics["donated_impact"] or 0,
+        "composted_impact": metrics["composted_impact"] or 0
     }
 
-    # calculate flags for each item and stats for dashboard display
+    # loop thru active items to calculate donation eligibility and expired perishables for dashboard stats
     for item in inventory_items:
         # dict(item) ensures calculate_flags can read the keys correctly
         _, _, donation_allowed, decomposition = calculate_flags(dict(item))
         stats["donation_eligible"] += donation_allowed
         stats["expired_perishables"] += decomposition
 
+    # fetch meals
     meals = db.execute(
         "SELECT id, name, created_at FROM meals WHERE player_id = ? ORDER BY created_at DESC",
-        (player,)
+        (player_id,)
     ).fetchall()
-    db.close()
 # =============================================================================================================
 # =============================================================================================================
 
-    if not player:
+   # if not player:
         # if they aren't logged in, send them to the login page
-        return redirect('/login')
+       # return redirect('/login')
 
     if expiring_soon:
         item_list = ", ".join(expiring_soon)
