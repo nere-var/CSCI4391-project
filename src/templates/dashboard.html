@@ -41,8 +41,31 @@
 {% block body %}
   <div class="welcome1">
     <h1>Your Dashboard</h1>
+
     {% include 'Menu.html' %}
-    <p>Welcome back! Here is your food waste overview.</p>
+
+    <p class="subtitle">Welcome back! Here is your food waste overview.</p>
+    <style>
+      .subtitle {
+        color: #4e8e00;
+        font-size: 4rem;
+        margin-top: 40px;
+        font-style: italic;
+        background-color: rgba(76, 175, 80, 0.1);
+  
+        border: 1px solid rgba(76, 175, 80, 0.3);
+        border-radius: 8px;           
+  
+        padding: 15px;                
+        margin-top: 20px;             
+  
+        display: inline-block;
+      }
+
+      .welcome1 h1 {
+        margin-bottom: 5px;
+      }
+    </style>
   </div>
 
   {% with messages = get_flashed_messages(with_categories=true) %}
@@ -134,3 +157,4 @@
 Notification implemented using a Google Gemini prompt as a guideline:
 "how can i make the warning emotion move up and down to draw attention"
 "...a pulse or something when page loads?" -->
+"is there a way to put a transparent border around it"
