@@ -518,6 +518,7 @@ def apply_recipe():
     if not recipe:
         return redirect(url_for("inventory_page"))
 
+    total_score_change = 0
     for ing in recipe.get("ingredients_used", []):
         item = db.execute(
             "SELECT * FROM inventory WHERE name = ? AND player_id = ?",
@@ -536,6 +537,7 @@ def apply_recipe():
         if base_qty:
             usage_ratio = amount / base_qty 
             score_change= item["price"] * usage_ratio
+            total_score_change += score_change
 
             db.execute(
                 "UPDATE players SET score = score - ? WHERE id = ?",
@@ -544,8 +546,7 @@ def apply_recipe():
 
     db.commit()
     db.close()
-
-    flash("Recipe cooked successfully!", "success")
+    flash(f"Recipe cooked successfully! -{total_score_change:.2f} points used.", "success")
 
     return redirect(url_for("inventory_page"))
 
