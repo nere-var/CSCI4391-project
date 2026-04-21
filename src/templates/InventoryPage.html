@@ -17,11 +17,14 @@
 
 
 <div class="body">
-    <!-- =================================== current player stats ================================== -->
-    <center>
-        <p class="text">Player: <strong>{{ current_player.name }}</strong></p>
-        <p class="text">Score: <strong>{{ "%.2f"|format(current_player.score) }}</strong></p> 
-    </center>    
+    <center style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #e0e0e0;">
+        <p class="text" style="font-size: 1.1em; margin: 0;">
+            Player: <strong>{{ current_player.name }}</strong>
+        </p>
+        <p class="text" style="margin: 5px 0 0 0;">
+            Status: <strong>{{ tier }}</strong> | Efficiency: <strong>{{ efficiency }}%</strong>
+        </p>
+    </center>  
     <!-- =========================================================================================== -->
     {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}

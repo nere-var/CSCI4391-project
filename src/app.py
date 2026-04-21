@@ -314,10 +314,13 @@ def inventory_page():
         (player_id,)
     ).fetchall()
 
-
-
-    
-
+# ========================================================
+    # CALCULATE EFFICIENCY FOR THIS PAGE
+    # ========================================================
+    acquired = current_player['total_value_acquired'] or 0
+    saved = current_player['total_value_saved'] or 0
+    efficiency = (saved / acquired * 100) if acquired > 0 else 0
+    tier = get_sustainability_tier(efficiency)
 # =====================
 # Ai integration 
 # =====================
@@ -529,7 +532,9 @@ def inventory_page():
         "InventoryPage.html",
         items=items,
         current_player=current_player,
-        Response=Response
+        Response=Response,
+        efficiency=round(efficiency, 1),
+        tier=tier
     )
     
 #apply recipe amount used (when "Cook this recipe is clicked")
