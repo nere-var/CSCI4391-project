@@ -471,7 +471,7 @@ def inventory_page():
                         break
                 else:
                     Response = {"type": "error", "text": f"I tried to make a recipe with your current inventory. {validation_msg}"}
-        # ================
+        
         # ================
         # donation section
         # ================
@@ -563,24 +563,23 @@ def apply_recipe():
 
         amount, _ = convert_recipe_unit(ing["quantity"], ing["unit"])
 
-        consume_inventory_item(db, item, amount, ing["unit"])
-
         base_qty = item["quantity_grams"] or item["quantity_ml"] or item["quantity"]
 
-        if base_qty:
-            usage_ratio = amount / base_qty 
+        if base_qty and base_qty > 0:
+            usage_ratio = min(amount / base_qty, 1) 
             score_change= item["price"] * usage_ratio
             total_score_change += score_change
             saved_value += score_change
+        consume_inventory_item(db, item, amount, ing["unit"])
 
-            db.execute(
-                "UPDATE players SET score = ROUND(score - ?, 2), total_value_saved = total_value_saved + ? WHERE id = ?", # round to 2 decimals
-                (total_score_change, saved_value, player_id)
-            )
+    db.execute(
+        "UPDATE players SET score = ROUND(score - ?, 2), total_value_saved = total_value_saved + ? WHERE id = ?", # round to 2 decimals
+        (total_score_change, saved_value, player_id)
+    )
 
     db.commit()
     db.close()
-    flash(f"Recipe cooked successfully! -{total_score_change:.2f} points used.", "success")
+    flash(f"Recipe cooked successfully! -{total_score_change:.2f} points used (ingredients used efficiently).", "success")
 
     return redirect(url_for("inventory_page"))
 
@@ -752,10 +751,14 @@ def use_item(item_id):
                 (new_qty, item_id)
             )
 
+        score_change = item["price"]
+
         db.execute(
             "UPDATE players SET score = ROUND(score - ?, 2), total_value_saved = total_value_saved + ? WHERE id = ?",
-            (item["price"], item["price"], player_id)
+            (score_change, score_change, player_id)
         )
+
+        flash(f"Used {item['name']}! -{score_change:.2f} points (consumed efficiently).", "success")
 
         db.commit()
 
@@ -778,9 +781,14 @@ def donate_item(item_id):
 
     if item:
         # <--- UPDATED FOR EFFICIENCY MODEL: Add to saved
-        db.execute("UPDATE players SET score = score - ?, total_value_saved = total_value_saved + ? WHERE id = ?", 
-                   (item["price"] * 0.5, item["price"], player_id))
-        flash("- .5 points for donating food!", "success")
+        score_change = item["price"] * 0.5
+        db.execute(
+            "UPDATE players SET score = ROUND(score - ?, 2), total_value_saved = total_value_saved + ? WHERE id = ?",
+            (score_change, item["price"], player_id)
+        )
+
+        flash(f"Donated item! -{score_change:.2f} points (helped others & reduced waste).", "success")
+
         db.execute("UPDATE inventory SET status = 'donated' WHERE id = ?", (item_id,))
         db.commit()
 
@@ -802,9 +810,15 @@ def compost_item(item_id):
     ).fetchone()
 
     if item: # add to saved
-        db.execute("UPDATE players SET score = score - ?, total_value_saved = total_value_saved + ? WHERE id = ?",
-            (item["price"] * 0.25, item["price"], player_id))
-        flash(f"- .25 points for composting!", "success")
+        score_change = item["price"] * 0.25
+
+        db.execute(
+            "UPDATE players SET score = ROUND(score - ?, 2), total_value_saved = total_value_saved + ? WHERE id = ?",
+            (score_change, item["price"], player_id)
+        )
+
+        flash(f"Composted item! -{score_change:.2f} points (waste reduced sustainably).", "success")
+
         db.execute("UPDATE inventory SET status = 'composted' WHERE id = ?", (item_id,))
         db.commit()
     db.close()
