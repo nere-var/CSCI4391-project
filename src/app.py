@@ -378,6 +378,8 @@ def inventory_page():
                     "For greetings or general questions: respond with friendly, concise plain text.\n\n"
  
                     "### MODE 2: RECIPE\n"
+                    "- Before the recipe steps, include a short line:\n"
+                    "  'Diet Check: <how this recipe satisfies allergies & dietary needs>'\n"
                     "If the user asks for a recipe or cooking advice, return ONLY valid JSON. "
                     "No text before or after. No markdown.\n"
                     "{\n"
@@ -450,7 +452,7 @@ def inventory_page():
                     Response = {"type": "error", "text": "The model is busy. Please try again in a moment."}
                     break
                 # send recipe to validator
-                is_valid, validation_msg = Chat_validator.validate_AI_recipe(raw_response, player_id)
+                is_valid, validation_msg = Chat_validator.validate_AI_recipe(raw_response, player_id, current_player)
                 if is_valid:
                     try:
                         raw_response = raw_response.strip()
@@ -468,7 +470,8 @@ def inventory_page():
                             "type": "recipe",
                             "title": parsed.get("recipe_title", "Recipe"),
                             "ingredients": used_ingredients,
-                            "steps": parsed.get("recipe_text", "")
+                            "steps": validation_msg["recipe_text"]
+                            "diet": validation_msg["diet_summary"]
                         }
                             
                     except json.JSONDecodeError:
