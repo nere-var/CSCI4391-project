@@ -24,7 +24,9 @@ CREATE TABLE IF NOT EXISTS players (
     profile_picture TEXT,
     food_allergies TEXT "", 
     dietary_needs TEXT "",
-    score REAL NOT NULL DEFAULT 0
+    score REAL NOT NULL DEFAULT 0,
+    total_value_acquired REAL NOT NULL DEFAULT 0,
+    total_value_saved REAL NOT NULL DEFAULT 0
 )
 """)
 
