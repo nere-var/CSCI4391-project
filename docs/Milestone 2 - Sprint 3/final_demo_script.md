@@ -26,12 +26,11 @@ Browser is open on the login screen
 ---
 ## Scenario 1: Login Failure (1 minute)
 
-
 | steps | actions                                 | what to say                       |
 |-------|-----------------------------------------|-----------------------------------|
-| 1     | Leave **Username** and **Password** fields blank| |
+| 1     | Leave **Username** and **Password** fields blank| "First, let's confirm the system doesn't let anyone slip through without credentials. I'll leave both fields empty and click Login."|
 | 2|  Click **Login** | |
-| 3 | Observer "Fill out field" UI message |   |
+| 3 | Observer "Fill out field" UI message |  "The form validation fires immediately resulting in the user staying on the login screen, no inventory loads and AI is inaccessible." |
 
 **Expected Output:**
 - Login rejected, "Fill out field" message visible on the form
