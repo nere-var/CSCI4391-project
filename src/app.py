@@ -173,14 +173,14 @@ def dashboard():
    # if not player:
         # if they aren't logged in, send them to the login page
        # return redirect('/login')
-
-    if expiring_soon:
-        item_list = ", ".join(expiring_soon)
-        flash(f"Heads up! Your {item_list} will expire in 4 days.", "warning")
     
     if urgent_expiring_soon:
         item_list = ", ".join(urgent_expiring_soon)
         flash(f"Heads up! Your {item_list} will expire in 1 day!", "urgent")
+
+    if expiring_soon:
+        item_list = ", ".join(expiring_soon)
+        flash(f"Heads up! Your {item_list} will expire in 4 days.", "warning")
 
     return render_template('dashboard.html', player=current_player, meals=meals, stats=stats, efficiency=round(efficiency, 1),
                             tier=get_sustainability_tier(efficiency))
