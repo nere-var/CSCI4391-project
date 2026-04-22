@@ -1157,3 +1157,14 @@ white-space: pre-wrap;
 .delete-recipe-btn:hover {
     background-color: #be9061;
 }
+
+.diet-check {
+    background-color: #e6f4ea;
+    color: #1e7e34;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin: 8px 0 12px 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-left: 4px solid #28a745;
+}
