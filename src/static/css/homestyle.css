@@ -1125,6 +1125,11 @@ white-space: pre-wrap;
     color: #7a2e10;
 }
 
+
+/* ==========================
+   Recipe View buttons
+   ========================== */
+
 .use-recipe-btn {
     background-color: #4e8e00;
     color: white;
@@ -1137,4 +1142,18 @@ white-space: pre-wrap;
 
 .use-recipe-btn:hover {
     background-color: #3d6f00;
+}
+
+.delete-recipe-btn{
+    background-color: #e89b4f;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.delete-recipe-btn:hover {
+    background-color: #be9061;
 }
