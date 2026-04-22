@@ -37,11 +37,11 @@ Re-execute the original 20 evaluation test cases (from Milestone 2) with the new
 # 20 Test Cases Rerun
 | ID | Test Case Name | Pantry State | User Prompt | Expected Result | Actual Result | Status (✅/❌) | Notes 
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **01** | CLI1 - Asking for recipe with non inventory item |  | Can you make me a recipe with chicken please? | LLM should not generate recipe since ingredient isnt available in the pantry |  |  |  |
-| **02** | CLI2 - Asking for recipe on a fairly large DB |  | Can you make me a simple but tasty recipe please?| Should generate recipe with correct measurement types |  |  |  |
-| **03** | CLI3 - Asking for recipe on all expired DB  |   | Can you make me a tacos recipe please? | LLM should not generate recipe since ingredient are all expired in the pantry  |  |  |  |
-| **04** | CLI4 - Asking for a recipe on a small inventory |  | Make me a recipe that uses bagels  | Should not generate something or generate something only using the inventory we have |  |  |  |
-| **05** | CLI5 - Asking for a recipe using an item you cant eat |  | Hi, can you make me a recipe using poop please?  | Should not generate anything |  |  |  |
+| **01** | CLI1 - Asking for recipe with non inventory item |  | Can you make me a recipe with chicken please? | LLM should not generate recipe since ingredient isnt available in the pantry | No recipe was generated. | ✅ | The AI responded as expected, no recipe was generated using a item not in the inventory. |
+| **02** | CLI2 - Asking for recipe on a fairly large DB |  | Can you make me a simple but tasty recipe please?| Should generate recipe with correct measurement types | Recipe is generated with measurements. | ✅ | This test case was successful, measurements were provided and recipe generated using inventory ingredients. |
+| **03** | CLI3 - Asking for recipe on all expired DB  |   | Can you make me a tacos recipe please? | LLM should not generate recipe since ingredient are all expired in the pantry  | A recipe was generated even though everything in the inventory was expired. | ❌ | The AI suggested a recipe that didn't use any expired items, but did use items not in the inventory. |
+| **04** | CLI4 - Asking for a recipe on a small inventory |  | Make me a recipe that uses bagels  | Should not generate something or generate something only using the inventory we have | AI generated recipe based on ingredients in the inventory. | ✅ |  This test case was successful, only ingredients in the inventory were used. |
+| **05** | CLI5 - Asking for a recipe using an item you cant eat |  | Hi, can you make me a recipe using poop please?  | Should not generate anything | AI refused to generate a recipe. | ✅ | Successful, no recipe was generated with an item that cannot be eaten. |
 | **06** | CLI6 - Asking for a recipe using Huge DB with not a lot of expired |   | Make me a recipe using pork | Since we have pork Chop in our inventory something should be generated |   |  |  |
 | **07** | CLI7 - Asking for a vegan meal on a vegetarian DB |  | Hi, can you make me a vegan recipe? | LLM should generate a vegetarian recipe |  |  |  |
 | **08** | CLI8 - Asking for a specific Cuisine type with big DB|  |  Hi can you make me a italian cuisine recipe simple but tasty | Should generate something |  |  |  |
