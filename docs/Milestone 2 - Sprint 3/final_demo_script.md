@@ -212,7 +212,7 @@ Starting state:
 
 | Steps | Actions                                 | What to say                       |
 |-------|-----------------------------------------|-----------------------------------|
-| 1| Login to vegetarian account using credentials | "We will now test an the vegetarian dietary needs " | 
+| 1| Login to vegetarian account using credentials | "We will now test the vegetarian dietary needs " | 
 | 2 | Navigate to **Check Inventory page** | "inventory contains same items as demo account"|
 |3 |Click **Chat with Binny** if not already open| "Lets ask for a recipe using with ground beef "|
 | 3| Enter prompt : I would like a recipe with ground beef ||
