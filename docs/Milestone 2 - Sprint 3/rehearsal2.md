@@ -1,0 +1,3 @@
+# This is just some notes for when we do the demo run 
+we can add things like what bugs occur , issues 
+things to add and etc...
