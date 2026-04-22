@@ -42,6 +42,31 @@ def ingredients_match(req_name, inv_name):
 
     return False
 
+# ==============================
+# Dietary rules
+# ==============================
+DIETARY_RULES = {
+    "vegetarian": {
+        "forbidden": ["chicken", "beef", "pork", "fish", "shrimp", "meat"]
+    },
+    "vegan": {
+        "forbidden": [
+            "chicken", "beef", "pork", "fish", "shrimp", "meat",
+            "milk", "cheese", "butter", "egg", "cream", "yogurt", "honey"
+        ]
+    },
+    "gluten-free": {
+        "forbidden": ["wheat", "bread", "pasta", "flour"]
+    },
+    "dairy-free": {
+        "forbidden": ["milk", "cheese", "butter", "cream", "yogurt"]
+    },
+    "nut-free": {
+        "forbidden": ["peanut", "almond", "cashew", "walnut"]
+    }
+}
+
+
 # =====================================================================
 
 class recipe_validator:
@@ -69,8 +94,25 @@ class recipe_validator:
         conn.close()
         return [dict(row) for row in rows]
             
-    def validate_AI_recipe(self, recipe_json_str, player_id):
+    def validate_AI_recipe(self, recipe_json_str, player_id, current_player):
         print("\n--- VALIDATOR STARTED ---")
+
+        player = current_player
+        allergies = []
+        dietary_needs = []
+
+        if player:
+            if player["food_allergies"]:
+                 allergies = [a.strip().lower() for a in player["food_allergies"].split(",")]
+
+            if player["dietary_needs"]:
+                dietary_needs = [
+                    d.strip().lower().replace(" ", "-")
+                    for d in player["dietary_needs"].split(",")
+                ]
+        print(f"Allergies: {allergies}")
+        print(f"Dietary Needs: {dietary_needs}")
+        
         # fetch current inventory and build a lookup dictionary
         inventory = self.get_active_inventory(player_id)
         # checks expired 
@@ -155,6 +197,20 @@ class recipe_validator:
             req_unit = req.get('unit', 'each')
             req_type = req.get('measurement_type', 'count')
 
+            for allergy in allergies:
+                if allergy and allergy in req_name:
+                     return False, f"Contains allergen '{allergy}' ({req_name})."
+            
+            for diet in dietary_needs:
+                rules = DIETARY_RULES.get(diet)
+
+                if not rules:
+                    print(f"Unknown dietary needs")
+                    continue
+                for forbidden in rules.get("forbidden", []):
+                    if forbidden in req_name:
+                        return False, f"'{req_name}' violates {diet} diet."
+
             
            # print(f"\n Checking ingredient: {req_name} (Needs {req_qty} {req_unit}, Type: {req_type})") // can be removed for debugging
             # exists in pantry, fuzzy match
@@ -217,4 +273,22 @@ class recipe_validator:
                 
         # if pass, then generate recipe
         print("\n--- VALIDATOR PASSED ---")
-        return True, recipe_data.get("recipe_text", "Recipe generated successfully.")
+         # if pass, then generate recipe
+        print("\n--- VALIDATOR PASSED ---")
+        diet_summary = "🟢 Dietary check: "
+
+        if allergies:
+            diet_summary += f"Avoids ({', '.join(allergies)}). "
+        else:
+            diet_summary += "No allergies. "
+
+        if dietary_needs:
+            diet_summary += f"Meets ({', '.join(dietary_needs)})."
+        else:
+            diet_summary += "No dietary restrictions."
+
+        return True, {
+            "diet_summary": diet_summary,
+            "recipe_text": recipe_data.get("recipe_text", "")
+        }
+        
