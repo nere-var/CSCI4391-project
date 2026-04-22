@@ -470,7 +470,7 @@ def inventory_page():
                             "type": "recipe",
                             "title": parsed.get("recipe_title", "Recipe"),
                             "ingredients": used_ingredients,
-                            "steps": validation_msg["recipe_text"]
+                            "steps": validation_msg["recipe_text"],
                             "diet": validation_msg["diet_summary"]
                         }
                             
