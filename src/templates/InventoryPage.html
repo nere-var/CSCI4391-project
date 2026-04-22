@@ -109,6 +109,11 @@
                 <div class="ai-block ai-recipe">
                     <p class="ai-label">Recipe</p>
                     <p class="ai-recipe-title">{{Response.title}}</p>
+                    {% if Response.diet %}
+                        <div class="diet-check">
+                            {{ Response.diet }}
+                        </div>
+                    {% endif %}
 
                     <ul class="ai-ingredient-list">
                         {%for ing in Response.ingredients %}
