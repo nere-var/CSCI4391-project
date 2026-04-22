@@ -14,6 +14,19 @@ def get_expiry_date(player_id):
 
     return [item['name'] for item in items]
 
+def urgent_expiry_date(player_id):
+    conn = get_db()
+    cursor = conn.cursor()
+
+    # calculate the date 1 day before it expires
+    target_date = (datetime.now() + timedelta(days=1)).strftime('%Y-%m-%d')
+    query = "SELECT name FROM inventory WHERE player_id = ? AND best_by = ? AND status = 'active'"
+    cursor.execute(query, (player_id, target_date))
+    items = cursor.fetchall()
+    conn.close
+
+    return [item['name'] for item in items]
+
 def sort_inventory(player_id):# <----  player_id
     conn = get_db()
     cursor = conn.cursor()

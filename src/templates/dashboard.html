@@ -68,14 +68,18 @@
     </style>
   </div>
 
-  {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-      {% for category, message in messages %}
-        <div class="alert alert-entrance" style="background-color: #fff3cd; 
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+
+      {# Urgent - Red #}
+      {% if category == 'urgent' %}
+        <div class="alert alert-entrance" style="
+          background-color: #f8d7da; 
+          color: #721c24; 
+          border: 1px solid #f5c6cb; 
+          border-left: 8px solid #dc3545;
           padding: 18px; 
-          border: 1px solid #ffeeba; 
-          border-left: 8px solid #ffc107; /* Bold accent line */
-          color: #856404; 
           margin-bottom: 20px;
           border-radius: 8px;
           box-shadow: 0 4px 6px rgba(0,0,0,0.05);
@@ -83,13 +87,32 @@
           align-items: center;
           font-weight: 600;
           font-family: system-ui, -apple-system, sans-serif;">
-
-        <span class="bobbing-emoji" style="font-size: 20px; margin-right: 15px;">⚠️</span>
-        <span>{{ message }}</span>
+            <span class="bobbing-emoji" style="font-size: 20px; margin-right: 15px;">🚨</span>
+            <span>{{ message }}</span>
         </div>
-      {% endfor %}
-    {% endif %}
-  {% endwith %}
+
+      {# Non-Urgent - Yellow #}
+      {% else %}
+        <div class="alert alert-entrance" style="
+          background-color: #fff3cd; 
+          color: #856404; 
+          border: 1px solid #ffeeba; 
+          border-left: 8px solid #ffc107;
+          padding: 18px; 
+          margin-bottom: 20px;
+          border-radius: 8px;
+          box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+          display: flex;
+          align-items: center;
+          font-weight: 600;
+          font-family: system-ui, -apple-system, sans-serif;">
+            <span class="bobbing-emoji" style="font-size: 20px; margin-right: 15px;">⚠️</span>
+            <span>{{ message }}</span>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 
   <div class="tier-card" style="margin-bottom: 20px; padding: 25px; border-radius: 12px; background: #ffffff; border: 1px solid #e0e0e0; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
       <h3 style="margin: 0 0 10px 0; color: #333;">Sustainability Status</h3>
@@ -157,4 +180,4 @@
 Notification implemented using a Google Gemini prompt as a guideline:
 "how can i make the warning emotion move up and down to draw attention"
 "...a pulse or something when page loads?" -->
-"is there a way to put a transparent border around it"
+"is there a way to put a transparent border it"

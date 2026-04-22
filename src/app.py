@@ -7,7 +7,7 @@ import os
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from unit_conversion import normalize_quantity, convert_recipe_unit
-from expiry import get_expiry_date
+from expiry import get_expiry_date, urgent_expiry_date
 import json
 
 # ========================
@@ -112,6 +112,7 @@ def dashboard():
     # show warning on homepage for foods about to expire in 3 days
     player_id = session.get('player_id')
     expiring_soon = get_expiry_date(player_id)
+    urgent_expiring_soon = urgent_expiry_date(player_id)
 
 # =============================================================================================================
 # Get a list of saved recipes for the user + get score and pfp for dashboard
@@ -176,6 +177,10 @@ def dashboard():
     if expiring_soon:
         item_list = ", ".join(expiring_soon)
         flash(f"Heads up! Your {item_list} will expire in 4 days.", "warning")
+    
+    if urgent_expiring_soon:
+        item_list = ", ".join(urgent_expiring_soon)
+        flash(f"Heads up! Your {item_list} will expire in 1 day!", "urgent")
 
     return render_template('dashboard.html', player=current_player, meals=meals, stats=stats, efficiency=round(efficiency, 1),
                             tier=get_sustainability_tier(efficiency))
