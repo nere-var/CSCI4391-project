@@ -78,6 +78,11 @@ SeniorProject/
 
 
 <br /><br />
+Demo Installation(private key is not shown for obvious reasons):
+<a ref="https://youtu.be/6lxgTZllMpQ"><img src="https://github.com/user-attachments/assets/ce0582c6-419b-4812-88e7-2e99936952f5" width="300" height="200"></a>
+
+
+
 
 For Windows Users:
 - ``` apt install python3.13-venv ```      # install the virtual environment module for Python 3.13
@@ -98,8 +103,8 @@ For Mac/Linux Users:
 
 Then:
 # Create your environment file
-- cp .env.example .env   # macOS/Linux
-- copy .env.example .env # Windows
+- cp src/.env.example src/.env   # macOS/Linux
+- copy src/.env.example src/.env # Windows
 
 # Then edit .env and paste your OpenRouter API key
 - Go to https://openrouter.ai/ to obtain an API key
@@ -108,6 +113,11 @@ Then:
 <br><br><br>
 ## <a name="usage"></a>Usage:<br />
 <center> 
+
+
+
+
+
  
 [Terminal Version](#terminal) | [GUI Version](#gui) 
 
