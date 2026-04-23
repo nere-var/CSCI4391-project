@@ -78,8 +78,10 @@ SeniorProject/
 
 
 <br /><br />
-Demo Installation(private key is not shown for obvious reasons):
-<a ref="https://www.youtube.com/watch?v=6lxgTZllMpQ"><img src="https://github.com/user-attachments/assets/ce0582c6-419b-4812-88e7-2e99936952f5" width="300" height="200"></a>
+Demo Installation(private key is not shown for obvious reasons):<br>
+<a href="https://www.youtube.com/watch?v=6lxgTZllMpQ">
+ <img src="https://github.com/user-attachments/assets/ce0582c6-419b-4812-88e7-2e99936952f5" width="300">
+</a>
 
 
 
@@ -204,7 +206,7 @@ If the ingredients are not available:<br>
 
 ## <a name="demo"></a>Demos:<br />
 
-<a ref="https://www.youtube.com/watch?v=rEP0uPVVnNU"><img src="https://github.com/user-attachments/assets/3f10d1dd-e9e8-4d08-8b47-7031dc430126" width="300" height="200"></a> <a ref="https://www.youtube.com/watch?v=LsMbCGHMmF0"><img src="https://github.com/user-attachments/assets/abe86b95-9ff9-4d0d-9d72-1df5a50b15dd" width="300" height="200"></a>
+<a href="https://www.youtube.com/watch?v=rEP0uPVVnNU"><img src="https://github.com/user-attachments/assets/3f10d1dd-e9e8-4d08-8b47-7031dc430126" width="300" height="200"></a> <a href="https://www.youtube.com/watch?v=LsMbCGHMmF0"><img src="https://github.com/user-attachments/assets/abe86b95-9ff9-4d0d-9d72-1df5a50b15dd" width="300" height="200"></a>
 
 
 
