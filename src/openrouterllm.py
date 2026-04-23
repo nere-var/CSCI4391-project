@@ -6,6 +6,15 @@ from dotenv import load_dotenv
 from expiry import sort_inventory
 from validator import recipe_validator   #importing everything from validator
 
+# ================
+# Global variables
+# ================
+# For the welcome message: "Welcome! The model is XXX . Type 'quit' to exit."
+model_name = "Ling-2.6-flash (free)"
+# For the actual AI usage: "inclusionai/ling-2.6-flash:free",
+ai_model_used = "inclusionai/ling-2.6-flash:free"
+
+
 class Ai_Chat: 
     # IMPORTANT
     #  I sent the .env file with the api key  in the chat, but I will not be including it in the code repository for security reasons and github gets whiny about it lol
@@ -144,7 +153,10 @@ class Ai_Chat:
             }
         
         data = {
-            "model": "arcee-ai/trinity-large-preview:free",  # using trinity large preview free model
+            "model": ai_model_used, # set global variable at top
+
+            #"model": "inclusionai/ling-2.6-flash:free",
+            #"model": "arcee-ai/trinity-large-preview:free",  # using trinity large preview free model
             "messages": messages # will declare limits at start of chat loop
             }
         try:
@@ -161,7 +173,12 @@ class Ai_Chat:
 # console chat loop
 
     def chatConsole(self):
-        print("Welcome! The model is Trinity Large Preview (free). Type 'quit' to exit.\n")
+        # ===============================================================================================================
+        # =                      [Welcome message showing the AI model used]                                            =
+        # ===============================================================================================================
+        #print("Welcome! The model is Trinity Large Preview (free). Type 'quit' to exit.\n")
+        print(f"Welcome! {model_name}. Type 'quit' to exit.\n")
+        # ===============================================================================================================   
         # this is where the chatbot will be constrained
         messages = [
             {
