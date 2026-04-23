@@ -62,7 +62,7 @@ SeniorProject/
 |     ├- database.py
 |     ├- expiry.py
 |     ├- generator.py
-|     ├- main.py
+|     ├- cli.py
 |     ├- models.py
 |     ├- openrouterllm.py
 |     ├- requirements.txt
@@ -129,7 +129,7 @@ Then:
  
 ### <a name="terminal"></a>Terminal version:<br>
 
-- ```python3 src/main.py```  # In the Projects root Folder<br>
+- ```python3 src/cli.py```  # In the Projects root Folder<br>
 
 - This will start an instance in your terminal:<br>
   <img width="579" height="25" alt="image" src="https://github.com/user-attachments/assets/f67a829a-2fd0-4ead-a1e8-c55820537893" />
