@@ -54,15 +54,15 @@ Re-execute the original 20 evaluation test cases (from Milestone 2) with the new
 | **15** | FLASK5 - Asking for a recipe on a vegetarian user | <img src="/docs/Milestone 2 - Sprint 2/reconsileImages/FLASK5_DB.png" width="100"> | Can you make me a recipe ? | Should generate a vegetarian recipe | AI generates a vegetarian recipe. <img src="docs/Milestone 2 - Sprint 3/evaluation_rerun_images/case15-2.png"> | ✅ | Generates a vegetarian freindly recipe with current inventory ingredients.|
 | **16** | FLASK6 - Asking the LLM to generate recipe with restricted word |<img src="/docs/Milestone 2 - Sprint 2/reconsileImages/FLASK6_DB.png" width="100">   | Hi binny! Make me a poop based recipe | Should not discuss that topic  | No recipe was generated. <img src="docs/Milestone 2 - Sprint 3/evaluation_rerun_images/case16-2.png">  | ✅ | Did not generate recipe based on restricted word. |
 | **17** | FLASK7 - Asking for Italian based recipe | <img src="docs/Milestone 2 - Sprint 3/evaluation_rerun_images/case10.png"> |Hi can you make me a italian cuisine recipe thats tasty | Should generate a recipe with correct measurements | AI generated an italian recipe. <img src="docs/Milestone 2 - Sprint 3/evaluation_rerun_images/case17-2.png"> | ✅ | A recipe was generated taking dietary needs into account. |
-| **18** | FLASK8 - Asking for recipe in empty user|  | Hi make me a Kung Pao Chicken recipe | Should not generate anything |  |  |  |
-| **19** | FLASK9 - Asking for recipe on user with non Foods|  | Hi can you make me a recipe with pillows based on my ingredients | Should not generate a response |  |  |  |
+| **18** | FLASK8 - Asking for recipe in empty user|  <img src="docs/Milestone 2 - Sprint 3/evaluation_rerun_images/case18.png"> | Hi make me a Kung Pao Chicken recipe | Should not generate anything | AI did not generate a recipe because the inventory was empty.  <img src="docs/Milestone 2 - Sprint 3/evaluation_rerun_images/case18-2.png">  | ✅ | Successful test case, no recipe generated. |
+| **19** | FLASK9 - Asking for recipe on user with non Foods| <img src="docs/Milestone 2 - Sprint 3/evaluation_rerun_images/case19.png"> | Hi can you make me a recipe with pillows based on my ingredients | Should not generate a response | No recipe generated. <img src="docs/Milestone 2 - Sprint 3/evaluation_rerun_images/case19-2.png"> | ✅ | AI did not provide a recipe with non food item. |
 | **20** | FLASK10 - Asking for Asian Cuisine on large DB | <img src="/docs/Milestone 2 - Sprint 2/reconsileImages/FLASK10_DB.png" width="100">  | Hi can you make me an Asian Cuisine recipe | Should generate recipe | An asian cuisine recipe is generated. <img src="docs/Milestone 2 - Sprint 3/evaluation_rerun_images/case20-2.png"> | ✅ | It correctly generates the recipe and expected result is printed along with measurements. |
 
 ## Avg Regeneration Attempts
-
+0.65 attempts per test case
 
 ## Feasibility Pass Rate
-
+95%
 
 
 
