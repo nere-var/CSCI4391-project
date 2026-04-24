@@ -132,7 +132,7 @@ Then:
 - ```python3 src/cli.py```  # In the Projects root Folder<br>
 
 - This will start an instance in your terminal:<br>
-  <img width="579" height="25" alt="image" src="https://github.com/user-attachments/assets/f67a829a-2fd0-4ead-a1e8-c55820537893" />
+
 
 - Select user to login: demo:demo<br>
  <img width="173" height="191" alt="image" src="https://github.com/user-attachments/assets/82f79ed0-3c8d-4931-b0d6-00d93a625637" />
