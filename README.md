@@ -192,18 +192,18 @@ If the ingredients are not available:<br>
 <br /><br /><br />
 
 ## <a name="demo"></a>Demos:<br />
-| Milestone 1 | Milestone 2 | 10-12 minute video | 5 minute demo |
-|---|---|---|---|
-| <a href="https://www.youtube.com/watch?v=rEP0uPVVnNU"><img src="https://github.com/user-attachments/assets/f7dc1d94-b13e-4cb9-a184-735868c06c14" width="300"></a> | <a href="https://www.youtube.com/watch?v=LsMbCGHMmF0"><img src="https://github.com/user-attachments/assets/0f40c306-b720-450a-a8d4-fcf51b4e09f8" width="300"></a> | <a href="https://www.youtube.com/watch?v=2hLODnwbJ2s"><img src="https://github.com/user-attachments/assets/f7dc1d94-b13e-4cb9-a184-735868c06c14" width="300"></a> | <a href="https://www.youtube.com/watch?v=Vb87FnBxCL4"><img src="https://github.com/user-attachments/assets/f7dc1d94-b13e-4cb9-a184-735868c06c14" width="300"></a> |
+| Milestone 1 | Milestone 2 | Dry Run 1 | Dry Run 2 | Dry Run 2 - Video Capture |
+|---|---|---|---|---|
+| <a href="https://www.youtube.com/watch?v=rEP0uPVVnNU"><img src="https://github.com/user-attachments/assets/f7dc1d94-b13e-4cb9-a184-735868c06c14" width="300"></a> | <a href="https://www.youtube.com/watch?v=LsMbCGHMmF0"><img src="https://github.com/user-attachments/assets/0f40c306-b720-450a-a8d4-fcf51b4e09f8" width="300"></a> | <a href="https://www.youtube.com/watch?v=2m3urxbWoBw"><img src="https://github.com/user-attachments/assets/f7dc1d94-b13e-4cb9-a184-735868c06c14" width="300"></a>| <a href="https://www.youtube.com/watch?v=2hLODnwbJ2s"><img src="https://github.com/user-attachments/assets/f7dc1d94-b13e-4cb9-a184-735868c06c14" width="300"></a> | <a href="https://www.youtube.com/watch?v=Vb87FnBxCL4"><img src="https://github.com/user-attachments/assets/f7dc1d94-b13e-4cb9-a184-735868c06c14" width="300"></a> |
 
 
 <br /><br /><br />
 
 
 ## <a name="demo"></a>Other Videos:<br />
-| Installation Video | Contributions Video | Demonstation Backup |
-|---|---|---|
-| <a href="https://www.youtube.com/watch?v=6lxgTZllMpQ"><img src="https://github.com/user-attachments/assets/ce0582c6-419b-4812-88e7-2e99936952f5" width="300"></a> | <a href="https://www.youtube.com/watch?v=2m3urxbWoBw"><img src="https://github.com/user-attachments/assets/f7dc1d94-b13e-4cb9-a184-735868c06c14" width="300"></a>|  <a href="https://www.youtube.com/watch?v=ez2_7s_7lyI"><img src="https://github.com/user-attachments/assets/f7dc1d94-b13e-4cb9-a184-735868c06c14" width="300"></a> |
+| Installation Video | Demonstation Backup |
+|---|---|
+| <a href="https://www.youtube.com/watch?v=6lxgTZllMpQ"><img src="https://github.com/user-attachments/assets/ce0582c6-419b-4812-88e7-2e99936952f5" width="300"></a> |  <a href="https://www.youtube.com/watch?v=ez2_7s_7lyI"><img src="https://github.com/user-attachments/assets/f7dc1d94-b13e-4cb9-a184-735868c06c14" width="300"></a> |
 
 
 
