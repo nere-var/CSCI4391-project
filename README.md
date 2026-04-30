@@ -75,11 +75,7 @@ SeniorProject/
 
 
 
-<br /><br />
-Demo Installation(private key is not shown for obvious reasons):<br>
-<a href="https://www.youtube.com/watch?v=6lxgTZllMpQ">
- <img src="https://github.com/user-attachments/assets/ce0582c6-419b-4812-88e7-2e99936952f5" width="300">
-</a>
+
 
 
 
