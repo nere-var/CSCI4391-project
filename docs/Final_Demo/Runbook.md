@@ -66,35 +66,77 @@ These accounts are used for:
 - Demonstrating AI refusal logic
 
 
-##
+## 6. Running the Flask Backend
+### Start the Server
+- ```python src/app.py```
+### Verify Successful Startup
+You should see:
+- ```Running on http://127.0.0.1:5000```
+Open the browser and log in using any demo account.
 
 
 
-##
+## 7. Application Usage Guide
+This section explains how to use each page.
+
+### Inventory Page
+URL: /inventory
+Features:
+
+- A complete list of items in inventory with amounts and best by dates
+
+- Edit items: use, compost, donate, delete
+
+- Includes window to interact with chatbot for recipe, compost, and donation requests
+
+Expected Behaviors:
+
+- Items in inventory will be listing by Best By date
+
+- Add using composting donating or deleting an item with update inventory list immediately
+  - Workflow:
+    - User enters a prompt
+    - App sends inventory + prompt to AI
+    - AI returns JSON recipe
+  - Validator checks:
+    - Ingredient names
+    - Units
+    - Quantities
+    - Expiration dates
+  - If valid → recipe displayed
+  - If invalid → refusal message shown
+    - Refusal Example:
+      - “Unable to create a valid recipe. Reason: no ingredients available.”
+        
+
+### Scoreboard Page
+URL: /dashboard
+
+Features:
+- User Sunstainability Status
+    - Novice
+    - Apprentice
+    - Eco-Warrior
+    - Eco-Legend
+- Effeiciency & Lifetime Impact
+  - Total inventory acquired cost
+  - Total saved per user from inventory
+  - Efficiency of inventory use
+- Saved Recipes  
+
+Useful for:
+
+- Generalization of User inventory efficiency
+- Viewing and storage of recipes for user
 
 
 
-##
-
-
-
-##
-
-
-
-##
-
-
-
-##
-
-
-
-##
-
-
-
-##
-##
-##
-##
+## 8. Common Errors & How to Fix Them
+### AI Returns Invalid JSON
+- Symptoms:
+  - “Unable to parse AI recipe”
+  - JSONDecodeError
+- Fix:
+  - Ensure system prompt forces strict JSON
+  - Retry with simpler prompt
+  - Restart Flask if stuck
